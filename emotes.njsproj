@@ -20,7 +20,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
     <EnableTypeScript>true</EnableTypeScript>
@@ -33,20 +33,38 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="test\dummy.ts" />
+    <Content Include="sample_data.json" />
+    <Content Include="Scripts\typings\jquery\jquery.d.ts" />
+    <Content Include="Scripts\typings\jquery\jquery.d.ts" />
+    <Content Include="Scripts\typings\underscore\underscore.d.ts" />
+    <Content Include="Scripts\typings\underscore\underscore.d.ts" />
+    <TypeScriptCompile Include="EmoteObject.ts" />
+    <TypeScriptCompile Include="EmoteParser.ts" />
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="EmoteEffectsModifier.ts" />
+    <TypeScriptCompile Include="EmoteExpander.ts" />
+    <TypeScriptCompile Include="EmoteExpansionOptions.ts" />
+    <TypeScriptCompile Include="EmoteFlags.ts" />
+    <TypeScriptCompile Include="EmoteHtml.ts" />
+    <TypeScriptCompile Include="EmoteMap.ts" />
+    <TypeScriptCompile Include="IEmoteDataEntry.ts" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\mocha\mocha.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\should\should.d.ts" />
+    <TypeScriptCompile Include="test\EmoteExpander.test.ts" />
+    <TypeScriptCompile Include="test\EmoteParser.test.ts" />
+    <TypeScriptCompile Include="_all.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\typings\" />
+    <Folder Include="Scripts\typings\jquery\" />
     <Folder Include="Scripts\typings\mocha\" />
     <Folder Include="Scripts\typings\node\" />
     <Folder Include="Scripts\typings\should\" />
+    <Folder Include="Scripts\typings\underscore\" />
     <Folder Include="test\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
