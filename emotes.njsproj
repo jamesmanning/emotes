@@ -54,6 +54,7 @@
     <TypeScriptCompile Include="Scripts\typings\mocha\mocha.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\should\should.d.ts" />
     <TypeScriptCompile Include="test\EmoteExpander.test.ts" />
+    <TypeScriptCompile Include="test\EmoteHtml.test.ts" />
     <TypeScriptCompile Include="test\EmoteParser.test.ts" />
     <TypeScriptCompile Include="_all.ts" />
   </ItemGroup>

@@ -4,6 +4,7 @@ import EmoteMap = require('./EmoteMap');
 import EmoteExpansionOptions = require('./EmoteExpansionOptions');
 import EmoteEffectsModifier = require('./EmoteEffectsModifier');
 import EmoteFlags = require('./EmoteFlags');
+import EmoteObject = require('./EmoteObject');
 import IEmoteDataEntry = require('./IEmoteDataEntry');
 
 var jsdom = require('jsdom');
@@ -63,6 +64,23 @@ class EmoteHtml {
             var $modifiedEmote = this.effectsModifier.applyFlagsToEmote(emoteFlags, $emote);
             $emote = $modifiedEmote;
         }
+        var html = $emote[0].outerHTML;
+        return html;
+    }
+
+    getEmoteHtmlForObject(emoteObject: EmoteObject): string {
+        var emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
+        if (typeof emoteData === "undefined") {
+            return "Unable to find emote by name <b>" + emoteObject.emoteIdentifier + "</b>";
+        }
+        if (this.isEmoteEligible(emoteData) === false) {
+            return '[skipped expansion of emote ' + emoteObject.emoteIdentifier + ']';
+        }
+
+        var $emote = this.getBaseEmote(emoteData);
+
+        var $modifiedEmote = this.effectsModifier.applyFlagsFromObjectToEmote(emoteObject, $emote);
+        $emote = $modifiedEmote;
         var html = $emote[0].outerHTML;
         return html;
     }

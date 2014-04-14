@@ -54,6 +54,23 @@ var EmoteHtml = (function () {
         var html = $emote[0].outerHTML;
         return html;
     };
+
+    EmoteHtml.prototype.getEmoteHtmlForObject = function (emoteObject) {
+        var emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
+        if (typeof emoteData === "undefined") {
+            return "Unable to find emote by name <b>" + emoteObject.emoteIdentifier + "</b>";
+        }
+        if (this.isEmoteEligible(emoteData) === false) {
+            return '[skipped expansion of emote ' + emoteObject.emoteIdentifier + ']';
+        }
+
+        var $emote = this.getBaseEmote(emoteData);
+
+        var $modifiedEmote = this.effectsModifier.applyFlagsFromObjectToEmote(emoteObject, $emote);
+        $emote = $modifiedEmote;
+        var html = $emote[0].outerHTML;
+        return html;
+    };
     return EmoteHtml;
 })();
 module.exports = EmoteHtml;

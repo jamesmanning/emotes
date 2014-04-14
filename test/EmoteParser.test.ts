@@ -57,5 +57,31 @@ describe('EmoteParser', () => {
             var actual = emoteParser.parse(input);
             actual.should.eql(expected);
         });
+
+        //it('should correctly parse 2 lines of text', () => {
+        //    var input = '[**bar** *foo*](/ierage)';
+        //    var expected: EmoteObject = {
+        //        originalString: '[**bar** *foo*](/ierage)',
+        //        emoteIdentifier: 'ierage',
+
+        //        speed: null,
+        //        slide: null,
+        //        vibrate: false,
+        //        reverse: false,
+        //        spin: null,
+        //        rotateDegrees: 0,
+        //        brody: false,
+        //        xAxisTranspose: 0,
+        //        zAxisTranspose: 0,
+
+        //        firstLineText: "foo",
+        //        secondLineText: "bar"
+        //    };
+
+        //    var emoteParser = new EmoteParser();
+        //    var actual = emoteParser.parse(input);
+        //    actual.should.eql(expected);
+        //});
+        
     });
 });
