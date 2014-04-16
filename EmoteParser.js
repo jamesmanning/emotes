@@ -32,23 +32,23 @@ var EmoteParser = (function () {
             firstLineText: null,
             secondLineText: null
         };
-        this.parseFlags(result[2], emoteObject);
+        this.setFlagsOnObject(result[2], emoteObject);
 
         return emoteObject;
     };
 
-    EmoteParser.prototype.parseFlags = function (flagsString, emoteObject) {
+    EmoteParser.prototype.setFlagsOnObject = function (flagsString, emoteObject) {
         var flagsArray = flagsString.split('-');
 
         var i;
-        for (i = 1; i < flagsArray.length; ++i) {
+        for (i = 0; i < flagsArray.length; ++i) {
             if (flagsArray[i]) {
-                this.parseFlag(flagsArray[i], emoteObject);
+                this.setFlagOnObject(flagsArray[i], emoteObject);
             }
         }
     };
 
-    EmoteParser.prototype.parseFlag = function (flag, emoteObject) {
+    EmoteParser.prototype.setFlagOnObject = function (flag, emoteObject) {
         // fixed string checks first, since those should be fastest
         if (flag == 'r') {
             emoteObject.reverse = true;

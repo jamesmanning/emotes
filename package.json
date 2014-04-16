@@ -2,20 +2,14 @@
   "name": "emotes",
   "version": "0.0.0",
   "description": "emotes",
-  "main": "app.js",
   "author": {
     "name": "james",
     "email": ""
   },
   "devDependencies": {
-    "should": "~3.3.0",
-    "nodeunit": "~0.8.6",
-    "tap": "~0.4.8"
+    "should": "~3.3.0"
   },
   "dependencies": {
-    "underscore": "~1.6.0",
-    "jquery": "~2.1.0",
-    "jsdom": "~0.10.5",
-    "source-map-support": "~0.2.5"
+    "underscore": "~1.6.0"
   }
 }

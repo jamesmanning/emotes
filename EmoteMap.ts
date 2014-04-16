@@ -1,7 +1,7 @@
-export = EmoteMap;
-
 import _ = require('underscore');
 import IEmoteDataEntry = require('./IEmoteDataEntry');
+
+export = EmoteMap;
 
 class EmoteMap {
     constructor(emoteData: IEmoteDataEntry[]) {

@@ -35,7 +35,6 @@
   <ItemGroup>
     <Content Include="sample_data.json" />
     <Content Include="Scripts\typings\jquery\jquery.d.ts" />
-    <Content Include="Scripts\typings\jquery\jquery.d.ts" />
     <Content Include="Scripts\typings\underscore\underscore.d.ts" />
     <Content Include="Scripts\typings\underscore\underscore.d.ts" />
     <TypeScriptCompile Include="EmoteObject.ts" />
@@ -56,12 +55,10 @@
     <TypeScriptCompile Include="test\EmoteExpander.test.ts" />
     <TypeScriptCompile Include="test\EmoteHtml.test.ts" />
     <TypeScriptCompile Include="test\EmoteParser.test.ts" />
-    <TypeScriptCompile Include="_all.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\typings\" />
-    <Folder Include="Scripts\typings\jquery\" />
     <Folder Include="Scripts\typings\mocha\" />
     <Folder Include="Scripts\typings\node\" />
     <Folder Include="Scripts\typings\should\" />

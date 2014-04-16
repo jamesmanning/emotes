@@ -1,5 +1,5 @@
-
 var _ = require('underscore');
+
 
 var EmoteMap = (function () {
     function EmoteMap(emoteData) {
