@@ -1,11 +1,13 @@
 export = EmoteHtml;
 
+import HtmlOutputData = require("HtmlOutputData");
 import EmoteMap = require('./EmoteMap');
 import EmoteExpansionOptions = require('./EmoteExpansionOptions');
 import EmoteEffectsModifier = require('./EmoteEffectsModifier');
 import EmoteFlags = require('./EmoteFlags');
 import EmoteObject = require('./EmoteObject');
 import IEmoteDataEntry = require('./IEmoteDataEntry');
+import StringUtils = require('./StringUtils');
 
 class EmoteHtml {
     private effectsModifier = new EmoteEffectsModifier();
@@ -19,27 +21,32 @@ class EmoteHtml {
         return true;
     }
 
-    private format(format: string, ...replacements: any[]) {
-        var ret = format;
-        for (var replacementIndex in replacements) {
-            ret = ret.replace("{" + replacementIndex + "}", replacements[replacementIndex]);
-        }
-        return ret;
-    }
+    private getBaseHtmlDataForEmote(emoteDataEntry: IEmoteDataEntry): HtmlOutputData {
 
-    private getBaseEmote(emoteDataEntry: IEmoteDataEntry): string {
-        var cssClasses = 'berryemote';
+        var ret: HtmlOutputData = {
+            titleForEmoteNode: StringUtils.format('{0} from {1}', emoteDataEntry.names.join(','), emoteDataEntry.sr),
+
+            cssClassesForEmoteNode: ['berryemote'],
+            cssStylesForEmoteNode: [],
+
+            cssClassesForParentNode: [],
+            cssStylesForParentNode: []
+        };
+
         if (emoteDataEntry.nsfw) {
-            cssClasses += ' nsfw';
+            ret.cssClassesForEmoteNode.push('nsfw');
         }
-        var title = this.format('{0} from {1}', emoteDataEntry.names.join(','), emoteDataEntry.sr);
-        var positionString = (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ');
-        var imageString = ['url(', emoteDataEntry['background-image'], ')'].join('');
 
-        var html = this.format('<span class="{0}" title="{1}" style="height: {2}px; width: {3}px; display: inline-block; position: relative; overflow: hidden; background-position: {4}; background-image: {5};"></span>',
-            cssClasses, title, emoteDataEntry.height, emoteDataEntry.width, positionString, imageString);
+        ret.cssStylesForEmoteNode.push(
+            { propertyName: 'height', propertyValue: emoteDataEntry.height.toString() + 'px' },
+            { propertyName: 'width', propertyValue: emoteDataEntry.width.toString() + 'px' },
+            { propertyName: 'display', propertyValue: 'inline-block' },
+            { propertyName: 'position', propertyValue: 'relative' },
+            { propertyName: 'overflow', propertyValue: 'hidden' },
+            { propertyName: 'background-position', propertyValue: (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ') },
+            { propertyName: 'background-image', propertyValue: ['url(', emoteDataEntry['background-image'], ')'].join('') });
 
-        return html;
+        return ret;
     }
 
     getEmoteHtmlForObject(emoteObject: EmoteObject): string {
@@ -51,10 +58,27 @@ class EmoteHtml {
             return '[skipped expansion of emote ' + emoteObject.emoteIdentifier + ']';
         }
 
-        var emoteHtml = this.getBaseEmote(emoteData);
+        var htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
 
-        var modifiedEmoteHtml = this.effectsModifier.applyFlagsFromObjectToEmote(emoteData, emoteObject, emoteHtml);
-        emoteHtml = modifiedEmoteHtml;
-        return emoteHtml;
+        this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
+
+        var htmlString = this.serializeHtmlOutputData(htmlOutputData);
+        return htmlString;
+    }
+
+    private serializeHtmlOutputData(htmlOutputData: HtmlOutputData): string {
+        var html = StringUtils.format('<span class="{0}" title="{1}" style="{2}"></span>',
+            htmlOutputData.cssClassesForEmoteNode.join(' '),
+            htmlOutputData.titleForEmoteNode,
+            htmlOutputData.cssStylesForEmoteNode.map(a => StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue)).join('; '));
+        if (htmlOutputData.cssClassesForParentNode.length > 0 || htmlOutputData.cssStylesForParentNode.length > 0) {
+            // wrap with the specified span tag
+            html = StringUtils.format('<span class="{0}" style="{1}">{2}</span>',
+                htmlOutputData.cssClassesForParentNode.join(' '),
+                htmlOutputData.cssStylesForParentNode.map(a => StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue)).join('; '),
+                html);
+        }
+
+        return html;
     }
 } 

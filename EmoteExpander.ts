@@ -1,5 +1,6 @@
 export = EmoteExpander;
 
+import EmoteParser = require("./EmoteParser");
 import EmoteExpansionOptions = require('./EmoteExpansionOptions');
 import EmoteMap = require('./EmoteMap');
 import EmoteHtml = require('./EmoteHtml');
@@ -11,10 +12,12 @@ class EmoteExpander {
     private boundEmoteReplacer: (substring: string, ...args: any[]) => string;
     private debug = true;
     private emoteHtml: EmoteHtml;
+    private emoteParser: EmoteParser;
 
     constructor(emoteData: IEmoteDataEntry[], options: EmoteExpansionOptions) {
         var emoteMap = new EmoteMap(emoteData);
         this.emoteHtml = new EmoteHtml(emoteMap, options);
+        this.emoteParser = new EmoteParser();
         this.boundEmoteReplacer = this.emoteReplacer.bind(this);
     }
 
@@ -24,7 +27,8 @@ class EmoteExpander {
     }
 
     private emoteReplacer(match: string, emoteName: string, optionalEffects: string, offset: number, stringArg: string): string {
-        var emoteHtml = this.emoteHtml.getEmoteHtml(emoteName, optionalEffects);
+        var parsedObject = this.emoteParser.parse(match);
+        var emoteHtml = this.emoteHtml.getEmoteHtmlForObject(parsedObject);
         return emoteHtml;
     }
 }

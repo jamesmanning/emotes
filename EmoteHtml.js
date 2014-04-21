@@ -1,6 +1,8 @@
 
 var EmoteEffectsModifier = require('./EmoteEffectsModifier');
 
+var StringUtils = require('./StringUtils');
+
 var EmoteHtml = (function () {
     function EmoteHtml(emoteMap, emoteExpansionOptions) {
         this.emoteMap = emoteMap;
@@ -12,30 +14,22 @@ var EmoteHtml = (function () {
         return true;
     };
 
-    EmoteHtml.prototype.format = function (format) {
-        var replacements = [];
-        for (var _i = 0; _i < (arguments.length - 1); _i++) {
-            replacements[_i] = arguments[_i + 1];
-        }
-        var ret = format;
-        for (var replacementIndex in replacements) {
-            ret = ret.replace("{" + replacementIndex + "}", replacements[replacementIndex]);
-        }
-        return ret;
-    };
+    EmoteHtml.prototype.getBaseHtmlDataForEmote = function (emoteDataEntry) {
+        var ret = {
+            titleForEmoteNode: StringUtils.format('{0} from {1}', emoteDataEntry.names.join(','), emoteDataEntry.sr),
+            cssClassesForEmoteNode: ['berryemote'],
+            cssStylesForEmoteNode: [],
+            cssClassesForParentNode: [],
+            cssStylesForParentNode: []
+        };
 
-    EmoteHtml.prototype.getBaseEmote = function (emoteDataEntry) {
-        var cssClasses = 'berryemote';
         if (emoteDataEntry.nsfw) {
-            cssClasses += ' nsfw';
+            ret.cssClassesForEmoteNode.push('nsfw');
         }
-        var title = this.format('{0} from {1}', emoteDataEntry.names.join(','), emoteDataEntry.sr);
-        var positionString = (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ');
-        var imageString = ['url(', emoteDataEntry['background-image'], ')'].join('');
 
-        var html = this.format('<span class="{0}" title="{1}" style="height: {2}px; width: {3}px; display: inline-block; position: relative; overflow: hidden; background-position: {4}; background-image: {5};"></span>', cssClasses, title, emoteDataEntry.height, emoteDataEntry.width, positionString, imageString);
+        ret.cssStylesForEmoteNode.push({ propertyName: 'height', propertyValue: emoteDataEntry.height.toString() + 'px' }, { propertyName: 'width', propertyValue: emoteDataEntry.width.toString() + 'px' }, { propertyName: 'display', propertyValue: 'inline-block' }, { propertyName: 'position', propertyValue: 'relative' }, { propertyName: 'overflow', propertyValue: 'hidden' }, { propertyName: 'background-position', propertyValue: (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ') }, { propertyName: 'background-image', propertyValue: ['url(', emoteDataEntry['background-image'], ')'].join('') });
 
-        return html;
+        return ret;
     };
 
     EmoteHtml.prototype.getEmoteHtmlForObject = function (emoteObject) {
@@ -47,11 +41,26 @@ var EmoteHtml = (function () {
             return '[skipped expansion of emote ' + emoteObject.emoteIdentifier + ']';
         }
 
-        var emoteHtml = this.getBaseEmote(emoteData);
+        var htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
 
-        var modifiedEmoteHtml = this.effectsModifier.applyFlagsFromObjectToEmote(emoteData, emoteObject, emoteHtml);
-        emoteHtml = modifiedEmoteHtml;
-        return emoteHtml;
+        this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
+
+        var htmlString = this.serializeHtmlOutputData(htmlOutputData);
+        return htmlString;
+    };
+
+    EmoteHtml.prototype.serializeHtmlOutputData = function (htmlOutputData) {
+        var html = StringUtils.format('<span class="{0}" title="{1}" style="{2}"></span>', htmlOutputData.cssClassesForEmoteNode.join(' '), htmlOutputData.titleForEmoteNode, htmlOutputData.cssStylesForEmoteNode.map(function (a) {
+            return StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue);
+        }).join('; '));
+        if (htmlOutputData.cssClassesForParentNode.length > 0 || htmlOutputData.cssStylesForParentNode.length > 0) {
+            // wrap with the specified span tag
+            html = StringUtils.format('<span class="{0}" style="{1}">{2}</span>', htmlOutputData.cssClassesForParentNode.join(' '), htmlOutputData.cssStylesForParentNode.map(function (a) {
+                return StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue);
+            }).join('; '), html);
+        }
+
+        return html;
     };
     return EmoteHtml;
 })();
