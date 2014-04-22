@@ -70,12 +70,12 @@ class EmoteHtml {
         var html = StringUtils.format('<span class="{0}" title="{1}" style="{2}"></span>',
             htmlOutputData.cssClassesForEmoteNode.join(' '),
             htmlOutputData.titleForEmoteNode,
-            htmlOutputData.cssStylesForEmoteNode.map(a => StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue)).join('; '));
+            htmlOutputData.cssStylesForEmoteNode.map(a => StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue)).join('; ') + ';');
         if (htmlOutputData.cssClassesForParentNode.length > 0 || htmlOutputData.cssStylesForParentNode.length > 0) {
             // wrap with the specified span tag
             html = StringUtils.format('<span class="{0}" style="{1}">{2}</span>',
                 htmlOutputData.cssClassesForParentNode.join(' '),
-                htmlOutputData.cssStylesForParentNode.map(a => StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue)).join('; '),
+                htmlOutputData.cssStylesForParentNode.map(a => StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue)).join('; ') + ';',
                 html);
         }
 

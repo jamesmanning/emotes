@@ -52,12 +52,12 @@ var EmoteHtml = (function () {
     EmoteHtml.prototype.serializeHtmlOutputData = function (htmlOutputData) {
         var html = StringUtils.format('<span class="{0}" title="{1}" style="{2}"></span>', htmlOutputData.cssClassesForEmoteNode.join(' '), htmlOutputData.titleForEmoteNode, htmlOutputData.cssStylesForEmoteNode.map(function (a) {
             return StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue);
-        }).join('; '));
+        }).join('; ') + ';');
         if (htmlOutputData.cssClassesForParentNode.length > 0 || htmlOutputData.cssStylesForParentNode.length > 0) {
             // wrap with the specified span tag
             html = StringUtils.format('<span class="{0}" style="{1}">{2}</span>', htmlOutputData.cssClassesForParentNode.join(' '), htmlOutputData.cssStylesForParentNode.map(function (a) {
                 return StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue);
-            }).join('; '), html);
+            }).join('; ') + ';', html);
         }
 
         return html;
