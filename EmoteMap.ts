@@ -1,10 +1,7 @@
 /// <reference path="Scripts/typings/underscore/underscore.d.ts" />
 
-//import _ = require('underscore');
-require('underscore');
+import _ = require('underscore');
 import IEmoteDataEntry = require('./IEmoteDataEntry');
-
-declare var _: UnderscoreStatic;
 
 export = EmoteMap;
 
