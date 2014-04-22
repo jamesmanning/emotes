@@ -52,7 +52,7 @@ describe('EmoteHtml', function () {
                 firstLineText: null,
                 secondLineText: null
             };
-            var expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; -webkit-animation: vibrate 0.05s linear infinite; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); background-position: 0px 0px;"></span>';
+            var expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); animation: vibrate 0.05s infinite linear; -webkit-animation: vibrate 0.05s infinite linear;"></span>';
 
             var emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
             var actual = emoteHtml.getEmoteHtmlForObject(input);
