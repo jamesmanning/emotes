@@ -20,12 +20,14 @@ describe('EmoteExpander', function () {
             var actual = emoteExpander.expand(input);
             actual.should.eql(expected);
         });
-        //it('should correctly perform on an emote with one modifier', () => {
-        //    var input = '[](/ierage-v)';
-        //    var expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; -webkit-animation: vibrate 0.05s linear infinite; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); background-position: 0px 0px;"></span>';
-        //    var actual = emoteExpander.expand(input);
-        //    actual.should.eql(expected);
-        //});
+
+        it('should correctly perform on an emote with one modifier', function () {
+            var input = '[](/ierage-v)';
+            var expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); animation: vibrate 0.05s infinite linear; -webkit-animation: vibrate 0.05s infinite linear;"></span>';
+
+            var actual = emoteExpander.expand(input);
+            actual.should.eql(expected);
+        });
     });
 });
 //# sourceMappingURL=EmoteExpander.test.js.map
