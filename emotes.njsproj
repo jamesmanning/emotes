@@ -33,7 +33,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="sample_data.json" />
+    <Content Include="test\sample_data.json" />
     <Content Include="Scripts\typings\underscore\underscore.d.ts" />
     <Content Include="Scripts\typings\underscore\underscore.d.ts" />
     <TypeScriptCompile Include="EmoteObject.ts" />
