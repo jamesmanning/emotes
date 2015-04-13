@@ -52,7 +52,6 @@
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\mocha\mocha.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\should\should.d.ts" />
-    <TypeScriptCompile Include="StringUtils.ts" />
     <TypeScriptCompile Include="StyleAttribute.ts" />
     <TypeScriptCompile Include="test\EmoteExpander.test.ts" />
     <TypeScriptCompile Include="test\EmoteHtml.test.ts" />

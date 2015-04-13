@@ -1,4 +1,3 @@
-
 var EmoteFlags = (function () {
     function EmoteFlags(flags, options) {
         this.berryEmoteAnimationSpeedMap = {
@@ -18,35 +17,42 @@ var EmoteFlags = (function () {
         if (flag == 'r') {
             if (options.berryEnableReverse)
                 this.reverse = true;
-        } else if (flag == 'slide' || flag == '!slide') {
+        }
+        else if (flag == 'slide' || flag == '!slide') {
             if (options.berryEnableSlide)
                 this.slide = flag;
-        } else if (flag == 'brody') {
+        }
+        else if (flag == 'brody') {
             if (options.berryEnableBrody)
                 this.brody = true;
-        } else if (flag == 'vibrate' || flag == 'chargin' || flag == 'v') {
+        }
+        else if (flag == 'vibrate' || flag == 'chargin' || flag == 'v') {
             if (options.berryEnableVibrate)
                 this.vibrate = true;
-            // now the mapping structures to check for those strings
-        } else if (this.berryEmoteAnimationSpeedMap[flag]) {
+        }
+        else if (this.berryEmoteAnimationSpeedMap[flag]) {
             this.speed = this.berryEmoteAnimationSpeedMap[flag];
-        } else if (this.berryEmoteSpinAnimations.indexOf(flag) != -1) {
+        }
+        else if (this.berryEmoteSpinAnimations.indexOf(flag) != -1) {
             if (options.berryEnableSpin)
                 this.spin = flag;
-            // finally the regex matches
-        } else if (flag.match(/^\d+$/)) {
+        }
+        else if (flag.match(/^\d+$/)) {
             if (options.berryEnableRotate)
                 this.rotateDegrees = parseInt(flag);
-        } else if (flag.match(/^s\d/)) {
+        }
+        else if (flag.match(/^s\d/)) {
             this.speed = flag;
-        } else if (flag.match(/^x\d+$/)) {
+        }
+        else if (flag.match(/^x\d+$/)) {
             if (options.berryEnableTranspose) {
                 var shiftPosx = +flag.replace('x', '');
                 if (shiftPosx <= 150) {
                     this.xAxisTranspose = shiftPosx;
                 }
             }
-        } else if (flag.match(/^!x\d+$/)) {
+        }
+        else if (flag.match(/^!x\d+$/)) {
             if (options.berryEnableTranspose) {
                 var shiftNegx = +flag.replace('!x', '');
                 shiftNegx = shiftNegx * -1;
@@ -54,18 +60,19 @@ var EmoteFlags = (function () {
                     this.xAxisTranspose = shiftNegx;
                 }
             }
-        } else if (flag.match(/^z\d+$/)) {
+        }
+        else if (flag.match(/^z\d+$/)) {
             if (options.berryEnableTranspose) {
                 var zindex = +flag.replace('z', '');
                 if (zindex <= 10) {
                     this.zAxisTranspose = zindex;
                 }
             }
-        } else {
+        }
+        else {
             console.log('failed to parse flag', flag);
         }
     };
-
     EmoteFlags.prototype.parseFlags = function (flags, options) {
         var i;
         for (i = 0; i < flags.length; ++i) {

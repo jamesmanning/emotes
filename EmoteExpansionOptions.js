@@ -1,4 +1,3 @@
-
 var EmoteExpansionOptions = (function () {
     function EmoteExpansionOptions() {
         this.berryEmoteEnabled = true;

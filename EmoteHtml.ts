@@ -7,7 +7,6 @@ import EmoteEffectsModifier = require('./EmoteEffectsModifier');
 import EmoteFlags = require('./EmoteFlags');
 import EmoteObject = require('./EmoteObject');
 import IEmoteDataEntry = require('./IEmoteDataEntry');
-import StringUtils = require('./StringUtils');
 
 class EmoteHtml {
     private effectsModifier = new EmoteEffectsModifier();
@@ -24,7 +23,7 @@ class EmoteHtml {
     private getBaseHtmlDataForEmote(emoteDataEntry: IEmoteDataEntry): HtmlOutputData {
 
         var ret: HtmlOutputData = {
-            titleForEmoteNode: StringUtils.format('{0} from {1}', emoteDataEntry.names.join(','), emoteDataEntry.sr),
+            titleForEmoteNode: `${emoteDataEntry.names.join(',')} from ${emoteDataEntry.sr}`,
 
             cssClassesForEmoteNode: ['berryemote'],
             cssStylesForEmoteNode: [],
@@ -38,13 +37,13 @@ class EmoteHtml {
         }
 
         ret.cssStylesForEmoteNode.push(
-            { propertyName: 'height', propertyValue: emoteDataEntry.height.toString() + 'px' },
-            { propertyName: 'width', propertyValue: emoteDataEntry.width.toString() + 'px' },
+            { propertyName: 'height', propertyValue: `${emoteDataEntry.height}px` },
+            { propertyName: 'width', propertyValue: `${emoteDataEntry.width}px` },
             { propertyName: 'display', propertyValue: 'inline-block' },
             { propertyName: 'position', propertyValue: 'relative' },
             { propertyName: 'overflow', propertyValue: 'hidden' },
             { propertyName: 'background-position', propertyValue: (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ') },
-            { propertyName: 'background-image', propertyValue: ['url(', emoteDataEntry['background-image'], ')'].join('') });
+            { propertyName: 'background-image', propertyValue: `url(${emoteDataEntry['background-image']})` });
 
         return ret;
     }
@@ -52,10 +51,10 @@ class EmoteHtml {
     getEmoteHtmlForObject(emoteObject: EmoteObject): string {
         var emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
         if (typeof emoteData === "undefined") {
-            return "Unable to find emote by name <b>" + emoteObject.emoteIdentifier + "</b>";
+            return `[Unable to find emote by name <b>${emoteObject.emoteIdentifier}</b>]`;
         }
         if (this.isEmoteEligible(emoteData) === false) {
-            return '[skipped expansion of emote ' + emoteObject.emoteIdentifier + ']';
+            return `[skipped expansion of emote ${emoteObject.emoteIdentifier}]`;
         }
 
         var htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
@@ -67,16 +66,16 @@ class EmoteHtml {
     }
 
     private serializeHtmlOutputData(htmlOutputData: HtmlOutputData): string {
-        var html = StringUtils.format('<span class="{0}" title="{1}" style="{2}"></span>',
-            htmlOutputData.cssClassesForEmoteNode.join(' '),
-            htmlOutputData.titleForEmoteNode,
-            htmlOutputData.cssStylesForEmoteNode.map(a => StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue)).join('; ') + ';');
+        let styleValue = htmlOutputData.cssStylesForEmoteNode
+            .map(a => `${a.propertyName}: ${a.propertyValue}`)
+            .join('; ') + ';';
+        let html = `<span class="${htmlOutputData.cssClassesForEmoteNode.join(' ')}" title="${htmlOutputData.titleForEmoteNode}" style="${styleValue}"></span>`;
         if (htmlOutputData.cssClassesForParentNode.length > 0 || htmlOutputData.cssStylesForParentNode.length > 0) {
             // wrap with the specified span tag
-            html = StringUtils.format('<span class="{0}" style="{1}">{2}</span>',
-                htmlOutputData.cssClassesForParentNode.join(' '),
-                htmlOutputData.cssStylesForParentNode.map(a => StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue)).join('; ') + ';',
-                html);
+            let outerStyleValue = htmlOutputData.cssStylesForParentNode
+                .map(a => `${a.propertyName}: ${a.propertyValue}`)
+                .join('; ') + ';';
+            html = `<span class="${htmlOutputData.cssClassesForParentNode.join(' ')}" style="${outerStyleValue}">${html}</span>`;
         }
 
         return html;

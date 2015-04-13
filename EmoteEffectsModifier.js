@@ -1,4 +1,3 @@
-
 var EmoteEffectsModifier = (function () {
     function EmoteEffectsModifier() {
     }
@@ -7,7 +6,6 @@ var EmoteEffectsModifier = (function () {
         var wrapperAnimations = [];
         var transforms = [];
         var wrappedEmoteHeight;
-
         if (emoteObject.spin) {
             animations.push(emoteObject.spin + ' 2s infinite linear');
             if (emoteObject.spin == 'zspin' || emoteObject.spin == 'spin') {
@@ -18,24 +16,28 @@ var EmoteEffectsModifier = (function () {
         if (emoteObject.slide) {
             var slideAnimations = [];
             var slideSpeed = emoteObject.speed || '8s';
-
             slideAnimations.push(['slideleft', slideSpeed, 'infinite ease'].join(' '));
             if (!emoteObject.brody && !emoteObject.spin) {
                 if (emoteObject.slide == 'slide' && emoteObject.reverse) {
                     slideAnimations.push(['!slideflip', slideSpeed, 'infinite ease'].join(' '));
-                } else {
+                }
+                else {
                     slideAnimations.push(['slideflip', slideSpeed, 'infinite ease'].join(' '));
                 }
             }
             if (emoteObject.spin === 'spin' || emoteObject.spin === 'zspin' || emoteObject.rotateDegrees || emoteObject.brody) {
                 wrapperAnimations.push.apply(wrapperAnimations, slideAnimations);
-            } else {
+            }
+            else {
                 animations.push.apply(animations, slideAnimations);
             }
         }
         if (emoteObject.rotateDegrees) {
             transforms.push('rotate(' + emoteObject.rotateDegrees + 'deg)');
-            var rotateHeight = emoteData.width * Math.abs(Math.sin(emoteObject.rotateDegrees * Math.PI / 180)) + emoteData.height * Math.abs(Math.cos(emoteObject.rotateDegrees * Math.PI / 180));
+            var rotateHeight = emoteData.width *
+                Math.abs(Math.sin(emoteObject.rotateDegrees * Math.PI / 180)) +
+                emoteData.height *
+                    Math.abs(Math.cos(emoteObject.rotateDegrees * Math.PI / 180));
             wrappedEmoteHeight = rotateHeight;
         }
         if (emoteObject.xAxisTranspose) {
@@ -55,13 +57,11 @@ var EmoteEffectsModifier = (function () {
         if (emoteObject.reverse) {
             transforms.push('scaleX(-1)');
         }
-
         if (wrappedEmoteHeight) {
             emoteHtml.cssClassesForParentNode.push('rotation-wrapper');
             var offset = Math.floor((wrappedEmoteHeight - emoteData.height) / 2);
             emoteHtml.cssStylesForParentNode.push({ propertyName: 'height', propertyValue: offset.toString() + 'px' }, { propertyName: 'display', propertyValue: 'inline-block' }, { propertyName: 'margin-top', propertyValue: 'offset' }, { propertyName: 'position', propertyValue: 'relative' });
         }
-
         if (animations.length > 0) {
             emoteHtml.cssStylesForEmoteNode.push({ propertyName: 'animation', propertyValue: animations.join(',').replace('!', '-') });
             emoteHtml.cssStylesForEmoteNode.push({ propertyName: '-webkit-animation', propertyValue: animations.join(',').replace('!', '-') });

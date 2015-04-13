@@ -1,4 +1,3 @@
-﻿
 var StyleAttribute = (function () {
     function StyleAttribute() {
     }

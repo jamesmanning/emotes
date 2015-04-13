@@ -1,8 +1,4 @@
-
 var EmoteEffectsModifier = require('./EmoteEffectsModifier');
-
-var StringUtils = require('./StringUtils');
-
 var EmoteHtml = (function () {
     function EmoteHtml(emoteMap, emoteExpansionOptions) {
         this.emoteMap = emoteMap;
@@ -13,53 +9,45 @@ var EmoteHtml = (function () {
         // TODO: replace with config check (nsfw, etc)
         return true;
     };
-
     EmoteHtml.prototype.getBaseHtmlDataForEmote = function (emoteDataEntry) {
         var ret = {
-            titleForEmoteNode: StringUtils.format('{0} from {1}', emoteDataEntry.names.join(','), emoteDataEntry.sr),
+            titleForEmoteNode: emoteDataEntry.names.join(',') + " from " + emoteDataEntry.sr,
             cssClassesForEmoteNode: ['berryemote'],
             cssStylesForEmoteNode: [],
             cssClassesForParentNode: [],
             cssStylesForParentNode: []
         };
-
         if (emoteDataEntry.nsfw) {
             ret.cssClassesForEmoteNode.push('nsfw');
         }
-
-        ret.cssStylesForEmoteNode.push({ propertyName: 'height', propertyValue: emoteDataEntry.height.toString() + 'px' }, { propertyName: 'width', propertyValue: emoteDataEntry.width.toString() + 'px' }, { propertyName: 'display', propertyValue: 'inline-block' }, { propertyName: 'position', propertyValue: 'relative' }, { propertyName: 'overflow', propertyValue: 'hidden' }, { propertyName: 'background-position', propertyValue: (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ') }, { propertyName: 'background-image', propertyValue: ['url(', emoteDataEntry['background-image'], ')'].join('') });
-
+        ret.cssStylesForEmoteNode.push({ propertyName: 'height', propertyValue: emoteDataEntry.height + "px" }, { propertyName: 'width', propertyValue: emoteDataEntry.width + "px" }, { propertyName: 'display', propertyValue: 'inline-block' }, { propertyName: 'position', propertyValue: 'relative' }, { propertyName: 'overflow', propertyValue: 'hidden' }, { propertyName: 'background-position', propertyValue: (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ') }, { propertyName: 'background-image', propertyValue: "url(" + emoteDataEntry['background-image'] + ")" });
         return ret;
     };
-
     EmoteHtml.prototype.getEmoteHtmlForObject = function (emoteObject) {
         var emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
         if (typeof emoteData === "undefined") {
-            return "Unable to find emote by name <b>" + emoteObject.emoteIdentifier + "</b>";
+            return "[Unable to find emote by name <b>" + emoteObject.emoteIdentifier + "</b>]";
         }
         if (this.isEmoteEligible(emoteData) === false) {
-            return '[skipped expansion of emote ' + emoteObject.emoteIdentifier + ']';
+            return "[skipped expansion of emote " + emoteObject.emoteIdentifier + "]";
         }
-
         var htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
-
         this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
-
         var htmlString = this.serializeHtmlOutputData(htmlOutputData);
         return htmlString;
     };
-
     EmoteHtml.prototype.serializeHtmlOutputData = function (htmlOutputData) {
-        var html = StringUtils.format('<span class="{0}" title="{1}" style="{2}"></span>', htmlOutputData.cssClassesForEmoteNode.join(' '), htmlOutputData.titleForEmoteNode, htmlOutputData.cssStylesForEmoteNode.map(function (a) {
-            return StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue);
-        }).join('; ') + ';');
+        var styleValue = htmlOutputData.cssStylesForEmoteNode
+            .map(function (a) { return (a.propertyName + ": " + a.propertyValue); })
+            .join('; ') + ';';
+        var html = "<span class=\"" + htmlOutputData.cssClassesForEmoteNode.join(' ') + "\" title=\"" + htmlOutputData.titleForEmoteNode + "\" style=\"" + styleValue + "\"></span>";
         if (htmlOutputData.cssClassesForParentNode.length > 0 || htmlOutputData.cssStylesForParentNode.length > 0) {
             // wrap with the specified span tag
-            html = StringUtils.format('<span class="{0}" style="{1}">{2}</span>', htmlOutputData.cssClassesForParentNode.join(' '), htmlOutputData.cssStylesForParentNode.map(function (a) {
-                return StringUtils.format('{0}: {1}', a.propertyName, a.propertyValue);
-            }).join('; ') + ';', html);
+            var outerStyleValue = htmlOutputData.cssStylesForParentNode
+                .map(function (a) { return (a.propertyName + ": " + a.propertyValue); })
+                .join('; ') + ';';
+            html = "<span class=\"" + htmlOutputData.cssClassesForParentNode.join(' ') + "\" style=\"" + outerStyleValue + "\">" + html + "</span>";
         }
-
         return html;
     };
     return EmoteHtml;

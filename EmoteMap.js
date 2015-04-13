@@ -1,7 +1,5 @@
 /// <reference path="Scripts/typings/underscore/underscore.d.ts" />
 var _ = require('underscore');
-
-
 var EmoteMap = (function () {
     function EmoteMap(emoteData) {
         this.emoteMap = this.buildEmoteMap(emoteData);
@@ -9,7 +7,6 @@ var EmoteMap = (function () {
     EmoteMap.prototype.findEmote = function (emoteName) {
         return this.emoteMap[emoteName];
     };
-
     EmoteMap.prototype.buildEmoteMap = function (emoteData) {
         var map = {};
         _.each(emoteData, function (emote) {

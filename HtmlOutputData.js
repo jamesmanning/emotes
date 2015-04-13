@@ -1,4 +1,3 @@
-﻿
 var HtmlOutputData = (function () {
     function HtmlOutputData() {
         this.cssClassesForEmoteNode = [];
