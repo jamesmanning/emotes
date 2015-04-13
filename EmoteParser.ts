@@ -3,7 +3,7 @@
 import EmoteObject = require('./EmoteObject');
 
 class EmoteParser {
-    berryEmoteAnimationSpeedMap = {
+    berryEmoteAnimationSpeedMap: { [speed: string]: string; } = {
         'slowest': '14s',
         'slower': '12s',
         'slow': '10s',

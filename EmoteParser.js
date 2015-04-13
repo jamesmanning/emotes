@@ -1,4 +1,3 @@
-﻿
 var EmoteParser = (function () {
     function EmoteParser() {
         this.berryEmoteAnimationSpeedMap = {
@@ -16,7 +15,6 @@ var EmoteParser = (function () {
         var result = this.emoteParseRegexp.exec(input);
         if (!result)
             return null;
-
         var emoteObject = {
             originalString: result.input,
             emoteIdentifier: result[1],
@@ -33,13 +31,10 @@ var EmoteParser = (function () {
             secondLineText: null
         };
         this.setFlagsOnObject(result[2], emoteObject);
-
         return emoteObject;
     };
-
     EmoteParser.prototype.setFlagsOnObject = function (flagsString, emoteObject) {
         var flagsArray = flagsString.split('-');
-
         var i;
         for (i = 0; i < flagsArray.length; ++i) {
             if (flagsArray[i]) {
@@ -47,44 +42,52 @@ var EmoteParser = (function () {
             }
         }
     };
-
     EmoteParser.prototype.setFlagOnObject = function (flag, emoteObject) {
         // fixed string checks first, since those should be fastest
         if (flag == 'r') {
             emoteObject.reverse = true;
-        } else if (flag == 'slide' || flag == '!slide') {
+        }
+        else if (flag == 'slide' || flag == '!slide') {
             emoteObject.slide = flag;
-        } else if (flag == 'brody') {
+        }
+        else if (flag == 'brody') {
             emoteObject.brody = true;
-        } else if (flag == 'vibrate' || flag == 'chargin' || flag == 'v') {
+        }
+        else if (flag == 'vibrate' || flag == 'chargin' || flag == 'v') {
             emoteObject.vibrate = true;
-            // now the mapping structures to check for those strings
-        } else if (this.berryEmoteAnimationSpeedMap[flag]) {
+        }
+        else if (this.berryEmoteAnimationSpeedMap[flag]) {
             emoteObject.speed = this.berryEmoteAnimationSpeedMap[flag];
-        } else if (this.berryEmoteSpinAnimations.indexOf(flag) != -1) {
+        }
+        else if (this.berryEmoteSpinAnimations.indexOf(flag) != -1) {
             emoteObject.spin = flag;
-            // finally the regex matches
-        } else if (flag.match(/^\d+$/)) {
+        }
+        else if (flag.match(/^\d+$/)) {
             emoteObject.rotateDegrees = parseInt(flag);
-        } else if (flag.match(/^s\d/)) {
+        }
+        else if (flag.match(/^s\d/)) {
             emoteObject.speed = flag;
-        } else if (flag.match(/^x\d+$/)) {
+        }
+        else if (flag.match(/^x\d+$/)) {
             var shiftPosx = +flag.replace('x', '');
             if (shiftPosx <= 150) {
                 emoteObject.xAxisTranspose = shiftPosx;
             }
-        } else if (flag.match(/^!x\d+$/)) {
+        }
+        else if (flag.match(/^!x\d+$/)) {
             var shiftNegx = +flag.replace('!x', '');
             shiftNegx = shiftNegx * -1;
             if (shiftNegx >= -150) {
                 emoteObject.xAxisTranspose = shiftNegx;
             }
-        } else if (flag.match(/^z\d+$/)) {
+        }
+        else if (flag.match(/^z\d+$/)) {
             var zindex = +flag.replace('z', '');
             if (zindex <= 10) {
                 emoteObject.zAxisTranspose = zindex;
             }
-        } else {
+        }
+        else {
             console.log('failed to parse flag', flag);
         }
     };

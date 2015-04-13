@@ -37,13 +37,13 @@ class EmoteHtml {
         }
 
         ret.cssStylesForEmoteNode.push(
-            { propertyName: 'height', propertyValue: `${emoteDataEntry.height}px` },
-            { propertyName: 'width', propertyValue: `${emoteDataEntry.width}px` },
-            { propertyName: 'display', propertyValue: 'inline-block' },
-            { propertyName: 'position', propertyValue: 'relative' },
-            { propertyName: 'overflow', propertyValue: 'hidden' },
+            { propertyName: 'height'             , propertyValue: `${emoteDataEntry.height}px` }                  ,
+            { propertyName: 'width'              , propertyValue: `${emoteDataEntry.width}px` }                   ,
+            { propertyName: 'display'            , propertyValue: 'inline-block' }                                ,
+            { propertyName: 'position'           , propertyValue: 'relative' }                                    ,
+            { propertyName: 'overflow'           , propertyValue: 'hidden' }                                      ,
             { propertyName: 'background-position', propertyValue: (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ') },
-            { propertyName: 'background-image', propertyValue: `url(${emoteDataEntry['background-image']})` });
+            { propertyName: 'background-image'   , propertyValue: `url(${emoteDataEntry['background-image']})` });
 
         return ret;
     }

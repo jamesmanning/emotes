@@ -19,7 +19,7 @@ class EmoteEffectsModifier {
             }
         }
         if (emoteObject.slide) {
-            var slideAnimations = [];
+            var slideAnimations : string[] = [];
             var slideSpeed = emoteObject.speed || '8s';
 
             slideAnimations.push(['slideleft', slideSpeed, 'infinite ease'].join(' '));

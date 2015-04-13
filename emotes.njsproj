@@ -34,8 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="test\sample_data.json" />
-    <Content Include="Scripts\typings\underscore\underscore.d.ts" />
-    <Content Include="Scripts\typings\underscore\underscore.d.ts" />
+    <Content Include="typings\underscore\underscore.d.ts" />
+    <Content Include="typings\underscore\underscore.d.ts" />
     <TypeScriptCompile Include="EmoteObject.ts" />
     <TypeScriptCompile Include="EmoteParser.ts" />
     <TypeScriptCompile Include="app.ts" />
@@ -49,21 +49,20 @@
     <TypeScriptCompile Include="IEmoteDataEntry.ts" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\mocha\mocha.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\should\should.d.ts" />
+    <TypeScriptCompile Include="typings\node\node.d.ts" />
+    <TypeScriptCompile Include="typings\mocha\mocha.d.ts" />
+    <TypeScriptCompile Include="typings\should\should.d.ts" />
     <TypeScriptCompile Include="StyleAttribute.ts" />
     <TypeScriptCompile Include="test\EmoteExpander.test.ts" />
     <TypeScriptCompile Include="test\EmoteHtml.test.ts" />
     <TypeScriptCompile Include="test\EmoteParser.test.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scripts\" />
-    <Folder Include="Scripts\typings\" />
-    <Folder Include="Scripts\typings\mocha\" />
-    <Folder Include="Scripts\typings\node\" />
-    <Folder Include="Scripts\typings\should\" />
-    <Folder Include="Scripts\typings\underscore\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\mocha\" />
+    <Folder Include="typings\node\" />
+    <Folder Include="typings\should\" />
+    <Folder Include="typings\underscore\" />
     <Folder Include="test\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />

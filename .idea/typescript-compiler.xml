@@ -3,7 +3,7 @@
   <component name="TypeScriptCompiler">
     <option name="isCompilerEnabled" value="true" />
     <option name="typeScriptServiceDirectory" value="C:\Users\james\AppData\Roaming\npm\node_modules\typescript\bin" />
-    <option name="typeScriptCompilerParams" value="-target ES5 --module CommonJS" />
+    <option name="typeScriptCompilerParams" value="--project C:\github\emotes" />
     <option name="versionType" value="SERVICE_DIRECTORY" />
   </component>
 </project>

@@ -1,9 +1,6 @@
-
 var EmoteParser = require("./EmoteParser");
-
 var EmoteMap = require('./EmoteMap');
 var EmoteHtml = require('./EmoteHtml');
-
 var EmoteExpander = (function () {
     function EmoteExpander(emoteData, options) {
         this.regexp = /\[\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/gi;
@@ -17,7 +14,6 @@ var EmoteExpander = (function () {
         var inputWithEmotesReplaced = input.replace(this.regexp, this.boundEmoteReplacer);
         return inputWithEmotesReplaced;
     };
-
     EmoteExpander.prototype.emoteReplacer = function (match, emoteName, optionalEffects, offset, stringArg) {
         var parsedObject = this.emoteParser.parse(match);
         var emoteHtml = this.emoteHtml.getEmoteHtmlForObject(parsedObject);

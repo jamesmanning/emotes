@@ -3,7 +3,7 @@ import EmoteExpansionOptions = require("EmoteExpansionOptions");
 export = EmoteFlags;
 
 class EmoteFlags {
-    berryEmoteAnimationSpeedMap = {
+    berryEmoteAnimationSpeedMap: { [speed: string]: string; } = {
         'slowest': '14s',
         'slower': '12s',
         'slow': '10s',

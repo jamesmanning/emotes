@@ -1,4 +1,4 @@
-/// <reference path="Scripts/typings/underscore/underscore.d.ts" />
+/// <reference path="typings/underscore/underscore.d.ts" />
 var _ = require('underscore');
 var EmoteMap = (function () {
     function EmoteMap(emoteData) {
