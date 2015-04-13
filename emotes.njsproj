@@ -38,7 +38,6 @@
     <Content Include="typings\underscore\underscore.d.ts" />
     <TypeScriptCompile Include="EmoteObject.ts" />
     <TypeScriptCompile Include="EmoteParser.ts" />
-    <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="EmoteEffectsModifier.ts" />
     <TypeScriptCompile Include="EmoteExpander.ts" />
     <TypeScriptCompile Include="EmoteExpansionOptions.ts" />

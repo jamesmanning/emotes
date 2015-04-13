@@ -2,43 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24e5687b-986c-450a-a208-2ce460260053" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\github\emotes\.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\HtmlNode.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\HtmlNode.js.map" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\Scripts\typings\mocha\mocha.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\Scripts\typings\node\node.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\Scripts\typings\should\should.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\Scripts\typings\underscore\underscore.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\_all.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\_all.js.map" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\test\EmoteExpander.test.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\test\EmoteExpander.test.js.map" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\test\EmoteExpander.test.ts" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\test\EmoteHtml.test.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\test\EmoteHtml.test.js.map" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\test\EmoteHtml.test.ts" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\test\EmoteParser.test.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\test\EmoteParser.test.js.map" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\test\EmoteParser.test.ts" afterPath="" />
-      <change type="DELETED" beforePath="C:\github\emotes\test\sample_data.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitattributes" afterPath="$PROJECT_DIR$/.gitattributes" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteEffectsModifier.js.map" afterPath="$PROJECT_DIR$/EmoteEffectsModifier.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteEffectsModifier.ts" afterPath="$PROJECT_DIR$/EmoteEffectsModifier.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteExpander.js.map" afterPath="$PROJECT_DIR$/EmoteExpander.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteExpander.js" afterPath="$PROJECT_DIR$/EmoteExpander.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteFlags.js.map" afterPath="$PROJECT_DIR$/EmoteFlags.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteFlags.ts" afterPath="$PROJECT_DIR$/EmoteFlags.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteHtml.js.map" afterPath="$PROJECT_DIR$/EmoteHtml.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteHtml.ts" afterPath="$PROJECT_DIR$/EmoteHtml.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteMap.js.map" afterPath="$PROJECT_DIR$/EmoteMap.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteMap.js" afterPath="$PROJECT_DIR$/EmoteMap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteMap.ts" afterPath="$PROJECT_DIR$/EmoteMap.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteParser.js.map" afterPath="$PROJECT_DIR$/EmoteParser.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteParser.js" afterPath="$PROJECT_DIR$/EmoteParser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmoteParser.ts" afterPath="$PROJECT_DIR$/EmoteParser.ts" />
+      <change type="DELETED" beforePath="C:\github\emotes\app.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\github\emotes\app.js.map" afterPath="" />
+      <change type="DELETED" beforePath="C:\github\emotes\app.ts" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emotes.njsproj" afterPath="$PROJECT_DIR$/emotes.njsproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/typescript-compiler.xml" afterPath="$PROJECT_DIR$/.idea/typescript-compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="emotes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,6 +26,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="emotes.njsproj" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/emotes.njsproj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3039867">
+              <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="StyleAttribute.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StyleAttribute.ts">
           <provider selected="true" editor-type-id="text-editor">
@@ -99,10 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmoteParser.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EmoteParser.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EmoteParser.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28428093">
+            <state vertical-scroll-proportion="0.0">
               <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
               <folding />
             </state>
@@ -139,19 +116,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmoteHtml.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EmoteHtml.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
-              <folding>
-                <marker date="1428951789947" expanded="true" signature="3227:3240" placeholder="..." />
-                <marker date="1428951789947" expanded="true" signature="3684:3702" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -161,7 +125,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/EmoteHtml.js" />
-        <option value="$PROJECT_DIR$/emotes.njsproj" />
         <option value="$PROJECT_DIR$/_all.js" />
         <option value="$PROJECT_DIR$/EmoteMap.js" />
         <option value="$PROJECT_DIR$/EmoteHtml.ts" />
@@ -171,6 +134,7 @@
         <option value="$PROJECT_DIR$/EmoteFlags.ts" />
         <option value="$PROJECT_DIR$/StyleAttribute.ts" />
         <option value="$PROJECT_DIR$/EmoteParser.ts" />
+        <option value="$PROJECT_DIR$/emotes.njsproj" />
       </list>
     </option>
   </component>
@@ -336,10 +300,10 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11427067" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32831" sideWeight="0.4791996" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32831" sideWeight="0.5208004" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32831" sideWeight="0.47709322" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3240043" sideWeight="0.50605583" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3240043" sideWeight="0.49815693" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3240043" sideWeight="0.49394417" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496017" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -370,14 +334,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StyleAttribute.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -391,8 +347,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding>
-            <marker date="1428951789947" expanded="true" signature="3227:3240" placeholder="..." />
-            <marker date="1428951789947" expanded="true" signature="3684:3702" placeholder="..." />
+            <marker date="1428951789947" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1428951789947" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -408,14 +364,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EmoteHtml.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30375427">
@@ -427,14 +375,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="21" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emotes.njsproj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21920905">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -454,8 +394,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
           <folding>
-            <marker date="1428951789947" expanded="true" signature="3227:3240" placeholder="..." />
-            <marker date="1428951789947" expanded="true" signature="3684:3702" placeholder="..." />
+            <marker date="1428951789947" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1428951789947" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -518,8 +458,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EmoteParser.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28428093">
+        <state vertical-scroll-proportion="0.0">
           <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emotes.njsproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3039867">
+          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
           <folding />
         </state>
       </provider>
