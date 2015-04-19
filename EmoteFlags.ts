@@ -14,7 +14,7 @@ class EmoteFlags {
     berryEmoteSpinAnimations = ['spin', 'zspin', 'xspin', 'yspin', '!spin', '!zspin', '!xspin', '!yspin'];
 
     constructor(flags: string, options: EmoteExpansionOptions) {
-        var flagsArray = flags.split('-');
+        let flagsArray = flags.split('-');
         this.parseFlags(flagsArray, options);
     }
 
@@ -53,14 +53,14 @@ class EmoteFlags {
             this.speed = flag;
         } else if (flag.match(/^x\d+$/)) {
             if (options.berryEnableTranspose) {
-                var shiftPosx = +flag.replace('x', '');
+                let shiftPosx = +flag.replace('x', '');
                 if (shiftPosx <= 150) {
                     this.xAxisTranspose = shiftPosx;
                 }
             }
         } else if (flag.match(/^!x\d+$/)) {
             if (options.berryEnableTranspose) {
-                var shiftNegx = +flag.replace('!x', '');
+                let shiftNegx = +flag.replace('!x', '');
                 shiftNegx = shiftNegx * -1;
                 if (shiftNegx >= -150) {
                     this.xAxisTranspose = shiftNegx;
@@ -68,7 +68,7 @@ class EmoteFlags {
             }
         } else if (flag.match(/^z\d+$/)) {
             if (options.berryEnableTranspose) {
-                var zindex = +flag.replace('z', '');
+                let zindex = +flag.replace('z', '');
                 if (zindex <= 10) {
                     this.zAxisTranspose = zindex;
                 }
@@ -79,7 +79,7 @@ class EmoteFlags {
     }
 
     parseFlags(flags: string[], options: EmoteExpansionOptions) {
-        var i: number;
+        let i: number;
         for (i = 0; i < flags.length; ++i) {
             this.parseFlag(flags[i], options);
         }

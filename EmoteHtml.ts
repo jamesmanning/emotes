@@ -22,7 +22,7 @@ class EmoteHtml {
 
     private getBaseHtmlDataForEmote(emoteDataEntry: IEmoteDataEntry): HtmlOutputData {
 
-        var ret: HtmlOutputData = {
+        let ret: HtmlOutputData = {
             titleForEmoteNode: `${emoteDataEntry.names.join(',')} from ${emoteDataEntry.sr}`,
 
             cssClassesForEmoteNode: ['berryemote'],
@@ -49,7 +49,7 @@ class EmoteHtml {
     }
 
     getEmoteHtmlForObject(emoteObject: EmoteObject): string {
-        var emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
+        let emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
         if (typeof emoteData === "undefined") {
             return `[Unable to find emote by name <b>${emoteObject.emoteIdentifier}</b>]`;
         }
@@ -57,11 +57,11 @@ class EmoteHtml {
             return `[skipped expansion of emote ${emoteObject.emoteIdentifier}]`;
         }
 
-        var htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
+        let htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
 
         this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
 
-        var htmlString = this.serializeHtmlOutputData(htmlOutputData);
+        let htmlString = this.serializeHtmlOutputData(htmlOutputData);
         return htmlString;
     }
 

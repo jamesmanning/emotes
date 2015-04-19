@@ -16,10 +16,10 @@ class EmoteParser {
     private emoteParseRegexp = /\[\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
 
     parse(input: string): EmoteObject {
-        var result = this.emoteParseRegexp.exec(input);
+        let result = this.emoteParseRegexp.exec(input);
         if (!result) return null;
 
-        var emoteObject: EmoteObject = {
+        let emoteObject: EmoteObject = {
             originalString: result.input,
             emoteIdentifier: result[1],
 
@@ -42,9 +42,9 @@ class EmoteParser {
     }
 
     setFlagsOnObject(flagsString: string, emoteObject: EmoteObject) {
-        var flagsArray = flagsString.split('-');
+        let flagsArray = flagsString.split('-');
 
-        var i: number;
+        let i: number;
         for (i = 0; i < flagsArray.length; ++i) {
             if (flagsArray[i]) {
                 this.setFlagOnObject(flagsArray[i], emoteObject);
@@ -75,18 +75,18 @@ class EmoteParser {
         } else if (flag.match(/^s\d/)) {
             emoteObject.speed = flag;
         } else if (flag.match(/^x\d+$/)) {
-            var shiftPosx = +flag.replace('x', '');
+            let shiftPosx = +flag.replace('x', '');
             if (shiftPosx <= 150) {
                 emoteObject.xAxisTranspose = shiftPosx;
             }
         } else if (flag.match(/^!x\d+$/)) {
-            var shiftNegx = +flag.replace('!x', '');
+            let shiftNegx = +flag.replace('!x', '');
             shiftNegx = shiftNegx * -1;
             if (shiftNegx >= -150) {
                 emoteObject.xAxisTranspose = shiftNegx;
             }
         } else if (flag.match(/^z\d+$/)) {
-            var zindex = +flag.replace('z', '');
+            let zindex = +flag.replace('z', '');
             if (zindex <= 10) {
                 emoteObject.zAxisTranspose = zindex;
             }
