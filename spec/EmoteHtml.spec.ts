@@ -9,14 +9,14 @@ import EmoteObject = require('../EmoteObject');
 import EmoteExpansionOptions = require('../EmoteExpansionOptions');
 import IEmoteDataEntry = require('../IEmoteDataEntry');
 
-let emoteData : IEmoteDataEntry[] = require('./sample_data.json');
-let emoteMap = new EmoteMap(emoteData);
-let emoteExpansionOptions = new EmoteExpansionOptions();
+const emoteData : IEmoteDataEntry[] = require('./sample_data.json');
+const emoteMap = new EmoteMap(emoteData);
+const emoteExpansionOptions = new EmoteExpansionOptions();
 
 describe('EmoteHtml', () => {
     describe('#getEmoteHtmlForObject', () => {
         it('should correctly generate html for a simple emote', () => {
-            let input: EmoteObject = {
+            const input: EmoteObject = {
                 originalString: '[](/ierage)',
                 emoteIdentifier: 'ierage',
 
@@ -33,15 +33,15 @@ describe('EmoteHtml', () => {
                 firstLineText: null,
                 secondLineText: null
             };
-            let expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);"></span>';
+            const expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);"></span>';
 
-            let emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
-            let actual = emoteHtml.getEmoteHtmlForObject(input);
+            const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
+            const actual = emoteHtml.getEmoteHtmlForObject(input);
             actual.should.eql(expected);
         });
 
         it('should correctly generate html for an emote with one flag', () => {
-            let input : EmoteObject = {
+            const input : EmoteObject = {
                 originalString: '[](/ierage-v)',
                 emoteIdentifier: 'ierage',
 
@@ -58,10 +58,10 @@ describe('EmoteHtml', () => {
                 firstLineText: null,
                 secondLineText: null
             };
-            let expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); animation: vibrate 0.05s infinite linear; -webkit-animation: vibrate 0.05s infinite linear;"></span>';
+            const expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); animation: vibrate 0.05s infinite linear; -webkit-animation: vibrate 0.05s infinite linear;"></span>';
 
-            let emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
-            let actual = emoteHtml.getEmoteHtmlForObject(input);
+            const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
+            const actual = emoteHtml.getEmoteHtmlForObject(input);
             actual.should.eql(expected);
         });
     });

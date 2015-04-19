@@ -9,8 +9,8 @@ import EmoteObject = require('../EmoteObject');
 describe('EmoteParser', () => {
     describe('#parse', () => {
         it('should correctly parse a simple emote', () => {
-            let input = '[](/ierage)';
-            let expected: EmoteObject = {
+            const input = '[](/ierage)';
+            const expected: EmoteObject = {
                 originalString: '[](/ierage)',
                 emoteIdentifier: 'ierage',
 
@@ -28,14 +28,14 @@ describe('EmoteParser', () => {
                 secondLineText: null
             };
 
-            let emoteParser = new EmoteParser();
-            let actual = emoteParser.parse(input);
+            const emoteParser = new EmoteParser();
+            const actual = emoteParser.parse(input);
             actual.should.eql(expected);
         });
 
         it('should correctly parse an emote with one flag', () => {
-            let input = '[](/ierage-v)';
-            let expected: EmoteObject = {
+            const input = '[](/ierage-v)';
+            const expected: EmoteObject = {
                 originalString: '[](/ierage-v)',
                 emoteIdentifier: 'ierage',
 
@@ -53,14 +53,14 @@ describe('EmoteParser', () => {
                 secondLineText: null
             };
 
-            let emoteParser = new EmoteParser();
-            let actual = emoteParser.parse(input);
+            const emoteParser = new EmoteParser();
+            const actual = emoteParser.parse(input);
             actual.should.eql(expected);
         });
 
         //it('should correctly parse 2 lines of text', () => {
-        //    let input = '[**bar** *foo*](/ierage)';
-        //    let expected: EmoteObject = {
+        //    const input = '[**bar** *foo*](/ierage)';
+        //    const expected: EmoteObject = {
         //        originalString: '[**bar** *foo*](/ierage)',
         //        emoteIdentifier: 'ierage',
 
@@ -78,8 +78,8 @@ describe('EmoteParser', () => {
         //        secondLineText: "bar"
         //    };
 
-        //    let emoteParser = new EmoteParser();
-        //    let actual = emoteParser.parse(input);
+        //    const emoteParser = new EmoteParser();
+        //    const actual = emoteParser.parse(input);
         //    actual.should.eql(expected);
         //});
         
