@@ -12,7 +12,7 @@ class EmoteEffectsModifier {
         var wrappedEmoteHeight: number;
 
         if (emoteObject.spin) {
-            animations.push(emoteObject.spin + ' 2s infinite linear');
+            animations.push(`${emoteObject.spin} 2s infinite linear`);
             if (emoteObject.spin == 'zspin' || emoteObject.spin == 'spin') {
                 var diag = Math.sqrt(emoteData.width * emoteData.width + emoteData.height * emoteData.height);
                 wrappedEmoteHeight = Math.max(diag, wrappedEmoteHeight);
@@ -22,12 +22,12 @@ class EmoteEffectsModifier {
             var slideAnimations : string[] = [];
             var slideSpeed = emoteObject.speed || '8s';
 
-            slideAnimations.push(['slideleft', slideSpeed, 'infinite ease'].join(' '));
+            slideAnimations.push(`slideleft ${slideSpeed} infinite ease`);
             if (!emoteObject.brody && !emoteObject.spin) {
                 if (emoteObject.slide == 'slide' && emoteObject.reverse) {
-                    slideAnimations.push(['!slideflip', slideSpeed, 'infinite ease'].join(' '));
+                    slideAnimations.push(`slideflip ${slideSpeed} infinite ease`);
                 } else {
-                    slideAnimations.push(['slideflip', slideSpeed, 'infinite ease'].join(' '));
+                    slideAnimations.push(`slideflip ${slideSpeed} infinite ease`);
                 }
             }
             if (emoteObject.spin === 'spin' || emoteObject.spin === 'zspin' || emoteObject.rotateDegrees || emoteObject.brody) {
@@ -37,7 +37,7 @@ class EmoteEffectsModifier {
             }
         }
         if (emoteObject.rotateDegrees) {
-            transforms.push('rotate(' + emoteObject.rotateDegrees + 'deg)');
+            transforms.push(`rotate(${emoteObject.rotateDegrees}deg)`);
             var rotateHeight = emoteData.width *
                 Math.abs(Math.sin(emoteObject.rotateDegrees * Math.PI / 180)) +
                 emoteData.height *
@@ -66,7 +66,7 @@ class EmoteEffectsModifier {
             emoteHtml.cssClassesForParentNode.push('rotation-wrapper');
             var offset = Math.floor((wrappedEmoteHeight - emoteData.height) / 2);
             emoteHtml.cssStylesForParentNode.push(
-                { propertyName: 'height', propertyValue: offset.toString() + 'px' },
+                { propertyName: 'height', propertyValue: `${offset}px` },
                 { propertyName: 'display', propertyValue: 'inline-block' },
                 { propertyName: 'margin-top', propertyValue: 'offset' },
                 { propertyName: 'position', propertyValue: 'relative' });
