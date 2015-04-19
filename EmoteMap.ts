@@ -17,7 +17,7 @@ class EmoteMap {
     private emoteMap: _.Dictionary<IEmoteDataEntry>;
 
     private buildEmoteMap(emoteData: IEmoteDataEntry[]): _.Dictionary<IEmoteDataEntry> {
-        let map: _.Dictionary<IEmoteDataEntry> = {};
+        const map: _.Dictionary<IEmoteDataEntry> = {};
         _.each(emoteData, emote=> {
             _.each(emote.names, name=> {
                 map[name] = emote;

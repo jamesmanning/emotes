@@ -15,20 +15,20 @@ class EmoteExpander {
     private emoteParser: EmoteParser;
 
     constructor(emoteData: IEmoteDataEntry[], options: EmoteExpansionOptions) {
-        let emoteMap = new EmoteMap(emoteData);
+        const emoteMap = new EmoteMap(emoteData);
         this.emoteHtml = new EmoteHtml(emoteMap, options);
         this.emoteParser = new EmoteParser();
         this.boundEmoteReplacer = this.emoteReplacer.bind(this);
     }
 
     expand(input: string): string {
-        let inputWithEmotesReplaced = input.replace(this.regexp, this.boundEmoteReplacer);
+        const inputWithEmotesReplaced = input.replace(this.regexp, this.boundEmoteReplacer);
         return inputWithEmotesReplaced;
     }
 
     private emoteReplacer(match: string, emoteName: string, optionalEffects: string, offset: number, stringArg: string): string {
-        let parsedObject = this.emoteParser.parse(match);
-        let emoteHtml = this.emoteHtml.getEmoteHtmlForObject(parsedObject);
+        const parsedObject = this.emoteParser.parse(match);
+        const emoteHtml = this.emoteHtml.getEmoteHtmlForObject(parsedObject);
         return emoteHtml;
     }
 }

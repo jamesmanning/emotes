@@ -22,7 +22,7 @@ class EmoteHtml {
 
     private getBaseHtmlDataForEmote(emoteDataEntry: IEmoteDataEntry): HtmlOutputData {
 
-        let ret: HtmlOutputData = {
+        const ret: HtmlOutputData = {
             titleForEmoteNode: `${emoteDataEntry.names.join(',')} from ${emoteDataEntry.sr}`,
 
             cssClassesForEmoteNode: ['berryemote'],
@@ -49,7 +49,7 @@ class EmoteHtml {
     }
 
     getEmoteHtmlForObject(emoteObject: EmoteObject): string {
-        let emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
+        const emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
         if (typeof emoteData === "undefined") {
             return `[Unable to find emote by name <b>${emoteObject.emoteIdentifier}</b>]`;
         }
@@ -57,22 +57,22 @@ class EmoteHtml {
             return `[skipped expansion of emote ${emoteObject.emoteIdentifier}]`;
         }
 
-        let htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
+        const htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
 
         this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
 
-        let htmlString = this.serializeHtmlOutputData(htmlOutputData);
+        const htmlString = this.serializeHtmlOutputData(htmlOutputData);
         return htmlString;
     }
 
     private serializeHtmlOutputData(htmlOutputData: HtmlOutputData): string {
-        let styleValue = htmlOutputData.cssStylesForEmoteNode
+        const styleValue = htmlOutputData.cssStylesForEmoteNode
             .map(a => `${a.propertyName}: ${a.propertyValue}`)
             .join('; ') + ';';
         let html = `<span class="${htmlOutputData.cssClassesForEmoteNode.join(' ')}" title="${htmlOutputData.titleForEmoteNode}" style="${styleValue}"></span>`;
         if (htmlOutputData.cssClassesForParentNode.length > 0 || htmlOutputData.cssStylesForParentNode.length > 0) {
             // wrap with the specified span tag
-            let outerStyleValue = htmlOutputData.cssStylesForParentNode
+            const outerStyleValue = htmlOutputData.cssStylesForParentNode
                 .map(a => `${a.propertyName}: ${a.propertyValue}`)
                 .join('; ') + ';';
             html = `<span class="${htmlOutputData.cssClassesForParentNode.join(' ')}" style="${outerStyleValue}">${html}</span>`;
