@@ -25,7 +25,7 @@ class EmoteEffectsModifier {
             slideAnimations.push(`slideleft ${slideSpeed} infinite ease`);
             if (!emoteObject.brody && !emoteObject.spin) {
                 if (emoteObject.slide == 'slide' && emoteObject.reverse) {
-                    slideAnimations.push(`slideflip ${slideSpeed} infinite ease`);
+                    slideAnimations.push(`!slideflip ${slideSpeed} infinite ease`);
                 } else {
                     slideAnimations.push(`slideflip ${slideSpeed} infinite ease`);
                 }
