@@ -2,10 +2,36 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "out": "./dist/emotes.js",
         "noImplicitAny": true,
-        "preserveConstEnums": true,
         "removeComments": false,
-        "sourceMap": true
-    }
+        "noLib": false,
+        "preserveConstEnums": true,
+        "declaration": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "sourceMap": true,
+        "outDir": "../js"
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./EmoteEffectsModifier.ts",
+        "./EmoteExpander.ts",
+        "./EmoteExpansionOptions.ts",
+        "./EmoteFlags.ts",
+        "./EmoteHtml.ts",
+        "./EmoteMap.ts",
+        "./EmoteObject.ts",
+        "./EmoteParser.ts",
+        "./HtmlOutputData.ts",
+        "./IEmoteDataEntry.ts",
+        "./index.ts",
+        "./StyleAttribute.ts",
+        "./typings/mocha/mocha.d.ts",
+        "./typings/node/node.d.ts",
+        "./typings/should/should.d.ts",
+        "./typings/tsd.d.ts",
+        "./typings/underscore/underscore.d.ts"
+    ]
 }

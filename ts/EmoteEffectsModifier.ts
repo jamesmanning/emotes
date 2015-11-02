@@ -1,10 +1,8 @@
-import HtmlOutputData = require("./HtmlOutputData");
-import EmoteObject = require("./EmoteObject");
-import IEmoteDataEntry = require('./IEmoteDataEntry');
+import HtmlOutputData from "./HtmlOutputData";
+import EmoteObject from "./EmoteObject";
+import IEmoteDataEntry from './IEmoteDataEntry';
 
-export = EmoteEffectsModifier;
-
-class EmoteEffectsModifier {
+export default class EmoteEffectsModifier {
     applyFlagsFromObjectToHtmlOutputData(emoteData : IEmoteDataEntry, emoteObject: EmoteObject, emoteHtml: HtmlOutputData) {
         const animations: string[] = [];
         const wrapperAnimations: string[] = [];

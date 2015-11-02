@@ -22,7 +22,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "should": "~3.3.0"
+    "mocha": "^2.3.3",
+    "should": "^7.1.1"
   },
   "dependencies": {
     "underscore": "~1.6.0"

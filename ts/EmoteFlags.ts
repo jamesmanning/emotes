@@ -1,8 +1,6 @@
-import EmoteExpansionOptions from "EmoteExpansionOptions";
+import EmoteExpansionOptions from "./EmoteExpansionOptions";
 
-export = EmoteFlags;
-
-class EmoteFlags {
+export default class EmoteFlags {
     berryEmoteAnimationSpeedMap: { [speed: string]: string; } = {
         'slowest': '14s',
         'slower': '12s',

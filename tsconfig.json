@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "out": "./dist/emotes.js",
+        "noImplicitAny": true,
+        "preserveConstEnums": true,
+        "removeComments": false,
+        "sourceMap": true
+    }
+}

@@ -1,6 +1,5 @@
 /// <reference path="typings/underscore/underscore.d.ts" />
 
-import _ from 'underscore';
 import IEmoteDataEntry from './IEmoteDataEntry';
 
 export default class EmoteMap {
@@ -16,8 +15,8 @@ export default class EmoteMap {
 
     private buildEmoteMap(emoteData: IEmoteDataEntry[]): _.Dictionary<IEmoteDataEntry> {
         const map: _.Dictionary<IEmoteDataEntry> = {};
-        _.each(emoteData, emote=> {
-            _.each(emote.names, name=> {
+        emoteData.forEach(emote => {
+          emote.names.forEach(name => {
                 map[name] = emote;
             });
         });

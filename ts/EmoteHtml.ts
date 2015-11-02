@@ -1,5 +1,3 @@
-export = EmoteHtml;
-
 import HtmlOutputData from "./HtmlOutputData";
 import EmoteMap from './EmoteMap';
 import EmoteExpansionOptions from './EmoteExpansionOptions';
@@ -8,7 +6,7 @@ import EmoteFlags from './EmoteFlags';
 import EmoteObject from './EmoteObject';
 import IEmoteDataEntry from './IEmoteDataEntry';
 
-class EmoteHtml {
+export default class EmoteHtml {
     private effectsModifier = new EmoteEffectsModifier();
 
     constructor(private emoteMap: EmoteMap, private emoteExpansionOptions: EmoteExpansionOptions) {
