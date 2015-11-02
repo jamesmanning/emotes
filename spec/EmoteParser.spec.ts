@@ -3,8 +3,8 @@
 
 require('should');
 
-import EmoteParser = require('../EmoteParser');
-import EmoteObject = require('../EmoteObject');
+import EmoteParser from '../EmoteParser';
+import EmoteObject from '../EmoteObject';
 
 describe('EmoteParser', () => {
     describe('#parse', () => {

@@ -4,10 +4,10 @@
 require('should');
 require('../EmoteMap');
 
-const emoteData = require('./sample_data.json');
+const emoteData from './sample_data.json';
 
-import EmoteExpansionOptions = require('../EmoteExpansionOptions');
-import EmoteExpander = require('../EmoteExpander');
+import EmoteExpansionOptions from '../EmoteExpansionOptions';
+import EmoteExpander from '../EmoteExpander';
 
 const options = new EmoteExpansionOptions();
 const emoteExpander = new EmoteExpander(emoteData, options);

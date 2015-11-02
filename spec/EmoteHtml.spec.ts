@@ -3,13 +3,13 @@
 
 require('should');
 
-import EmoteMap = require('../EmoteMap');
-import EmoteHtml = require('../EmoteHtml');
-import EmoteObject = require('../EmoteObject');
-import EmoteExpansionOptions = require('../EmoteExpansionOptions');
-import IEmoteDataEntry = require('../IEmoteDataEntry');
+import EmoteMap from '../EmoteMap';
+import EmoteHtml from '../EmoteHtml';
+import EmoteObject from '../EmoteObject';
+import EmoteExpansionOptions from '../EmoteExpansionOptions';
+import IEmoteDataEntry from '../IEmoteDataEntry';
 
-const emoteData : IEmoteDataEntry[] = require('./sample_data.json');
+const emoteData : IEmoteDataEntry[] from './sample_data.json';
 const emoteMap = new EmoteMap(emoteData);
 const emoteExpansionOptions = new EmoteExpansionOptions();
 
