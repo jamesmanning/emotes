@@ -26,12 +26,15 @@
         "./EmoteParser.ts",
         "./HtmlOutputData.ts",
         "./IEmoteDataEntry.ts",
+        "./IHashMapOfEmoteDataEntries.ts",
         "./index.ts",
+        "./spec/EmoteExpander.spec.ts",
+        "./spec/EmoteHtml.spec.ts",
+        "./spec/EmoteParser.spec.ts",
         "./StyleAttribute.ts",
         "./typings/mocha/mocha.d.ts",
         "./typings/node/node.d.ts",
         "./typings/should/should.d.ts",
-        "./typings/tsd.d.ts",
-        "./typings/underscore/underscore.d.ts"
+        "./typings/tsd.d.ts"
     ]
 }

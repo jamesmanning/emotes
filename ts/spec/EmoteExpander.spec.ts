@@ -4,7 +4,7 @@
 require('should');
 require('../EmoteMap');
 
-const emoteData from './sample_data.json';
+const emoteData = require('./sample_data.json');
 
 import EmoteExpansionOptions from '../EmoteExpansionOptions';
 import EmoteExpander from '../EmoteExpander';

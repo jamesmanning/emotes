@@ -1,6 +1,5 @@
-/// <reference path="typings/underscore/underscore.d.ts" />
-
 import IEmoteDataEntry from './IEmoteDataEntry';
+import IHashMapOfEmoteDataEntries from './IHashMapOfEmoteDataEntries';
 
 export default class EmoteMap {
     constructor(emoteData: IEmoteDataEntry[]) {
@@ -11,10 +10,10 @@ export default class EmoteMap {
         return this.emoteMap[emoteName];
     }
 
-    private emoteMap: _.Dictionary<IEmoteDataEntry>;
+    private emoteMap: IHashMapOfEmoteDataEntries;
 
-    private buildEmoteMap(emoteData: IEmoteDataEntry[]): _.Dictionary<IEmoteDataEntry> {
-        const map: _.Dictionary<IEmoteDataEntry> = {};
+    private buildEmoteMap(emoteData: IEmoteDataEntry[]): IHashMapOfEmoteDataEntries {
+        const map: IHashMapOfEmoteDataEntries = {};
         emoteData.forEach(emote => {
           emote.names.forEach(name => {
                 map[name] = emote;

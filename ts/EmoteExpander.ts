@@ -1,12 +1,10 @@
-export = EmoteExpander;
-
 import EmoteParser from "./EmoteParser";
 import EmoteExpansionOptions from './EmoteExpansionOptions';
 import EmoteMap from './EmoteMap';
 import EmoteHtml from './EmoteHtml';
 import IEmoteDataEntry from './IEmoteDataEntry';
 
-class EmoteExpander {
+export default class EmoteExpander {
     private regexp = /\[\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/gi;
 
     private boundEmoteReplacer: (substring: string, ...args: any[]) => string;

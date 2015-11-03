@@ -9,7 +9,7 @@ import EmoteObject from '../EmoteObject';
 import EmoteExpansionOptions from '../EmoteExpansionOptions';
 import IEmoteDataEntry from '../IEmoteDataEntry';
 
-const emoteData : IEmoteDataEntry[] from './sample_data.json';
+const emoteData : IEmoteDataEntry[] = require('./sample_data.json');
 const emoteMap = new EmoteMap(emoteData);
 const emoteExpansionOptions = new EmoteExpansionOptions();
 
