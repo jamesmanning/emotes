@@ -48,10 +48,10 @@ describe('EmoteParser', function () {
             var actual = emoteParser.parse(input);
             should(actual).eql(expected);
         });
-        it('should correctly parse lines of text', function () {
+        it('should correctly parse emote with all features', function () {
             var input = '[**bar** *foo* some alt text](/ierage)';
             var expected = {
-                originalString: '[**bar** *foo*](/ierage)',
+                originalString: '[**bar** *foo* some alt text](/ierage)',
                 emoteIdentifier: 'ierage',
                 speed: null,
                 slide: null,

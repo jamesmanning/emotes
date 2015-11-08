@@ -13,7 +13,6 @@ var EmoteParser = (function () {
     }
     EmoteParser.prototype.parse = function (input) {
         var result = this.emoteParseRegexp.exec(input);
-        console.log('result', result);
         if (!result)
             return null;
         var emoteObject = {
@@ -37,13 +36,21 @@ var EmoteParser = (function () {
         return emoteObject;
     };
     EmoteParser.prototype.setTextOnObject = function (textString, emoteObject) {
-        //         const flagsArray = textString.split('-');
-        // 
-        //         for (let i = 0; i < flagsArray.length; ++i) {
-        //             if (flagsArray[i]) {
-        //                 this.setFlagOnObject(flagsArray[i], emoteObject);
-        //             }
-        //         }
+        var doubleStarSplit = textString.split('**');
+        if (doubleStarSplit.length == 3) {
+            emoteObject.secondLineText = doubleStarSplit[1];
+            textString = doubleStarSplit[0] + doubleStarSplit[2];
+        }
+        var singleStarSplit = textString.split('*');
+        if (singleStarSplit.length == 3) {
+            emoteObject.firstLineText = singleStarSplit[1];
+            textString = singleStarSplit[0] + singleStarSplit[2];
+        }
+        // trim just to make sure we're not keeping around just whitespace
+        textString = textString.trim();
+        if (textString.length > 0) {
+            emoteObject.altText = textString;
+        }
     };
     EmoteParser.prototype.setFlagsOnObject = function (flagsString, emoteObject) {
         var flagsArray = flagsString.split('-');

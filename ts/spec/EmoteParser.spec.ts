@@ -60,10 +60,10 @@ describe('EmoteParser', () => {
             should(actual).eql(expected);
         });
 
-        it('should correctly parse lines of text', () => {
+        it('should correctly parse emote with all features', () => {
            const input = '[**bar** *foo* some alt text](/ierage)';
            const expected: EmoteObject = {
-               originalString: '[**bar** *foo*](/ierage)',
+               originalString: '[**bar** *foo* some alt text](/ierage)',
                emoteIdentifier: 'ierage',
 
                speed: null,
