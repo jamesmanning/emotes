@@ -61,23 +61,23 @@ describe('EmoteParser', () => {
         });
 
         it('should correctly parse emote with all features', () => {
-           const input = '[**bar** *foo* some alt text](/ierage)';
+           const input = '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-270-x99-z5)';
            const expected: EmoteObject = {
-               originalString: '[**bar** *foo* some alt text](/ierage)',
-               emoteIdentifier: 'ierage',
+               originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-270-x99-z5)',
+               emoteIdentifier: 'adviceajlie',
 
-               speed: null,
-               slide: null,
-               vibrate: false,
-               reverse: false,
-               spin: null,
-               rotateDegrees: 0,
-               brody: false,
-               xAxisTranspose: 0,
-               zAxisTranspose: 0,
+               speed: "2s",
+               slide: "slide",
+               vibrate: true,
+               reverse: true,
+               spin: "!zspin",
+               rotateDegrees: 270,
+               brody: true,
+               xAxisTranspose: 99,
+               zAxisTranspose: 5,
 
-               firstLineText: "foo",
-               secondLineText: "bar",
+               firstLineText: "first line",
+               secondLineText: "second line",
                altText: "some alt text"
            };
 

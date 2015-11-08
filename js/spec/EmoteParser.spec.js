@@ -49,21 +49,21 @@ describe('EmoteParser', function () {
             should(actual).eql(expected);
         });
         it('should correctly parse emote with all features', function () {
-            var input = '[**bar** *foo* some alt text](/ierage)';
+            var input = '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-270-x99-z5)';
             var expected = {
-                originalString: '[**bar** *foo* some alt text](/ierage)',
-                emoteIdentifier: 'ierage',
-                speed: null,
-                slide: null,
-                vibrate: false,
-                reverse: false,
-                spin: null,
-                rotateDegrees: 0,
-                brody: false,
-                xAxisTranspose: 0,
-                zAxisTranspose: 0,
-                firstLineText: "foo",
-                secondLineText: "bar",
+                originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-270-x99-z5)',
+                emoteIdentifier: 'adviceajlie',
+                speed: "2s",
+                slide: "slide",
+                vibrate: true,
+                reverse: true,
+                spin: "!zspin",
+                rotateDegrees: 270,
+                brody: true,
+                xAxisTranspose: 99,
+                zAxisTranspose: 5,
+                firstLineText: "first line",
+                secondLineText: "second line",
                 altText: "some alt text"
             };
             var emoteParser = new EmoteParser_1.default();
