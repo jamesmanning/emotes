@@ -11,15 +11,16 @@ export default class EmoteParser {
     };
     berryEmoteSpinAnimations = ['spin', 'zspin', 'xspin', 'yspin', '!spin', '!zspin', '!xspin', '!yspin'];
 
-    private emoteParseRegexp = /\[\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
+    private emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
 
     parse(input: string): EmoteObject {
         const result = this.emoteParseRegexp.exec(input);
+        console.log('result', result);
         if (!result) return null;
 
         const emoteObject: EmoteObject = {
             originalString: result.input,
-            emoteIdentifier: result[1],
+            emoteIdentifier: result[2],
 
             speed: null,
             slide: null,
@@ -32,11 +33,23 @@ export default class EmoteParser {
             zAxisTranspose: 0,
 
             firstLineText: null,
-            secondLineText: null
+            secondLineText: null,
+            altText: null
         };
-        this.setFlagsOnObject(result[2], emoteObject);
+        this.setTextOnObject(result[1], emoteObject)
+        this.setFlagsOnObject(result[3], emoteObject);
 
         return emoteObject;
+    }
+
+    setTextOnObject(textString: string, emoteObject: EmoteObject) {
+//         const flagsArray = textString.split('-');
+// 
+//         for (let i = 0; i < flagsArray.length; ++i) {
+//             if (flagsArray[i]) {
+//                 this.setFlagOnObject(flagsArray[i], emoteObject);
+//             }
+//         }
     }
 
     setFlagsOnObject(flagsString: string, emoteObject: EmoteObject) {

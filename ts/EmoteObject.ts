@@ -21,4 +21,5 @@ export default class EmoteObject {
 
     firstLineText: string;
     secondLineText: string;
+    altText: string;
 }

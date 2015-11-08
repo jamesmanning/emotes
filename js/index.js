@@ -1,16 +1,21 @@
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-__export(require('./EmoteExpander'));
-__export(require('./EmoteEffectsModifier'));
-__export(require('./EmoteExpansionOptions'));
-__export(require('./EmoteFlags'));
-__export(require('./EmoteHtml'));
-__export(require('./EmoteMap'));
-__export(require('./EmoteObject'));
-__export(require('./EmoteParser'));
-__export(require('./HtmlOutputData'));
-__export(require('./IEmoteDataEntry'));
-__export(require('./IHashMapOfEmoteDataEntries'));
-__export(require('./StyleAttribute'));
+var EmoteExpander_1 = require('./EmoteExpander');
+exports.EmoteExpander = EmoteExpander_1.default;
+var EmoteEffectsModifier_1 = require('./EmoteEffectsModifier');
+exports.EmoteEffectsModifier = EmoteEffectsModifier_1.default;
+var EmoteExpansionOptions_1 = require('./EmoteExpansionOptions');
+exports.EmoteExpansionOptions = EmoteExpansionOptions_1.default;
+var EmoteFlags_1 = require('./EmoteFlags');
+exports.EmoteFlags = EmoteFlags_1.default;
+var EmoteHtml_1 = require('./EmoteHtml');
+exports.EmoteHtml = EmoteHtml_1.default;
+var EmoteMap_1 = require('./EmoteMap');
+exports.EmoteMap = EmoteMap_1.default;
+var EmoteObject_1 = require('./EmoteObject');
+exports.EmoteObject = EmoteObject_1.default;
+var EmoteParser_1 = require('./EmoteParser');
+exports.EmoteParser = EmoteParser_1.default;
+var HtmlOutputData_1 = require('./HtmlOutputData');
+exports.HtmlOutputData = HtmlOutputData_1.default;
+var StyleAttribute_1 = require('./StyleAttribute');
+exports.StyleAttribute = StyleAttribute_1.default;
 //# sourceMappingURL=index.js.map

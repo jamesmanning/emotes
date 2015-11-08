@@ -9,15 +9,16 @@ var EmoteParser = (function () {
             'fastest': '2s'
         };
         this.berryEmoteSpinAnimations = ['spin', 'zspin', 'xspin', 'yspin', '!spin', '!zspin', '!xspin', '!yspin'];
-        this.emoteParseRegexp = /\[\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
+        this.emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
     }
     EmoteParser.prototype.parse = function (input) {
         var result = this.emoteParseRegexp.exec(input);
+        console.log('result', result);
         if (!result)
             return null;
         var emoteObject = {
             originalString: result.input,
-            emoteIdentifier: result[1],
+            emoteIdentifier: result[2],
             speed: null,
             slide: null,
             vibrate: false,
@@ -28,10 +29,21 @@ var EmoteParser = (function () {
             xAxisTranspose: 0,
             zAxisTranspose: 0,
             firstLineText: null,
-            secondLineText: null
+            secondLineText: null,
+            altText: null
         };
-        this.setFlagsOnObject(result[2], emoteObject);
+        this.setTextOnObject(result[1], emoteObject);
+        this.setFlagsOnObject(result[3], emoteObject);
         return emoteObject;
+    };
+    EmoteParser.prototype.setTextOnObject = function (textString, emoteObject) {
+        //         const flagsArray = textString.split('-');
+        // 
+        //         for (let i = 0; i < flagsArray.length; ++i) {
+        //             if (flagsArray[i]) {
+        //                 this.setFlagOnObject(flagsArray[i], emoteObject);
+        //             }
+        //         }
     };
     EmoteParser.prototype.setFlagsOnObject = function (flagsString, emoteObject) {
         var flagsArray = flagsString.split('-');

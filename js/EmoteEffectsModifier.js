@@ -1,3 +1,4 @@
+"use strict";
 var EmoteEffectsModifier = (function () {
     function EmoteEffectsModifier() {
     }

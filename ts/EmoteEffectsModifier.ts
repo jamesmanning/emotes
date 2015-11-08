@@ -1,3 +1,5 @@
+"use strict";
+
 import HtmlOutputData from "./HtmlOutputData";
 import EmoteObject from "./EmoteObject";
 import IEmoteDataEntry from './IEmoteDataEntry';

@@ -12,4 +12,5 @@ export default class EmoteObject {
     zAxisTranspose: number;
     firstLineText: string;
     secondLineText: string;
+    altText: string;
 }
