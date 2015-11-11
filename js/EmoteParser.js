@@ -12,12 +12,9 @@ var EmoteParser = (function () {
         this.emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
     }
     EmoteParser.prototype.parse = function (input) {
-        var result = this.emoteParseRegexp.exec(input);
-        if (!result)
-            return null;
         var emoteObject = {
-            originalString: result.input,
-            emoteIdentifier: result[2],
+            originalString: input,
+            emoteIdentifier: null,
             speed: null,
             slide: null,
             vibrate: false,
@@ -31,8 +28,12 @@ var EmoteParser = (function () {
             secondLineText: null,
             altText: null
         };
-        this.setTextOnObject(result[1], emoteObject);
-        this.setFlagsOnObject(result[3], emoteObject);
+        var result = this.emoteParseRegexp.exec(input);
+        if (result) {
+            emoteObject.emoteIdentifier = result[2];
+            this.setTextOnObject(result[1], emoteObject);
+            this.setFlagsOnObject(result[3], emoteObject);
+        }
         return emoteObject;
     };
     EmoteParser.prototype.setTextOnObject = function (textString, emoteObject) {

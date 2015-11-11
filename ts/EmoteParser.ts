@@ -14,12 +14,9 @@ export default class EmoteParser {
     private emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
 
     parse(input: string): EmoteObject {
-        const result = this.emoteParseRegexp.exec(input);
-        if (!result) return null;
-
         const emoteObject: EmoteObject = {
-            originalString: result.input,
-            emoteIdentifier: result[2],
+            originalString: input,
+            emoteIdentifier: null,
 
             speed: null,
             slide: null,
@@ -35,8 +32,13 @@ export default class EmoteParser {
             secondLineText: null,
             altText: null
         };
-        this.setTextOnObject(result[1], emoteObject)
-        this.setFlagsOnObject(result[3], emoteObject);
+
+        const result = this.emoteParseRegexp.exec(input);
+        if (result) {
+          emoteObject.emoteIdentifier = result[2];
+          this.setTextOnObject(result[1], emoteObject)
+          this.setFlagsOnObject(result[3], emoteObject);
+        }
 
         return emoteObject;
     }

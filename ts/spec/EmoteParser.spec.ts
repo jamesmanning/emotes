@@ -66,7 +66,8 @@ describe('EmoteParser', () => {
                originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-270-x99-z5)',
                emoteIdentifier: 'adviceajlie',
 
-               speed: "2s",
+               // since 'fastest' is just an alias for '2s', it parses as 2s
+               speed: "2s", 
                slide: "slide",
                vibrate: true,
                reverse: true,

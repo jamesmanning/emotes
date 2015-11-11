@@ -53,6 +53,7 @@ describe('EmoteParser', function () {
             var expected = {
                 originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-270-x99-z5)',
                 emoteIdentifier: 'adviceajlie',
+                // since 'fastest' is just an alias for '2s', it parses as 2s
                 speed: "2s",
                 slide: "slide",
                 vibrate: true,
