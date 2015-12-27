@@ -1,3 +1,4 @@
+"use strict";
 var EmoteParser_1 = require("./EmoteParser");
 var EmoteMap_1 = require('./EmoteMap');
 var EmoteHtml_1 = require('./EmoteHtml');

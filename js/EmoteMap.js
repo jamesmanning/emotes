@@ -1,3 +1,4 @@
+"use strict";
 var EmoteMap = (function () {
     function EmoteMap(emoteData) {
         this.emoteMap = this.buildEmoteMap(emoteData);

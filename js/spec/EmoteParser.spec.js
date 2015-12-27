@@ -1,5 +1,6 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/should/should.d.ts" />
+"use strict";
 var should = require('should');
 var EmoteParser_1 = require('../EmoteParser');
 describe('EmoteParser', function () {

@@ -1,3 +1,4 @@
+"use strict";
 var EmoteParser = (function () {
     function EmoteParser() {
         this.berryEmoteAnimationSpeedMap = {

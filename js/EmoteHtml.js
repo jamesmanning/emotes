@@ -1,3 +1,4 @@
+"use strict";
 var EmoteEffectsModifier_1 = require('./EmoteEffectsModifier');
 var EmoteHtml = (function () {
     function EmoteHtml(emoteMap, emoteExpansionOptions) {
@@ -22,6 +23,18 @@ var EmoteHtml = (function () {
         }
         ret.cssStylesForEmoteNode.push({ propertyName: 'height', propertyValue: emoteDataEntry.height + "px" }, { propertyName: 'width', propertyValue: emoteDataEntry.width + "px" }, { propertyName: 'display', propertyValue: 'inline-block' }, { propertyName: 'position', propertyValue: 'relative' }, { propertyName: 'overflow', propertyValue: 'hidden' }, { propertyName: 'background-position', propertyValue: (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ') }, { propertyName: 'background-image', propertyValue: "url(" + emoteDataEntry['background-image'] + ")" });
         return ret;
+    };
+    EmoteHtml.prototype.getEmoteHtmlMetadataForObject = function (emoteObject) {
+        var emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
+        if (typeof emoteData === "undefined") {
+            return null;
+        }
+        if (this.isEmoteEligible(emoteData) === false) {
+            return null;
+        }
+        var htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
+        this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
+        return htmlOutputData;
     };
     EmoteHtml.prototype.getEmoteHtmlForObject = function (emoteObject) {
         var emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);

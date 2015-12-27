@@ -1,3 +1,4 @@
+"use strict";
 var EmoteExpander_1 = require('./EmoteExpander');
 exports.EmoteExpander = EmoteExpander_1.default;
 var EmoteEffectsModifier_1 = require('./EmoteEffectsModifier');
