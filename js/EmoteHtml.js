@@ -1,7 +1,9 @@
 "use strict";
+var EmoteExpansionOptions_1 = require('./EmoteExpansionOptions');
 var EmoteEffectsModifier_1 = require('./EmoteEffectsModifier');
 var EmoteHtml = (function () {
     function EmoteHtml(emoteMap, emoteExpansionOptions) {
+        if (emoteExpansionOptions === void 0) { emoteExpansionOptions = new EmoteExpansionOptions_1.default(); }
         this.emoteMap = emoteMap;
         this.emoteExpansionOptions = emoteExpansionOptions;
         this.effectsModifier = new EmoteEffectsModifier_1.default();

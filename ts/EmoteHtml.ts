@@ -9,7 +9,7 @@ import IEmoteDataEntry from './IEmoteDataEntry';
 export default class EmoteHtml {
     private effectsModifier = new EmoteEffectsModifier();
 
-    constructor(private emoteMap: EmoteMap, private emoteExpansionOptions: EmoteExpansionOptions) {
+    constructor(private emoteMap: EmoteMap, private emoteExpansionOptions = new EmoteExpansionOptions()) {
 
     }
 

@@ -6,7 +6,7 @@ export default class EmoteHtml {
     private emoteMap;
     private emoteExpansionOptions;
     private effectsModifier;
-    constructor(emoteMap: EmoteMap, emoteExpansionOptions: EmoteExpansionOptions);
+    constructor(emoteMap: EmoteMap, emoteExpansionOptions?: EmoteExpansionOptions);
     private isEmoteEligible(emote);
     private getBaseHtmlDataForEmote(emoteDataEntry);
     getEmoteHtmlMetadataForObject(emoteObject: EmoteObject): HtmlOutputData;
