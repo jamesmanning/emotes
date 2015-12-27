@@ -46,6 +46,22 @@ export default class EmoteHtml {
         return ret;
     }
 
+    getEmoteHtmlMetadataForObject(emoteObject: EmoteObject): HtmlOutputData {
+        const emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
+        if (typeof emoteData === "undefined") {
+            return null;
+        }
+        if (this.isEmoteEligible(emoteData) === false) {
+            return null;
+        }
+
+        const htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
+
+        this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
+
+        return htmlOutputData;
+    }
+
     getEmoteHtmlForObject(emoteObject: EmoteObject): string {
         const emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
         if (typeof emoteData === "undefined") {
