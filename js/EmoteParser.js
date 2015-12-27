@@ -10,7 +10,6 @@ var EmoteParser = (function () {
             'fastest': '2s'
         };
         this.berryEmoteSpinAnimations = ['spin', 'zspin', 'xspin', 'yspin', '!spin', '!zspin', '!xspin', '!yspin'];
-        this.emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
     }
     EmoteParser.prototype.parse = function (input) {
         var emoteObject = {
@@ -29,7 +28,7 @@ var EmoteParser = (function () {
             secondLineText: null,
             altText: null
         };
-        var result = this.emoteParseRegexp.exec(input);
+        var result = EmoteParser.emoteParseRegexp.exec(input);
         if (result) {
             emoteObject.emoteIdentifier = result[2];
             this.setTextOnObject(result[1], emoteObject);
@@ -110,6 +109,7 @@ var EmoteParser = (function () {
             console.log('failed to parse flag', flag);
         }
     };
+    EmoteParser.emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
     return EmoteParser;
 })();
 Object.defineProperty(exports, "__esModule", { value: true });

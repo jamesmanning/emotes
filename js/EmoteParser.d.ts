@@ -4,7 +4,7 @@ export default class EmoteParser {
         [speed: string]: string;
     };
     berryEmoteSpinAnimations: string[];
-    private emoteParseRegexp;
+    static emoteParseRegexp: RegExp;
     parse(input: string): EmoteObject;
     setTextOnObject(textString: string, emoteObject: EmoteObject): void;
     setFlagsOnObject(flagsString: string, emoteObject: EmoteObject): void;

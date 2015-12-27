@@ -11,7 +11,7 @@ export default class EmoteParser {
     };
     berryEmoteSpinAnimations = ['spin', 'zspin', 'xspin', 'yspin', '!spin', '!zspin', '!xspin', '!yspin'];
 
-    private emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
+    static emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
 
     parse(input: string): EmoteObject {
         const emoteObject: EmoteObject = {
@@ -33,7 +33,7 @@ export default class EmoteParser {
             altText: null
         };
 
-        const result = this.emoteParseRegexp.exec(input);
+        const result = EmoteParser.emoteParseRegexp.exec(input);
         if (result) {
           emoteObject.emoteIdentifier = result[2];
           this.setTextOnObject(result[1], emoteObject)

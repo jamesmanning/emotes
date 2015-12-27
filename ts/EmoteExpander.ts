@@ -5,8 +5,6 @@ import EmoteHtml from './EmoteHtml';
 import IEmoteDataEntry from './IEmoteDataEntry';
 
 export default class EmoteExpander {
-    private regexp = /\[\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/gi;
-
     private boundEmoteReplacer: (substring: string, ...args: any[]) => string;
     private debug = true;
     private emoteHtml: EmoteHtml;
@@ -20,11 +18,11 @@ export default class EmoteExpander {
     }
 
     expand(input: string): string {
-        const inputWithEmotesReplaced = input.replace(this.regexp, this.boundEmoteReplacer);
+        const inputWithEmotesReplaced = input.replace(EmoteParser.emoteParseRegexp, this.boundEmoteReplacer);
         return inputWithEmotesReplaced;
     }
 
-    private emoteReplacer(match: string, emoteName: string, optionalEffects: string, offset: number, stringArg: string): string {
+    private emoteReplacer(match: string): string {
         const parsedObject = this.emoteParser.parse(match);
         const emoteHtml = this.emoteHtml.getEmoteHtmlForObject(parsedObject);
         return emoteHtml;
