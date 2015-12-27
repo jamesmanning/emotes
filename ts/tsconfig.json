@@ -36,5 +36,8 @@
         "./typings/node/node.d.ts",
         "./typings/should/should.d.ts",
         "./typings/tsd.d.ts"
-    ]
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }
