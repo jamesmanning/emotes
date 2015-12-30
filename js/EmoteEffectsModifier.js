@@ -70,7 +70,7 @@ var EmoteEffectsModifier = (function () {
         if (wrappedEmoteHeight) {
             emoteHtml.cssClassesForParentNode.push('rotation-wrapper');
             var offset = Math.floor((wrappedEmoteHeight - emoteData.height) / 2);
-            emoteHtml.cssStylesForParentNode.push({ propertyName: 'height', propertyValue: offset + "px" }, { propertyName: 'display', propertyValue: 'inline-block' }, { propertyName: 'margin-top', propertyValue: 'offset' }, { propertyName: 'position', propertyValue: 'relative' });
+            emoteHtml.cssStylesForParentNode.push({ propertyName: 'height', propertyValue: Math.ceil(wrappedEmoteHeight - offset) + "px" }, { propertyName: 'display', propertyValue: 'inline-block' }, { propertyName: 'margin-top', propertyValue: offset + "px" }, { propertyName: 'position', propertyValue: 'relative' });
         }
         if (animations.length > 0) {
             emoteHtml.cssStylesForEmoteNode.push({ propertyName: 'animation', propertyValue: animations.join(',').replace('!', '-') });

@@ -11,13 +11,13 @@ describe('EmoteExpander', function () {
     describe('#expand', function () {
         it('should correctly perform on a simple emote replace', function () {
             var input = '[](/ierage)';
-            var expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);"></span>';
+            var expected = '<span class="berryemote" title="ivyrage,ierage from /r/marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);"></span>';
             var actual = emoteExpander.expand(input);
             should(actual).eql(expected);
         });
         it('should correctly perform on an emote with one modifier', function () {
             var input = '[](/ierage-v)';
-            var expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes effects: -v" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); animation: vibrate 0.05s infinite linear; -webkit-animation: vibrate 0.05s infinite linear;"></span>';
+            var expected = '<span class="berryemote" title="ivyrage,ierage from /r/marmemotes effects: -v" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); animation: vibrate 0.05s infinite linear; -webkit-animation: vibrate 0.05s infinite linear;"></span>';
             var actual = emoteExpander.expand(input);
             should(actual).eql(expected);
         });

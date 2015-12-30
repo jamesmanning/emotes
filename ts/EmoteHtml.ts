@@ -22,7 +22,7 @@ export default class EmoteHtml {
 
         const ret: HtmlOutputData = {
             emoteData: emoteDataEntry,
-            titleForEmoteNode: `${emoteDataEntry.names.join(',')} from ${emoteDataEntry.sr}`,
+            titleForEmoteNode: `${emoteDataEntry.names.join(',')} from /r/${emoteDataEntry.sr}`,
 
             cssClassesForEmoteNode: ['berryemote'],
             cssStylesForEmoteNode: [],

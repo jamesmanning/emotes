@@ -22,6 +22,15 @@
     "tags" : [ "oc", "" ],
     "width" : 200
   },
+  {
+  	"background-image": "//b.thumbs.redditmedia.com/HUq7klYsvTd62aP39_qG_qIxjSGcSSzzsoslePOPC-A.png",
+  	"tags": ["rainbowdash"],
+  	"sr": "mylittlepony",
+  	"height": 70,
+  	"width": 70,
+  	"names": ["rb32", "b32", "rdwut", "rrdwut"],
+  	"background-position": ["-300%", "-200%"]
+  },
   { "apng_url" : "http://backstage.berrytube.tv/marminator/images/a/E1FnMA0PMGL9qnwx.png",
     "background-image" : "http://a.thumbs.redditmedia.com/E1FnMA0PMGL9qnwx.png",
     "height" : 140,

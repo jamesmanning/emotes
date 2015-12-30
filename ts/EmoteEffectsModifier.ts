@@ -76,9 +76,9 @@ export default class EmoteEffectsModifier {
             emoteHtml.cssClassesForParentNode.push('rotation-wrapper');
             const offset = Math.floor((wrappedEmoteHeight - emoteData.height) / 2);
             emoteHtml.cssStylesForParentNode.push(
-                { propertyName: 'height', propertyValue: `${offset}px` },
+                { propertyName: 'height', propertyValue: `${Math.ceil(wrappedEmoteHeight - offset)}px` },
                 { propertyName: 'display', propertyValue: 'inline-block' },
-                { propertyName: 'margin-top', propertyValue: 'offset' },
+                { propertyName: 'margin-top', propertyValue: `${offset}px` },
                 { propertyName: 'position', propertyValue: 'relative' });
         }
 
