@@ -14,6 +14,7 @@ var EmoteHtml = (function () {
     };
     EmoteHtml.prototype.getBaseHtmlDataForEmote = function (emoteDataEntry) {
         var ret = {
+            emoteData: emoteDataEntry,
             titleForEmoteNode: emoteDataEntry.names.join(',') + " from " + emoteDataEntry.sr,
             cssClassesForEmoteNode: ['berryemote'],
             cssStylesForEmoteNode: [],
