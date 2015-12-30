@@ -14,6 +14,7 @@ describe('EmoteHtml', function () {
             var input = {
                 originalString: '[](/ierage)',
                 emoteIdentifier: 'ierage',
+                flagsString: null,
                 speed: null,
                 slide: null,
                 vibrate: false,
@@ -36,6 +37,7 @@ describe('EmoteHtml', function () {
             var input = {
                 originalString: '[](/ierage-v)',
                 emoteIdentifier: 'ierage',
+                flagsString: '-v',
                 speed: null,
                 slide: null,
                 vibrate: true,
@@ -49,7 +51,7 @@ describe('EmoteHtml', function () {
                 secondLineText: null,
                 altText: null
             };
-            var expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); animation: vibrate 0.05s infinite linear; -webkit-animation: vibrate 0.05s infinite linear;"></span>';
+            var expected = '<span class="berryemote" title="ivyrage,ierage from marmemotes effects: -v" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); animation: vibrate 0.05s infinite linear; -webkit-animation: vibrate 0.05s infinite linear;"></span>';
             var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
             var actual = emoteHtml.getEmoteHtmlForObject(input);
             should(actual).eql(expected);

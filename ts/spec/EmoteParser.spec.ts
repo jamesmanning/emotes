@@ -13,6 +13,7 @@ describe('EmoteParser', () => {
             const expected: EmoteObject = {
                 originalString: '[](/ierage)',
                 emoteIdentifier: 'ierage',
+                flagsString: null,
 
                 speed: null,
                 slide: null,
@@ -39,6 +40,7 @@ describe('EmoteParser', () => {
             const expected: EmoteObject = {
                 originalString: '[](/ierage-v)',
                 emoteIdentifier: 'ierage',
+                flagsString: '-v',
 
                 speed: null,
                 slide: null,
@@ -65,9 +67,10 @@ describe('EmoteParser', () => {
            const expected: EmoteObject = {
                originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-270-x99-z5)',
                emoteIdentifier: 'adviceajlie',
+               flagsString: '-v-r-brody-slide-fastest-!zspin-i-270-x99-z5',
 
                // since 'fastest' is just an alias for '2s', it parses as 2s
-               speed: "2s", 
+               speed: "2s",
                slide: "slide",
                vibrate: true,
                reverse: true,

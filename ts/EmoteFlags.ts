@@ -23,7 +23,6 @@ export default class EmoteFlags {
     spin: string;
     rotateDegrees: number;
     brody: boolean;
-    needsWrapper: boolean;
     xAxisTranspose: number;
     zAxisTranspose: number;
 

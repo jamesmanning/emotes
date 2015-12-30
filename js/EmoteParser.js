@@ -15,6 +15,7 @@ var EmoteParser = (function () {
         var emoteObject = {
             originalString: input,
             emoteIdentifier: null,
+            flagsString: null,
             speed: null,
             slide: null,
             vibrate: false,
@@ -31,6 +32,9 @@ var EmoteParser = (function () {
         var result = EmoteParser.emoteParseRegexp.exec(input);
         if (result) {
             emoteObject.emoteIdentifier = result[2];
+            if (result[3]) {
+                emoteObject.flagsString = result[3];
+            }
             this.setTextOnObject(result[1], emoteObject);
             this.setFlagsOnObject(result[3], emoteObject);
         }

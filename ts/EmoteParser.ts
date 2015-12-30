@@ -17,6 +17,7 @@ export default class EmoteParser {
         const emoteObject: EmoteObject = {
             originalString: input,
             emoteIdentifier: null,
+            flagsString: null,
 
             speed: null,
             slide: null,
@@ -36,6 +37,9 @@ export default class EmoteParser {
         const result = EmoteParser.emoteParseRegexp.exec(input);
         if (result) {
           emoteObject.emoteIdentifier = result[2];
+          if (result[3]) {
+            emoteObject.flagsString = result[3];
+          }
           this.setTextOnObject(result[1], emoteObject)
           this.setFlagsOnObject(result[3], emoteObject);
         }

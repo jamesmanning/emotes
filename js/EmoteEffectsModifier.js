@@ -7,6 +7,9 @@ var EmoteEffectsModifier = (function () {
         var wrapperAnimations = [];
         var transforms = [];
         var wrappedEmoteHeight;
+        if (emoteObject.flagsString) {
+            emoteHtml.titleForEmoteNode += " effects: " + emoteObject.flagsString;
+        }
         if (emoteObject.spin) {
             animations.push(emoteObject.spin + " 2s infinite linear");
             if (emoteObject.spin == 'zspin' || emoteObject.spin == 'spin') {

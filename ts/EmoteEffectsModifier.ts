@@ -11,6 +11,10 @@ export default class EmoteEffectsModifier {
         const transforms: string[] = [];
         let wrappedEmoteHeight: number;
 
+        if (emoteObject.flagsString) {
+          emoteHtml.titleForEmoteNode += ` effects: ${emoteObject.flagsString}`
+        }
+
         if (emoteObject.spin) {
             animations.push(`${emoteObject.spin} 2s infinite linear`);
             if (emoteObject.spin == 'zspin' || emoteObject.spin == 'spin') {

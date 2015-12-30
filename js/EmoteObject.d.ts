@@ -1,6 +1,7 @@
 export default class EmoteObject {
     originalString: string;
     emoteIdentifier: string;
+    flagsString: string;
     speed: string;
     slide: string;
     vibrate: boolean;
