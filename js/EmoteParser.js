@@ -20,6 +20,8 @@ var EmoteParser = (function () {
             slide: null,
             vibrate: false,
             reverse: false,
+            hueRotate: false,
+            invertColors: false,
             spin: null,
             rotateDegrees: 0,
             brody: false,
@@ -78,6 +80,12 @@ var EmoteParser = (function () {
         }
         else if (flag == 'vibrate' || flag == 'chargin' || flag == 'v') {
             emoteObject.vibrate = true;
+        }
+        else if (flag == 'i') {
+            emoteObject.hueRotate = true;
+        }
+        else if (flag == 'invert') {
+            emoteObject.invertColors = true;
         }
         else if (this.berryEmoteAnimationSpeedMap[flag]) {
             emoteObject.speed = this.berryEmoteAnimationSpeedMap[flag];

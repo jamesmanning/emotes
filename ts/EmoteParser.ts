@@ -23,6 +23,8 @@ export default class EmoteParser {
             slide: null,
             vibrate: false,
             reverse: false,
+            hueRotate: false,
+            invertColors: false,
             spin: null,
             rotateDegrees: 0,
             brody: false,
@@ -88,6 +90,10 @@ export default class EmoteParser {
             emoteObject.brody = true;
         } else if (flag == 'vibrate' || flag == 'chargin' || flag == 'v') {
             emoteObject.vibrate = true;
+        } else if (flag == 'i') {
+            emoteObject.hueRotate = true;
+          } else if (flag == 'invert') {
+              emoteObject.invertColors = true;
 
             // now the mapping structures to check for those strings
         } else if (this.berryEmoteAnimationSpeedMap[flag]) {

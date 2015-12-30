@@ -15,6 +15,8 @@ describe('EmoteParser', function () {
                 slide: null,
                 vibrate: false,
                 reverse: false,
+                hueRotate: false,
+                invertColors: false,
                 spin: null,
                 rotateDegrees: 0,
                 brody: false,
@@ -38,6 +40,8 @@ describe('EmoteParser', function () {
                 slide: null,
                 vibrate: true,
                 reverse: false,
+                hueRotate: false,
+                invertColors: false,
                 spin: null,
                 rotateDegrees: 0,
                 brody: false,
@@ -52,16 +56,18 @@ describe('EmoteParser', function () {
             should(actual).eql(expected);
         });
         it('should correctly parse emote with all features', function () {
-            var input = '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-270-x99-z5)';
+            var input = '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5)';
             var expected = {
-                originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-270-x99-z5)',
+                originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5)',
                 emoteIdentifier: 'adviceajlie',
-                flagsString: '-v-r-brody-slide-fastest-!zspin-i-270-x99-z5',
+                flagsString: '-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5',
                 // since 'fastest' is just an alias for '2s', it parses as 2s
                 speed: "2s",
                 slide: "slide",
                 vibrate: true,
                 reverse: true,
+                hueRotate: true,
+                invertColors: true,
                 spin: "!zspin",
                 rotateDegrees: 270,
                 brody: true,

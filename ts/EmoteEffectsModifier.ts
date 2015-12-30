@@ -65,6 +65,12 @@ export default class EmoteEffectsModifier {
         if (emoteObject.reverse) {
             transforms.push('scaleX(-1)');
         }
+        if (emoteObject.hueRotate) {
+          emoteHtml.cssClassesForEmoteNode.push('bem-hue-rotate');
+        }
+        if (emoteObject.invertColors) {
+          emoteHtml.cssClassesForEmoteNode.push('bem-invert')
+        }
 
         if (wrappedEmoteHeight) {
             emoteHtml.cssClassesForParentNode.push('rotation-wrapper');

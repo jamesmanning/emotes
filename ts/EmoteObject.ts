@@ -14,6 +14,8 @@ export default class EmoteObject {
     slide: string;
     vibrate: boolean;
     reverse: boolean;
+    hueRotate: boolean;
+    invertColors: boolean;
     spin: string;
     rotateDegrees: number;
     brody: boolean;

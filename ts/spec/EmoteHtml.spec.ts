@@ -25,6 +25,8 @@ describe('EmoteHtml', () => {
                 slide: null,
                 vibrate: false,
                 reverse: false,
+                hueRotate: false,
+                invertColors: false,
                 spin: null,
                 rotateDegrees: 0,
                 brody: false,
@@ -52,6 +54,8 @@ describe('EmoteHtml', () => {
                 slide: null,
                 vibrate: true,
                 reverse: false,
+                hueRotate: false,
+                invertColors: false,
                 spin: null,
                 rotateDegrees: 0,
                 brody: false,
@@ -68,5 +72,40 @@ describe('EmoteHtml', () => {
             const actual = emoteHtml.getEmoteHtmlForObject(input);
             should(actual).eql(expected);
         });
+
+        it('should correctly generate html for a flag that adds a css class', () => {
+            const input : EmoteObject = {
+                originalString: '[](/ierage-invert)',
+                emoteIdentifier: 'ierage',
+                flagsString: '-invert',
+
+                speed: null,
+                slide: null,
+                vibrate: false,
+                reverse: false,
+                hueRotate: false,
+                invertColors: true,
+                spin: null,
+                rotateDegrees: 0,
+                brody: false,
+                xAxisTranspose: 0,
+                zAxisTranspose: 0,
+
+                firstLineText: null,
+                secondLineText: null,
+                altText: null
+            };
+            const expected = '<span class="berryemote bem-invert" title="ivyrage,ierage from marmemotes effects: -invert" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);"></span>';
+
+            const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
+            const actual = emoteHtml.getEmoteHtmlForObject(input);
+            should(actual).eql(expected);
+        });
+
+
+
+
+
+
     });
 });
