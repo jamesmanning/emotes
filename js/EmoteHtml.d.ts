@@ -9,7 +9,6 @@ export default class EmoteHtml {
     constructor(emoteMap: EmoteMap, emoteExpansionOptions?: EmoteExpansionOptions);
     private isEmoteEligible(emote);
     private getBaseHtmlDataForEmote(emoteDataEntry);
-    getEmoteHtmlMetadataForEmoteName(emoteName: string): HtmlOutputData;
     getEmoteHtmlMetadataForObject(emoteObject: EmoteObject): HtmlOutputData;
     getEmoteHtmlForObject(emoteObject: EmoteObject): string;
     private serializeHtmlOutputData(htmlOutputData);

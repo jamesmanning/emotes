@@ -9,6 +9,83 @@ var emoteData = require('./sample_data.json');
 var emoteMap = new EmoteMap_1.default(emoteData);
 var emoteExpansionOptions = new EmoteExpansionOptions_1.default();
 describe('EmoteHtml', function () {
+    describe('#getEmoteHtmlMetadataForObject', function () {
+        it('should correctly generate metadata for a simple emote', function () {
+            var input = {
+                originalString: '[](/ierage)',
+                emoteIdentifier: 'ierage',
+                flagsString: null,
+                speed: null,
+                slide: null,
+                vibrate: false,
+                reverse: false,
+                hueRotate: false,
+                invertColors: false,
+                spin: null,
+                rotateDegrees: 0,
+                brody: false,
+                xAxisTranspose: 0,
+                zAxisTranspose: 0,
+                firstLineText: null,
+                secondLineText: null,
+                altText: null
+            };
+            var expected = {
+                "emoteData": {
+                    "apng_url": "http://backstage.berrytube.tv/marminator/images/a/84ozl2WMmiYp6Euf.png",
+                    "background-image": "http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png",
+                    "height": 140,
+                    "names": [
+                        "ivyrage",
+                        "ierage"
+                    ],
+                    "sr": "marmemotes",
+                    "tags": [
+                        "oc",
+                        ""
+                    ],
+                    "width": 200
+                },
+                titleForEmoteNode: "ivyrage,ierage from /r/marmemotes",
+                cssClassesForEmoteNode: ['berryemote'],
+                cssStylesForEmoteNode: [
+                    {
+                        "propertyName": "height",
+                        "propertyValue": "140px"
+                    },
+                    {
+                        "propertyName": "width",
+                        "propertyValue": "200px"
+                    },
+                    {
+                        "propertyName": "display",
+                        "propertyValue": "inline-block"
+                    },
+                    {
+                        "propertyName": "position",
+                        "propertyValue": "relative"
+                    },
+                    {
+                        "propertyName": "overflow",
+                        "propertyValue": "hidden"
+                    },
+                    {
+                        "propertyName": "background-position",
+                        "propertyValue": "0px 0px"
+                    },
+                    {
+                        "propertyName": "background-image",
+                        "propertyValue": "url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)"
+                    }
+                ],
+                cssClassesForParentNode: [],
+                cssStylesForParentNode: [],
+            };
+            var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
+            var actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
+            should(actual).eql(expected);
+        });
+    });
     describe('#getEmoteHtmlForObject', function () {
         it('should correctly generate html for a simple emote', function () {
             var input = {
@@ -81,43 +158,6 @@ describe('EmoteHtml', function () {
                 altText: null
             };
             var expected = '<span class="berryemote bem-invert" title="ivyrage,ierage from /r/marmemotes effects: -invert" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);"></span>';
-            var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
-            var actual = emoteHtml.getEmoteHtmlForObject(input);
-            should(actual).eql(expected);
-        });
-        it('should correctly generate html for a 45 degree rotate', function () {
-            var input = {
-                originalString: '[](/rdwut-45)',
-                emoteIdentifier: 'rdwut',
-                flagsString: '-45',
-                speed: null,
-                slide: null,
-                vibrate: false,
-                reverse: false,
-                hueRotate: false,
-                invertColors: false,
-                spin: null,
-                rotateDegrees: 45,
-                brody: false,
-                xAxisTranspose: 0,
-                zAxisTranspose: 0,
-                firstLineText: null,
-                secondLineText: null,
-                altText: null
-            };
-            var expected = '<span class="rotation-wrapper" style="height: 85px; display: inline-block; margin-top: 14px; position: relative;">' +
-                '<span class="berryemote" ' +
-                'title="rb32,b32,rdwut,rrdwut from /r/mylittlepony effects: -45" ' +
-                'style="height: 70px; ' +
-                'width: 70px; ' +
-                'display: inline-block; ' +
-                'position: relative; ' +
-                'overflow: hidden; ' +
-                'background-position: -300% -200%; ' +
-                'background-image: url(//b.thumbs.redditmedia.com/HUq7klYsvTd62aP39_qG_qIxjSGcSSzzsoslePOPC-A.png); ' +
-                'transform: rotate(45deg);"' +
-                '></span>' +
-                '</span>';
             var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
             var actual = emoteHtml.getEmoteHtmlForObject(input);
             should(actual).eql(expected);

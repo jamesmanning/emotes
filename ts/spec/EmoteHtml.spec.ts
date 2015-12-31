@@ -7,6 +7,7 @@ import EmoteMap from '../EmoteMap';
 import EmoteHtml from '../EmoteHtml';
 import EmoteObject from '../EmoteObject';
 import EmoteExpansionOptions from '../EmoteExpansionOptions';
+import HtmlOutputData from '../HtmlOutputData';
 import IEmoteDataEntry from '../IEmoteDataEntry';
 
 const emoteData: IEmoteDataEntry[] = require('./sample_data.json');
@@ -14,6 +15,89 @@ const emoteMap = new EmoteMap(emoteData);
 const emoteExpansionOptions = new EmoteExpansionOptions();
 
 describe('EmoteHtml', () => {
+  describe('#getEmoteHtmlMetadataForObject', () => {
+      it('should correctly generate metadata for a simple emote', () => {
+          const input: EmoteObject = {
+              originalString: '[](/ierage)',
+              emoteIdentifier: 'ierage',
+              flagsString: null,
+
+              speed: null,
+              slide: null,
+              vibrate: false,
+              reverse: false,
+              hueRotate: false,
+              invertColors: false,
+              spin: null,
+              rotateDegrees: 0,
+              brody: false,
+              xAxisTranspose: 0,
+              zAxisTranspose: 0,
+
+              firstLineText: null,
+              secondLineText: null,
+              altText: null
+          };
+          const expected: HtmlOutputData = {
+            "emoteData" : <IEmoteDataEntry> {
+              "apng_url": "http://backstage.berrytube.tv/marminator/images/a/84ozl2WMmiYp6Euf.png",
+              "background-image": "http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png",
+              "height": 140,
+              "names": [
+                "ivyrage",
+                "ierage"
+              ],
+              "sr": "marmemotes",
+              "tags": [
+                "oc",
+                ""
+              ],
+              "width": 200
+            },
+            titleForEmoteNode: "ivyrage,ierage from /r/marmemotes",
+
+            cssClassesForEmoteNode: ['berryemote'],
+            cssStylesForEmoteNode: [
+              {
+                "propertyName": "height",
+                "propertyValue": "140px"
+              },
+              {
+                "propertyName": "width",
+                "propertyValue": "200px"
+              },
+              {
+                "propertyName": "display",
+                "propertyValue": "inline-block"
+              },
+              {
+                "propertyName": "position",
+                "propertyValue": "relative"
+              },
+              {
+                "propertyName": "overflow",
+                "propertyValue": "hidden"
+              },
+              {
+                "propertyName": "background-position",
+                "propertyValue": "0px 0px"
+              },
+              {
+                "propertyName": "background-image",
+                "propertyValue": "url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)"
+              }
+            ],
+
+            cssClassesForParentNode: [],
+            cssStylesForParentNode: [],
+          };
+
+          const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
+          const actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
+          should(actual).eql(expected);
+      });
+    });
+
     describe('#getEmoteHtmlForObject', () => {
         it('should correctly generate html for a simple emote', () => {
             const input: EmoteObject = {
