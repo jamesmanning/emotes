@@ -11,7 +11,7 @@ var EmoteEffectsModifier = (function () {
             emoteHtml.titleForEmoteNode += " effects: " + emoteObject.flagsString;
         }
         if (emoteObject.spin) {
-            animations.push(emoteObject.spin + " 2s infinite linear");
+            animations.push(emoteObject.spin + " 2s linear infinite");
             if (emoteObject.spin == 'zspin' || emoteObject.spin == 'spin') {
                 var diag = Math.sqrt(emoteData.width * emoteData.width + emoteData.height * emoteData.height);
                 wrappedEmoteHeight = Math.max(diag, wrappedEmoteHeight);
@@ -51,7 +51,7 @@ var EmoteEffectsModifier = (function () {
             emoteHtml.cssStylesForEmoteNode.push({ propertyName: 'z-index', propertyValue: emoteObject.zAxisTranspose.toString() });
         }
         if (emoteObject.vibrate) {
-            animations.unshift('vibrate 0.05s infinite linear');
+            animations.unshift('vibrate 0.05s linear infinite');
         }
         if (emoteObject.brody) {
             animations.push('brody  1.27659s infinite ease');
