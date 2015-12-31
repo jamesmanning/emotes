@@ -143,55 +143,5 @@ describe('EmoteHtml', () => {
             const actual = emoteHtml.getEmoteHtmlForObject(input);
             should(actual).eql(expected);
         });
-
-
-
-                it('should correctly generate html for a 45 degree rotate', () => {
-                    const input : EmoteObject = {
-                        originalString: '[](/rdwut-45)',
-                        emoteIdentifier: 'rdwut',
-                        flagsString: '-45',
-
-                        speed: null,
-                        slide: null,
-                        vibrate: false,
-                        reverse: false,
-                        hueRotate: false,
-                        invertColors: false,
-                        spin: null,
-                        rotateDegrees: 45,
-                        brody: false,
-                        xAxisTranspose: 0,
-                        zAxisTranspose: 0,
-
-                        firstLineText: null,
-                        secondLineText: null,
-                        altText: null
-                    };
-                    const expected =
-                      '<span class="rotation-wrapper" style="height: 85px; display: inline-block; margin-top: 14px; position: relative;">' +
-                        '<span class="berryemote" ' +
-                          'title="rb32,b32,rdwut,rrdwut from /r/mylittlepony effects: -45" ' +
-                          'style="height: 70px; ' +
-                            'width: 70px; ' +
-                            'display: inline-block; ' +
-                            'position: relative; ' +
-                            'overflow: hidden; ' +
-                            'background-position: -300% -200%; ' +
-                            'background-image: url(//b.thumbs.redditmedia.com/HUq7klYsvTd62aP39_qG_qIxjSGcSSzzsoslePOPC-A.png); ' +
-                            'transform: rotate(45deg);"' +
-                        '></span>' +
-                      '</span>';
-
-                    const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
-                    const actual = emoteHtml.getEmoteHtmlForObject(input);
-                    should(actual).eql(expected);
-                });
-
-
-
-
-
-
     });
 });
