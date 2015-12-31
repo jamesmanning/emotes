@@ -74,11 +74,9 @@ var EmoteEffectsModifier = (function () {
         }
         if (animations.length > 0) {
             emoteHtml.cssStylesForEmoteNode.push({ propertyName: 'animation', propertyValue: animations.join(',').replace('!', '-') });
-            emoteHtml.cssStylesForEmoteNode.push({ propertyName: '-webkit-animation', propertyValue: animations.join(',').replace('!', '-') });
         }
         if (wrapperAnimations.length > 0) {
             emoteHtml.cssStylesForParentNode.push({ propertyName: 'animation', propertyValue: wrapperAnimations.join(',').replace('!', '-') });
-            emoteHtml.cssStylesForParentNode.push({ propertyName: '-webkit-animation', propertyValue: wrapperAnimations.join(',').replace('!', '-') });
         }
         if (transforms.length > 0) {
             emoteHtml.cssStylesForEmoteNode.push({ propertyName: 'transform', propertyValue: transforms.join(' ') });
