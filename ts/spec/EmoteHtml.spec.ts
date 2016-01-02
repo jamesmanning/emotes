@@ -96,6 +96,151 @@ describe('EmoteHtml', () => {
           const actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
           should(actual).eql(expected);
       });
+      it('should correctly generate metadata for an emote with all features', () => {
+        const input: EmoteObject = {
+            originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5)',
+            emoteIdentifier: 'adviceajlie',
+            flagsString: '-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5',
+
+            // since 'fastest' is just an alias for '2s', it parses as 2s
+            speed: "2s",
+            slide: "slide",
+            vibrate: true,
+            reverse: true,
+            hueRotate: true,
+            invertColors: true,
+            spin: "!zspin",
+            rotateDegrees: 270,
+            brody: true,
+            xAxisTranspose: 99,
+            zAxisTranspose: 5,
+
+            firstLineText: "first line",
+            secondLineText: "second line",
+            altText: "some alt text"
+        };
+          const expected: HtmlOutputData = {
+            "emoteData" : <IEmoteDataEntry> {
+              "background-image": "//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png",
+              "background-position": [
+                "-2px",
+                "-2px"
+              ],
+              "em-color": "white",
+              "em-font-style": "normal",
+              "em-left": "50%",
+              "em-margin-left": "-140px",
+              "em-position": "absolute",
+              "em-top": "5px",
+              "em-width": "280px",
+              "height": 300,
+              "names": [
+                "adviceajlie"
+              ],
+              "sr": "adviceponies",
+              "strong-bottom": "5px",
+              "strong-color": "white",
+              "strong-font-weight": "normal",
+              "strong-left": "50%",
+              "strong-margin-left": "-140px",
+              "strong-position": "absolute",
+              "strong-width": "280px",
+              "tags": [
+                "applejack",
+                "meme"
+              ],
+              "text-color": "white",
+              "text-font-family": "Impact,sans-serif",
+              "text-font-size": "26px",
+              "text-line-height": "26px",
+              "text-text-align": "center",
+              "text-text-shadow": "2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black",
+              "text-text-transform": "uppercase",
+              "width": 300
+            },
+            titleForEmoteNode: "adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5",
+
+            cssClassesForEmoteNode: [
+              "berryemote",
+              "bem-hue-rotate",
+              "bem-invert"
+            ],
+            cssStylesForEmoteNode: [
+              {
+                "propertyName": "height",
+                "propertyValue": "300px"
+              },
+              {
+                "propertyName": "width",
+                "propertyValue": "300px"
+              },
+              {
+                "propertyName": "display",
+                "propertyValue": "inline-block"
+              },
+              {
+                "propertyName": "position",
+                "propertyValue": "relative"
+              },
+              {
+                "propertyName": "overflow",
+                "propertyValue": "hidden"
+              },
+              {
+                "propertyName": "background-position",
+                "propertyValue": "-2px -2px"
+              },
+              {
+                "propertyName": "background-image",
+                "propertyValue": "url(//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png)"
+              },
+              {
+                "propertyName": "left",
+                "propertyValue": "99"
+              },
+              {
+                "propertyName": "z-index",
+                "propertyValue": "5"
+              },
+              {
+                "propertyName": "animation",
+                "propertyValue": "vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease"
+              },
+              {
+                "propertyName": "transform",
+                "propertyValue": "rotate(270deg) scaleX(-1)"
+              }
+            ],
+
+            cssClassesForParentNode: ["rotation-wrapper"],
+            cssStylesForParentNode: [
+              {
+                "propertyName": "height",
+                "propertyValue": "327px"
+              },
+              {
+                "propertyName": "display",
+                "propertyValue": "inline-block"
+              },
+              {
+                "propertyName": "margin-top",
+                "propertyValue": "25px"
+              },
+              {
+                "propertyName": "position",
+                "propertyValue": "relative"
+              },
+              {
+                "propertyName": "animation",
+                "propertyValue": "slideleft 2s infinite ease"
+              }
+            ]
+          };
+
+          const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
+          const actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
+          should(actual).eql(expected);
+      });
     });
 
     describe('#getEmoteHtmlForObject', () => {
@@ -226,6 +371,60 @@ describe('EmoteHtml', () => {
             const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
             const actual = emoteHtml.getEmoteHtmlForObject(input);
             should(actual).eql(expected);
+        });
+
+
+        it('should correctly generate html for an emote with all features', () => {
+           const input: EmoteObject = {
+               originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5)',
+               emoteIdentifier: 'adviceajlie',
+               flagsString: '-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5',
+
+               // since 'fastest' is just an alias for '2s', it parses as 2s
+               speed: "2s",
+               slide: "slide",
+               vibrate: true,
+               reverse: true,
+               hueRotate: true,
+               invertColors: true,
+               spin: "!zspin",
+               rotateDegrees: 270,
+               brody: true,
+               xAxisTranspose: 99,
+               zAxisTranspose: 5,
+
+               firstLineText: "first line",
+               secondLineText: "second line",
+               altText: "some alt text"
+           };
+
+           const expected =
+             '<span class="rotation-wrapper" style="' +
+                'height: 327px; ' +
+                'display: inline-block; ' +
+                'margin-top: 25px; ' +
+                'position: relative; ' +
+                'animation: slideleft 2s infinite ease;' +
+              '">' + 
+              '<span class="berryemote bem-hue-rotate bem-invert" title="adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5" style="' +
+                  'height: 300px; ' +
+                  'width: 300px; ' +
+                  'display: inline-block; ' +
+                  'position: relative; ' +
+                  'overflow: hidden; ' +
+                  'background-position: -2px -2px; ' +
+                  'background-image: url(//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png); ' +
+                  'left: 99; ' +
+                  'z-index: 5; ' +
+                  'animation: vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease; ' +
+                  'transform: rotate(270deg) scaleX(-1);' +
+              '">' +
+              '</span>' +
+            '</span>';
+
+           const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
+           const actual = emoteHtml.getEmoteHtmlForObject(input);
+           should(actual).eql(expected);
         });
     });
 });
