@@ -2,9 +2,9 @@
 var HtmlOutputData = (function () {
     function HtmlOutputData() {
         this.cssClassesForEmoteNode = [];
-        this.cssStylesForEmoteNode = [];
+        this.cssStylesForEmoteNode = {};
         this.cssClassesForParentNode = [];
-        this.cssStylesForParentNode = [];
+        this.cssStylesForParentNode = {};
     }
     return HtmlOutputData;
 })();

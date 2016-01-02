@@ -11,5 +11,8 @@ export default class EmoteHtml {
     private getBaseHtmlDataForEmote(emoteDataEntry);
     getEmoteHtmlMetadataForObject(emoteObject: EmoteObject): HtmlOutputData;
     getEmoteHtmlForObject(emoteObject: EmoteObject): string;
+    private createMarkupForStyles(styles);
+    private uppercasePattern;
+    private convertCamelCaseToHyphenated(styleName);
     private serializeHtmlOutputData(htmlOutputData);
 }

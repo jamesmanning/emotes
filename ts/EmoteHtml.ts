@@ -5,6 +5,8 @@ import EmoteEffectsModifier from './EmoteEffectsModifier';
 import EmoteFlags from './EmoteFlags';
 import EmoteObject from './EmoteObject';
 import IEmoteDataEntry from './IEmoteDataEntry';
+import HtmlElementStyle from './HtmlElementStyle';
+
 
 export default class EmoteHtml {
     private effectsModifier = new EmoteEffectsModifier();
@@ -25,24 +27,23 @@ export default class EmoteHtml {
             titleForEmoteNode: `${emoteDataEntry.names.join(',')} from /r/${emoteDataEntry.sr}`,
 
             cssClassesForEmoteNode: ['berryemote'],
-            cssStylesForEmoteNode: [],
+            cssStylesForEmoteNode: <HtmlElementStyle> {},
 
             cssClassesForParentNode: [],
-            cssStylesForParentNode: []
+            cssStylesForParentNode: <HtmlElementStyle> {}
         };
 
         if (emoteDataEntry.nsfw) {
             ret.cssClassesForEmoteNode.push('nsfw');
         }
 
-        ret.cssStylesForEmoteNode.push(
-            { propertyName: 'height'             , propertyValue: `${emoteDataEntry.height}px` }                  ,
-            { propertyName: 'width'              , propertyValue: `${emoteDataEntry.width}px` }                   ,
-            { propertyName: 'display'            , propertyValue: 'inline-block' }                                ,
-            { propertyName: 'position'           , propertyValue: 'relative' }                                    ,
-            { propertyName: 'overflow'           , propertyValue: 'hidden' }                                      ,
-            { propertyName: 'background-position', propertyValue: (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ') },
-            { propertyName: 'background-image'   , propertyValue: `url(${emoteDataEntry['background-image']})` });
+        ret.cssStylesForEmoteNode.height              = `${emoteDataEntry.height}px`                  ;
+        ret.cssStylesForEmoteNode.width               = `${emoteDataEntry.width}px`                   ;
+        ret.cssStylesForEmoteNode.display             = 'inline-block'                                ;
+        ret.cssStylesForEmoteNode.position            = 'relative'                                    ;
+        ret.cssStylesForEmoteNode.overflow            = 'hidden'                                      ;
+        ret.cssStylesForEmoteNode.backgroundPosition  = (emoteDataEntry['background-position'] || ['0px', '0px']).join(' ');
+        ret.cssStylesForEmoteNode.backgroundImage     = `url(${emoteDataEntry['background-image']})`;
 
         return ret;
     }
@@ -80,16 +81,36 @@ export default class EmoteHtml {
         return htmlString;
     }
 
+    // simplified version of what react does to generate the style attribute from an object
+    // https://github.com/facebook/react/blob/3b96650e39ddda5ba49245713ef16dbc52d25e9e/src/renderers/dom/shared/CSSPropertyOperations.js#L130-L147
+    private createMarkupForStyles(styles: HtmlElementStyle) {
+      var serialized = '';
+      for (var styleName in styles) {
+        if (!styles.hasOwnProperty(styleName)) {
+          continue;
+        }
+        var styleValue = styles[styleName];
+        if (styleValue != null) {
+          serialized += `${this.convertCamelCaseToHyphenated(styleName)}: ${styleValue};`
+        }
+      }
+      return serialized || null;
+    }
+
+    // don't need to support the -ms- prefix,  so only need hyphenate
+    // see https://github.com/facebook/react/blob/76c87da026bdab63b5b109e3c073a1db74896ed6/src/vendor/core/hyphenateStyleName.js
+    // and https://github.com/facebook/react/blob/76c87da026bdab63b5b109e3c073a1db74896ed6/src/vendor/core/hyphenate.js
+    private uppercasePattern = /([A-Z])/g;
+    private convertCamelCaseToHyphenated(styleName: string): string {
+      return styleName.replace(this.uppercasePattern, '-$1').toLowerCase();
+    }
+
     private serializeHtmlOutputData(htmlOutputData: HtmlOutputData): string {
-        const styleValue = htmlOutputData.cssStylesForEmoteNode
-            .map(a => `${a.propertyName}: ${a.propertyValue}`)
-            .join('; ') + ';';
+        const styleValue = this.createMarkupForStyles(htmlOutputData.cssStylesForEmoteNode);
+        const outerStyleValue = this.createMarkupForStyles(htmlOutputData.cssStylesForParentNode);
         let html = `<span class="${htmlOutputData.cssClassesForEmoteNode.join(' ')}" title="${htmlOutputData.titleForEmoteNode}" style="${styleValue}"></span>`;
-        if (htmlOutputData.cssClassesForParentNode.length > 0 || htmlOutputData.cssStylesForParentNode.length > 0) {
+        if (htmlOutputData.cssClassesForParentNode.length > 0 || outerStyleValue) {
             // wrap with the specified span tag
-            const outerStyleValue = htmlOutputData.cssStylesForParentNode
-                .map(a => `${a.propertyName}: ${a.propertyValue}`)
-                .join('; ') + ';';
             html = `<span class="${htmlOutputData.cssClassesForParentNode.join(' ')}" style="${outerStyleValue}">${html}</span>`;
         }
 

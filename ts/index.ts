@@ -9,4 +9,4 @@ export {default as EmoteParser                } from './EmoteParser';
 export {default as HtmlOutputData             } from './HtmlOutputData';
 export {default as IEmoteDataEntry            } from './IEmoteDataEntry';
 export {default as IHashMapOfEmoteDataEntries } from './IHashMapOfEmoteDataEntries';
-export {default as StyleAttribute             } from './StyleAttribute';
+export {default as HtmlElementStyle           } from './HtmlElementStyle';

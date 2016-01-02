@@ -1,13 +1,13 @@
-import StyleAttribute from "./StyleAttribute";
 import IEmoteDataEntry from './IEmoteDataEntry';
+import HtmlElementStyle from './HtmlElementStyle';
 
 export default class HtmlOutputData {
     emoteData: IEmoteDataEntry;
     titleForEmoteNode: string;
 
     cssClassesForEmoteNode: string[] = [];
-    cssStylesForEmoteNode: StyleAttribute[] = [];
+    cssStylesForEmoteNode: HtmlElementStyle = <HtmlElementStyle> {};
 
     cssClassesForParentNode: string[] = [];
-    cssStylesForParentNode: StyleAttribute[] = [];
+    cssStylesForParentNode: HtmlElementStyle = <HtmlElementStyle> {};
 }

@@ -8,6 +8,7 @@ import EmoteHtml from '../EmoteHtml';
 import EmoteObject from '../EmoteObject';
 import EmoteExpansionOptions from '../EmoteExpansionOptions';
 import HtmlOutputData from '../HtmlOutputData';
+import HtmlElementStyle from '../HtmlElementStyle';
 import IEmoteDataEntry from '../IEmoteDataEntry';
 
 const emoteData: IEmoteDataEntry[] = require('./sample_data.json');
@@ -17,26 +18,9 @@ const emoteExpansionOptions = new EmoteExpansionOptions();
 describe('EmoteHtml', () => {
   describe('#getEmoteHtmlMetadataForObject', () => {
       it('should correctly generate metadata for a simple emote', () => {
-          const input: EmoteObject = {
+        const input = <EmoteObject> {
               originalString: '[](/ierage)',
               emoteIdentifier: 'ierage',
-              flagsString: null,
-
-              speed: null,
-              slide: null,
-              vibrate: false,
-              reverse: false,
-              hueRotate: false,
-              invertColors: false,
-              spin: null,
-              rotateDegrees: 0,
-              brody: false,
-              xAxisTranspose: 0,
-              zAxisTranspose: 0,
-
-              firstLineText: null,
-              secondLineText: null,
-              altText: null
           };
           const expected: HtmlOutputData = {
             "emoteData" : <IEmoteDataEntry> {
@@ -57,39 +41,18 @@ describe('EmoteHtml', () => {
             titleForEmoteNode: "ivyrage,ierage from /r/marmemotes",
 
             cssClassesForEmoteNode: ['berryemote'],
-            cssStylesForEmoteNode: [
-              {
-                "propertyName": "height",
-                "propertyValue": "140px"
-              },
-              {
-                "propertyName": "width",
-                "propertyValue": "200px"
-              },
-              {
-                "propertyName": "display",
-                "propertyValue": "inline-block"
-              },
-              {
-                "propertyName": "position",
-                "propertyValue": "relative"
-              },
-              {
-                "propertyName": "overflow",
-                "propertyValue": "hidden"
-              },
-              {
-                "propertyName": "background-position",
-                "propertyValue": "0px 0px"
-              },
-              {
-                "propertyName": "background-image",
-                "propertyValue": "url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)"
-              }
-            ],
+            cssStylesForEmoteNode: <HtmlElementStyle> {
+              height: '140px',
+              width: '200px',
+              display: 'inline-block',
+              position: 'relative',
+              overflow: 'hidden',
+              backgroundPosition: '0px 0px',
+              backgroundImage: "url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)"
+            },
 
             cssClassesForParentNode: [],
-            cssStylesForParentNode: [],
+            cssStylesForParentNode: <HtmlElementStyle> {},
           };
 
           const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
@@ -97,7 +60,7 @@ describe('EmoteHtml', () => {
           should(actual).eql(expected);
       });
       it('should correctly generate metadata for an emote with all features', () => {
-        const input: EmoteObject = {
+        const input = <EmoteObject> {
             originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5)',
             emoteIdentifier: 'adviceajlie',
             flagsString: '-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5',
@@ -165,76 +128,28 @@ describe('EmoteHtml', () => {
               "bem-hue-rotate",
               "bem-invert"
             ],
-            cssStylesForEmoteNode: [
-              {
-                "propertyName": "height",
-                "propertyValue": "300px"
-              },
-              {
-                "propertyName": "width",
-                "propertyValue": "300px"
-              },
-              {
-                "propertyName": "display",
-                "propertyValue": "inline-block"
-              },
-              {
-                "propertyName": "position",
-                "propertyValue": "relative"
-              },
-              {
-                "propertyName": "overflow",
-                "propertyValue": "hidden"
-              },
-              {
-                "propertyName": "background-position",
-                "propertyValue": "-2px -2px"
-              },
-              {
-                "propertyName": "background-image",
-                "propertyValue": "url(//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png)"
-              },
-              {
-                "propertyName": "left",
-                "propertyValue": "99"
-              },
-              {
-                "propertyName": "z-index",
-                "propertyValue": "5"
-              },
-              {
-                "propertyName": "animation",
-                "propertyValue": "vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease"
-              },
-              {
-                "propertyName": "transform",
-                "propertyValue": "rotate(270deg) scaleX(-1)"
-              }
-            ],
+            cssStylesForEmoteNode: <HtmlElementStyle> {
+              height: "300px",
+              width: "300px",
+              display: "inline-block",
+              position: "relative",
+              overflow: "hidden",
+              backgroundPosition: "-2px -2px",
+              backgroundImage: "url(//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png)",
+              left: "99",
+              zIndex: "5",
+              animation: "vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease",
+              transform: "rotate(270deg) scaleX(-1)"
+            },
 
             cssClassesForParentNode: ["rotation-wrapper"],
-            cssStylesForParentNode: [
-              {
-                "propertyName": "height",
-                "propertyValue": "327px"
-              },
-              {
-                "propertyName": "display",
-                "propertyValue": "inline-block"
-              },
-              {
-                "propertyName": "margin-top",
-                "propertyValue": "25px"
-              },
-              {
-                "propertyName": "position",
-                "propertyValue": "relative"
-              },
-              {
-                "propertyName": "animation",
-                "propertyValue": "slideleft 2s infinite ease"
-              }
-            ]
+            cssStylesForParentNode: <HtmlElementStyle> {
+                height: "327px",
+                display: "inline-block",
+                marginTop: "25px",
+                position: "relative",
+                animation: "slideleft 2s infinite ease",
+            }
           };
 
           const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
@@ -245,28 +160,22 @@ describe('EmoteHtml', () => {
 
     describe('#getEmoteHtmlForObject', () => {
         it('should correctly generate html for a simple emote', () => {
-            const input: EmoteObject = {
+          const input = <EmoteObject> {
                 originalString: '[](/ierage)',
                 emoteIdentifier: 'ierage',
-                flagsString: null,
-
-                speed: null,
-                slide: null,
-                vibrate: false,
-                reverse: false,
-                hueRotate: false,
-                invertColors: false,
-                spin: null,
-                rotateDegrees: 0,
-                brody: false,
-                xAxisTranspose: 0,
-                zAxisTranspose: 0,
-
-                firstLineText: null,
-                secondLineText: null,
-                altText: null
             };
-            const expected = '<span class="berryemote" title="ivyrage,ierage from /r/marmemotes" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);"></span>';
+            const expected =
+              '<span class="berryemote" ' +
+                'title="ivyrage,ierage from /r/marmemotes" ' +
+                'style="' +
+                  'height: 140px;' +
+                  'width: 200px;' +
+                  'display: inline-block;' +
+                  'position: relative;' +
+                  'overflow: hidden;' +
+                  'background-position: 0px 0px;' +
+                  'background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);' +
+              '"></span>';
 
             const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
             const actual = emoteHtml.getEmoteHtmlForObject(input);
@@ -274,28 +183,26 @@ describe('EmoteHtml', () => {
         });
 
         it('should correctly generate html for an emote with one flag', () => {
-            const input : EmoteObject = {
+          const input = <EmoteObject> {
                 originalString: '[](/ierage-v)',
                 emoteIdentifier: 'ierage',
                 flagsString: '-v',
 
-                speed: null,
-                slide: null,
                 vibrate: true,
-                reverse: false,
-                hueRotate: false,
-                invertColors: false,
-                spin: null,
-                rotateDegrees: 0,
-                brody: false,
-                xAxisTranspose: 0,
-                zAxisTranspose: 0,
-
-                firstLineText: null,
-                secondLineText: null,
-                altText: null
             };
-            const expected = '<span class="berryemote" title="ivyrage,ierage from /r/marmemotes effects: -v" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png); animation: vibrate 0.05s linear infinite;"></span>';
+            const expected =
+              '<span class="berryemote" ' +
+                'title="ivyrage,ierage from /r/marmemotes effects: -v" ' +
+                'style="' +
+                  'height: 140px;' +
+                  'width: 200px;' +
+                  'display: inline-block;' +
+                  'position: relative;' +
+                  'overflow: hidden;' +
+                  'background-position: 0px 0px;' +
+                  'background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);' +
+                  'animation: vibrate 0.05s linear infinite;' +
+              '"></span>';
 
             const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
             const actual = emoteHtml.getEmoteHtmlForObject(input);
@@ -303,28 +210,25 @@ describe('EmoteHtml', () => {
         });
 
         it('should correctly generate html for a flag that adds a css class', () => {
-            const input : EmoteObject = {
+            const input = <EmoteObject> {
                 originalString: '[](/ierage-invert)',
                 emoteIdentifier: 'ierage',
                 flagsString: '-invert',
 
-                speed: null,
-                slide: null,
-                vibrate: false,
-                reverse: false,
-                hueRotate: false,
                 invertColors: true,
-                spin: null,
-                rotateDegrees: 0,
-                brody: false,
-                xAxisTranspose: 0,
-                zAxisTranspose: 0,
-
-                firstLineText: null,
-                secondLineText: null,
-                altText: null
             };
-            const expected = '<span class="berryemote bem-invert" title="ivyrage,ierage from /r/marmemotes effects: -invert" style="height: 140px; width: 200px; display: inline-block; position: relative; overflow: hidden; background-position: 0px 0px; background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);"></span>';
+            const expected =
+      				'<span class="berryemote bem-invert" ' +
+      					'title="ivyrage,ierage from /r/marmemotes effects: -invert" ' +
+      					'style="' +
+      						'height: 140px;' +
+      						'width: 200px;' +
+      						'display: inline-block;' +
+      						'position: relative;' +
+      						'overflow: hidden;' +
+      						'background-position: 0px 0px;' +
+      						'background-image: url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png);' +
+      				'"></span>';
 
             const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
             const actual = emoteHtml.getEmoteHtmlForObject(input);
@@ -332,38 +236,24 @@ describe('EmoteHtml', () => {
         });
 
         it('should correctly generate html for a 45 degree rotate', () => {
-            const input : EmoteObject = {
+            const input = <EmoteObject> {
                 originalString: '[](/rdwut-45)',
                 emoteIdentifier: 'rdwut',
                 flagsString: '-45',
 
-                speed: null,
-                slide: null,
-                vibrate: false,
-                reverse: false,
-                hueRotate: false,
-                invertColors: false,
-                spin: null,
                 rotateDegrees: 45,
-                brody: false,
-                xAxisTranspose: 0,
-                zAxisTranspose: 0,
-
-                firstLineText: null,
-                secondLineText: null,
-                altText: null
             };
             const expected =
-              '<span class="rotation-wrapper" style="height: 85px; display: inline-block; margin-top: 14px; position: relative;">' +
+              '<span class="rotation-wrapper" style="height: 85px;display: inline-block;margin-top: 14px;position: relative;">' +
                 '<span class="berryemote" ' +
                   'title="rb32,b32,rdwut,rrdwut from /r/mylittlepony effects: -45" ' +
-                  'style="height: 70px; ' +
-                    'width: 70px; ' +
-                    'display: inline-block; ' +
-                    'position: relative; ' +
-                    'overflow: hidden; ' +
-                    'background-position: -300% -200%; ' +
-                    'background-image: url(//b.thumbs.redditmedia.com/HUq7klYsvTd62aP39_qG_qIxjSGcSSzzsoslePOPC-A.png); ' +
+                  'style="height: 70px;' +
+                    'width: 70px;' +
+                    'display: inline-block;' +
+                    'position: relative;' +
+                    'overflow: hidden;' +
+                    'background-position: -300% -200%;' +
+                    'background-image: url(//b.thumbs.redditmedia.com/HUq7klYsvTd62aP39_qG_qIxjSGcSSzzsoslePOPC-A.png);' +
                     'transform: rotate(45deg);"' +
                 '></span>' +
               '</span>';
@@ -375,7 +265,7 @@ describe('EmoteHtml', () => {
 
 
         it('should correctly generate html for an emote with all features', () => {
-           const input: EmoteObject = {
+           const input = <EmoteObject> {
                originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5)',
                emoteIdentifier: 'adviceajlie',
                flagsString: '-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5',
@@ -400,23 +290,23 @@ describe('EmoteHtml', () => {
 
            const expected =
              '<span class="rotation-wrapper" style="' +
-                'height: 327px; ' +
-                'display: inline-block; ' +
-                'margin-top: 25px; ' +
-                'position: relative; ' +
+                'height: 327px;' +
+                'display: inline-block;' +
+                'margin-top: 25px;' +
+                'position: relative;' +
                 'animation: slideleft 2s infinite ease;' +
-              '">' + 
+              '">' +
               '<span class="berryemote bem-hue-rotate bem-invert" title="adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5" style="' +
-                  'height: 300px; ' +
-                  'width: 300px; ' +
-                  'display: inline-block; ' +
-                  'position: relative; ' +
-                  'overflow: hidden; ' +
-                  'background-position: -2px -2px; ' +
-                  'background-image: url(//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png); ' +
-                  'left: 99; ' +
-                  'z-index: 5; ' +
-                  'animation: vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease; ' +
+                  'height: 300px;' +
+                  'width: 300px;' +
+                  'display: inline-block;' +
+                  'position: relative;' +
+                  'overflow: hidden;' +
+                  'background-position: -2px -2px;' +
+                  'background-image: url(//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png);' +
+                  'left: 99;' +
+                  'z-index: 5;' +
+                  'animation: vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease;' +
                   'transform: rotate(270deg) scaleX(-1);' +
               '">' +
               '</span>' +

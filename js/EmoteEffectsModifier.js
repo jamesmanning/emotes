@@ -45,10 +45,10 @@ var EmoteEffectsModifier = (function () {
             wrappedEmoteHeight = rotateHeight;
         }
         if (emoteObject.xAxisTranspose) {
-            emoteHtml.cssStylesForEmoteNode.push({ propertyName: 'left', propertyValue: emoteObject.xAxisTranspose.toString() });
+            emoteHtml.cssStylesForEmoteNode.left = emoteObject.xAxisTranspose.toString();
         }
         if (emoteObject.zAxisTranspose) {
-            emoteHtml.cssStylesForEmoteNode.push({ propertyName: 'z-index', propertyValue: emoteObject.zAxisTranspose.toString() });
+            emoteHtml.cssStylesForEmoteNode.zIndex = emoteObject.zAxisTranspose.toString();
         }
         if (emoteObject.vibrate) {
             animations.unshift('vibrate 0.05s linear infinite');
@@ -70,16 +70,19 @@ var EmoteEffectsModifier = (function () {
         if (wrappedEmoteHeight) {
             emoteHtml.cssClassesForParentNode.push('rotation-wrapper');
             var offset = Math.floor((wrappedEmoteHeight - emoteData.height) / 2);
-            emoteHtml.cssStylesForParentNode.push({ propertyName: 'height', propertyValue: Math.ceil(wrappedEmoteHeight - offset) + "px" }, { propertyName: 'display', propertyValue: 'inline-block' }, { propertyName: 'margin-top', propertyValue: offset + "px" }, { propertyName: 'position', propertyValue: 'relative' });
+            emoteHtml.cssStylesForParentNode.height = Math.ceil(wrappedEmoteHeight - offset) + "px";
+            emoteHtml.cssStylesForParentNode.display = 'inline-block';
+            emoteHtml.cssStylesForParentNode.marginTop = offset + "px";
+            emoteHtml.cssStylesForParentNode.position = 'relative';
         }
         if (animations.length > 0) {
-            emoteHtml.cssStylesForEmoteNode.push({ propertyName: 'animation', propertyValue: animations.join(',').replace('!', '-') });
+            emoteHtml.cssStylesForEmoteNode.animation = animations.join(',').replace('!', '-');
         }
         if (wrapperAnimations.length > 0) {
-            emoteHtml.cssStylesForParentNode.push({ propertyName: 'animation', propertyValue: wrapperAnimations.join(',').replace('!', '-') });
+            emoteHtml.cssStylesForParentNode.animation = wrapperAnimations.join(',').replace('!', '-');
         }
         if (transforms.length > 0) {
-            emoteHtml.cssStylesForEmoteNode.push({ propertyName: 'transform', propertyValue: transforms.join(' ') });
+            emoteHtml.cssStylesForEmoteNode.transform = transforms.join(' ');
         }
     };
     return EmoteEffectsModifier;
