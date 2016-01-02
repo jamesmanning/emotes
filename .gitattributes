@@ -1,2 +1,2 @@
-# don't perform LF normalization
-* text=none
+# don't perform EOL normalization
+* -text
