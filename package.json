@@ -5,7 +5,9 @@
   "main": "js/index.js",
   "typings": "js/index",
   "scripts": {
-    "test": "mocha js/spec"
+    "test": "istanbul test node_modules/mocha/bin/_mocha -- js/spec",
+	"cover": "istanbul cover ./node_modules/mocha/bin/_mocha js/spec",
+	"coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^2.3.3",
+    "coveralls": "^2.11.6",
+    "istanbul": "^0.4.1",
+    "mocha": "^2.3.4",
+    "mocha-lcov-reporter": "^1.0.0",
     "should": "^8.0.2",
     "typescript-require": "^0.2.9"
   },
