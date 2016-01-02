@@ -3,3 +3,5 @@
 node_modules
 # make sure not to commit the coverage data from mocha/istanbul/coveralls
 coverage
+# no need to keep around the npm debugging log
+npm-debug.log
