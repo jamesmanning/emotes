@@ -12,8 +12,20 @@ import HtmlElementStyle from '../HtmlElementStyle';
 import IEmoteDataEntry from '../IEmoteDataEntry';
 
 const emoteData: IEmoteDataEntry[] = require('./sample_data.json');
+const ivyrage: IEmoteDataEntry = emoteData.filter(x => x.names[0] == 'ivyrage')[0];
+const adviceajlie: IEmoteDataEntry = emoteData.filter(x => x.names[0] == 'adviceajlie')[0];
 const emoteMap = new EmoteMap(emoteData);
 const emoteExpansionOptions = new EmoteExpansionOptions();
+
+function splitIntoArray(input: string): string[] {
+  return input.split(/(?=<)/);
+}
+
+function compareAsArrays(actual: string, expected: string): void {
+  const expectedAsArray = splitIntoArray(expected);
+  const actualAsArray = splitIntoArray(actual);
+  should(actualAsArray).eql(expectedAsArray);
+}
 
 describe('EmoteHtml', () => {
   describe('#getEmoteHtmlMetadataForObject', () => {
@@ -23,21 +35,7 @@ describe('EmoteHtml', () => {
               emoteIdentifier: 'ierage',
           };
           const expected: HtmlOutputData = {
-            "emoteData" : <IEmoteDataEntry> {
-              "apng_url": "http://backstage.berrytube.tv/marminator/images/a/84ozl2WMmiYp6Euf.png",
-              "background-image": "http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png",
-              "height": 140,
-              "names": [
-                "ivyrage",
-                "ierage"
-              ],
-              "sr": "marmemotes",
-              "tags": [
-                "oc",
-                ""
-              ],
-              "width": 200
-            },
+            "emoteData" : ivyrage,
             titleForEmoteNode: "ivyrage,ierage from /r/marmemotes",
 
             cssClassesForEmoteNode: ['berryemote'],
@@ -53,6 +51,8 @@ describe('EmoteHtml', () => {
 
             cssClassesForParentNode: [],
             cssStylesForParentNode: <HtmlElementStyle> {},
+
+            innerHtml: ''
           };
 
           const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
@@ -83,48 +83,12 @@ describe('EmoteHtml', () => {
             altText: "some alt text"
         };
           const expected: HtmlOutputData = {
-            "emoteData" : <IEmoteDataEntry> {
-              "background-image": "//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png",
-              "background-position": [
-                "-2px",
-                "-2px"
-              ],
-              "em-color": "white",
-              "em-font-style": "normal",
-              "em-left": "50%",
-              "em-margin-left": "-140px",
-              "em-position": "absolute",
-              "em-top": "5px",
-              "em-width": "280px",
-              "height": 300,
-              "names": [
-                "adviceajlie"
-              ],
-              "sr": "adviceponies",
-              "strong-bottom": "5px",
-              "strong-color": "white",
-              "strong-font-weight": "normal",
-              "strong-left": "50%",
-              "strong-margin-left": "-140px",
-              "strong-position": "absolute",
-              "strong-width": "280px",
-              "tags": [
-                "applejack",
-                "meme"
-              ],
-              "text-color": "white",
-              "text-font-family": "Impact,sans-serif",
-              "text-font-size": "26px",
-              "text-line-height": "26px",
-              "text-text-align": "center",
-              "text-text-shadow": "2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black",
-              "text-text-transform": "uppercase",
-              "width": 300
-            },
+            "emoteData" : adviceajlie,
             titleForEmoteNode: "adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5",
 
             cssClassesForEmoteNode: [
               "berryemote",
+              "nsfw",
               "bem-hue-rotate",
               "bem-invert"
             ],
@@ -149,7 +113,36 @@ describe('EmoteHtml', () => {
                 marginTop: "25px",
                 position: "relative",
                 animation: "slideleft 2s infinite ease",
-            }
+            },
+
+            innerHtml:
+              '<em style="' +
+                'width: 280px;' +
+                'position: absolute;' +
+                'font-style: normal;' +
+                'color: white;' +
+                'top: 5px;' +
+                'left: 50%;' +
+                'margin-left: -140px;' +
+              '">first line</em>' +
+              '<strong style="' +
+                'bottom: 5px;' +
+                'left: 50%;' +
+                'position: absolute;' +
+                'color: white;' +
+                'margin-left: -140px;' +
+                'width: 280px;' +
+                'font-weight: normal;' +
+              '">second line</strong>' +
+              '<span style="' +
+                'text-align: center;' +
+                'font-size: 26px;' +
+                'font-family: Impact,sans-serif;' +
+                'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
+                'color: white;' +
+                'text-transform: uppercase;' +
+                'line-height: 26px;' +
+              '">some alt text</span>'
           };
 
           const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
@@ -296,7 +289,7 @@ describe('EmoteHtml', () => {
                 'position: relative;' +
                 'animation: slideleft 2s infinite ease;' +
               '">' +
-              '<span class="berryemote bem-hue-rotate bem-invert" title="adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5" style="' +
+              '<span class="berryemote nsfw bem-hue-rotate bem-invert" title="adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5" style="' +
                   'height: 300px;' +
                   'width: 300px;' +
                   'display: inline-block;' +
@@ -309,11 +302,40 @@ describe('EmoteHtml', () => {
                   'animation: vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease;' +
                   'transform: rotate(270deg) scaleX(-1);' +
               '">' +
+                '<em style="' +
+                  'width: 280px;' +
+                  'position: absolute;' +
+                  'font-style: normal;' +
+                  'color: white;' +
+                  'top: 5px;' +
+                  'left: 50%;' +
+                  'margin-left: -140px;' +
+                '">first line</em>' +
+                '<strong style="' +
+                  'bottom: 5px;' +
+                  'left: 50%;' +
+                  'position: absolute;' +
+                  'color: white;' +
+                  'margin-left: -140px;' +
+                  'width: 280px;' +
+                  'font-weight: normal;' +
+                '">second line</strong>' +
+  		          '<span style="' +
+                  'text-align: center;' +
+                  'font-size: 26px;' +
+                  'font-family: Impact,sans-serif;' +
+                  'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
+                  'color: white;' +
+                  'text-transform: uppercase;' +
+                  'line-height: 26px;' +
+                '">some alt text</span>' +
               '</span>' +
             '</span>';
 
+
            const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
            const actual = emoteHtml.getEmoteHtmlForObject(input);
+           compareAsArrays(actual, expected);
            should(actual).eql(expected);
         });
     });

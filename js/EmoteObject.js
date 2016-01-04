@@ -8,7 +8,7 @@ var EmoteObject = (function () {
     function EmoteObject() {
     }
     return EmoteObject;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteObject;
 //# sourceMappingURL=EmoteObject.js.map

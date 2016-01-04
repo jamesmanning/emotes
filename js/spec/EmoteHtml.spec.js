@@ -6,8 +6,18 @@ var EmoteMap_1 = require('../EmoteMap');
 var EmoteHtml_1 = require('../EmoteHtml');
 var EmoteExpansionOptions_1 = require('../EmoteExpansionOptions');
 var emoteData = require('./sample_data.json');
+var ivyrage = emoteData.filter(function (x) { return x.names[0] == 'ivyrage'; })[0];
+var adviceajlie = emoteData.filter(function (x) { return x.names[0] == 'adviceajlie'; })[0];
 var emoteMap = new EmoteMap_1.default(emoteData);
 var emoteExpansionOptions = new EmoteExpansionOptions_1.default();
+function splitIntoArray(input) {
+    return input.split(/(?=<)/);
+}
+function compareAsArrays(actual, expected) {
+    var expectedAsArray = splitIntoArray(expected);
+    var actualAsArray = splitIntoArray(actual);
+    should(actualAsArray).eql(expectedAsArray);
+}
 describe('EmoteHtml', function () {
     describe('#getEmoteHtmlMetadataForObject', function () {
         it('should correctly generate metadata for a simple emote', function () {
@@ -16,21 +26,7 @@ describe('EmoteHtml', function () {
                 emoteIdentifier: 'ierage',
             };
             var expected = {
-                "emoteData": {
-                    "apng_url": "http://backstage.berrytube.tv/marminator/images/a/84ozl2WMmiYp6Euf.png",
-                    "background-image": "http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png",
-                    "height": 140,
-                    "names": [
-                        "ivyrage",
-                        "ierage"
-                    ],
-                    "sr": "marmemotes",
-                    "tags": [
-                        "oc",
-                        ""
-                    ],
-                    "width": 200
-                },
+                "emoteData": ivyrage,
                 titleForEmoteNode: "ivyrage,ierage from /r/marmemotes",
                 cssClassesForEmoteNode: ['berryemote'],
                 cssStylesForEmoteNode: {
@@ -44,6 +40,7 @@ describe('EmoteHtml', function () {
                 },
                 cssClassesForParentNode: [],
                 cssStylesForParentNode: {},
+                innerHtml: ''
             };
             var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
             var actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
@@ -71,47 +68,11 @@ describe('EmoteHtml', function () {
                 altText: "some alt text"
             };
             var expected = {
-                "emoteData": {
-                    "background-image": "//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png",
-                    "background-position": [
-                        "-2px",
-                        "-2px"
-                    ],
-                    "em-color": "white",
-                    "em-font-style": "normal",
-                    "em-left": "50%",
-                    "em-margin-left": "-140px",
-                    "em-position": "absolute",
-                    "em-top": "5px",
-                    "em-width": "280px",
-                    "height": 300,
-                    "names": [
-                        "adviceajlie"
-                    ],
-                    "sr": "adviceponies",
-                    "strong-bottom": "5px",
-                    "strong-color": "white",
-                    "strong-font-weight": "normal",
-                    "strong-left": "50%",
-                    "strong-margin-left": "-140px",
-                    "strong-position": "absolute",
-                    "strong-width": "280px",
-                    "tags": [
-                        "applejack",
-                        "meme"
-                    ],
-                    "text-color": "white",
-                    "text-font-family": "Impact,sans-serif",
-                    "text-font-size": "26px",
-                    "text-line-height": "26px",
-                    "text-text-align": "center",
-                    "text-text-shadow": "2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black",
-                    "text-text-transform": "uppercase",
-                    "width": 300
-                },
+                "emoteData": adviceajlie,
                 titleForEmoteNode: "adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5",
                 cssClassesForEmoteNode: [
                     "berryemote",
+                    "nsfw",
                     "bem-hue-rotate",
                     "bem-invert"
                 ],
@@ -135,7 +96,34 @@ describe('EmoteHtml', function () {
                     marginTop: "25px",
                     position: "relative",
                     animation: "slideleft 2s infinite ease",
-                }
+                },
+                innerHtml: '<em style="' +
+                    'width: 280px;' +
+                    'position: absolute;' +
+                    'font-style: normal;' +
+                    'color: white;' +
+                    'top: 5px;' +
+                    'left: 50%;' +
+                    'margin-left: -140px;' +
+                    '">first line</em>' +
+                    '<strong style="' +
+                    'bottom: 5px;' +
+                    'left: 50%;' +
+                    'position: absolute;' +
+                    'color: white;' +
+                    'margin-left: -140px;' +
+                    'width: 280px;' +
+                    'font-weight: normal;' +
+                    '">second line</strong>' +
+                    '<span style="' +
+                    'text-align: center;' +
+                    'font-size: 26px;' +
+                    'font-family: Impact,sans-serif;' +
+                    'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
+                    'color: white;' +
+                    'text-transform: uppercase;' +
+                    'line-height: 26px;' +
+                    '">some alt text</span>'
             };
             var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
             var actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
@@ -260,7 +248,7 @@ describe('EmoteHtml', function () {
                 'position: relative;' +
                 'animation: slideleft 2s infinite ease;' +
                 '">' +
-                '<span class="berryemote bem-hue-rotate bem-invert" title="adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5" style="' +
+                '<span class="berryemote nsfw bem-hue-rotate bem-invert" title="adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5" style="' +
                 'height: 300px;' +
                 'width: 300px;' +
                 'display: inline-block;' +
@@ -273,10 +261,38 @@ describe('EmoteHtml', function () {
                 'animation: vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease;' +
                 'transform: rotate(270deg) scaleX(-1);' +
                 '">' +
+                '<em style="' +
+                'width: 280px;' +
+                'position: absolute;' +
+                'font-style: normal;' +
+                'color: white;' +
+                'top: 5px;' +
+                'left: 50%;' +
+                'margin-left: -140px;' +
+                '">first line</em>' +
+                '<strong style="' +
+                'bottom: 5px;' +
+                'left: 50%;' +
+                'position: absolute;' +
+                'color: white;' +
+                'margin-left: -140px;' +
+                'width: 280px;' +
+                'font-weight: normal;' +
+                '">second line</strong>' +
+                '<span style="' +
+                'text-align: center;' +
+                'font-size: 26px;' +
+                'font-family: Impact,sans-serif;' +
+                'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
+                'color: white;' +
+                'text-transform: uppercase;' +
+                'line-height: 26px;' +
+                '">some alt text</span>' +
                 '</span>' +
                 '</span>';
             var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
             var actual = emoteHtml.getEmoteHtmlForObject(input);
+            compareAsArrays(actual, expected);
             should(actual).eql(expected);
         });
     });

@@ -10,4 +10,11 @@ export default class HtmlOutputData {
 
     cssClassesForParentNode: string[] = [];
     cssStylesForParentNode: HtmlElementStyle = <HtmlElementStyle> {};
+
+    innerHtml: string;
+    // firstLineText: string;
+    // firstLineStyle: HtmlElementStyle;
+    // secondLineText: string;
+    // secondLineStyle: HtmlElementStyle;
+    // altText: string;
 }

@@ -20,7 +20,7 @@ var EmoteExpander = (function () {
         return emoteHtml;
     };
     return EmoteExpander;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteExpander;
 //# sourceMappingURL=EmoteExpander.js.map

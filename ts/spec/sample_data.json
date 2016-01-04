@@ -61,7 +61,8 @@
   	"background-position": ["-2px",
   	"-2px"],
   	"text-line-height": "26px",
-  	"em-margin-left": "-140px"
+  	"em-margin-left": "-140px",
+    "nsfw": true
   },
   { "apng_url" : "http://backstage.berrytube.tv/marminator/images/a/E1FnMA0PMGL9qnwx.png",
     "background-image" : "http://a.thumbs.redditmedia.com/E1FnMA0PMGL9qnwx.png",

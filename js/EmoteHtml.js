@@ -1,12 +1,14 @@
 "use strict";
 var EmoteExpansionOptions_1 = require('./EmoteExpansionOptions');
 var EmoteEffectsModifier_1 = require('./EmoteEffectsModifier');
+var EmoteTextSerializer_1 = require('./EmoteTextSerializer');
 var EmoteHtml = (function () {
     function EmoteHtml(emoteMap, emoteExpansionOptions) {
         if (emoteExpansionOptions === void 0) { emoteExpansionOptions = new EmoteExpansionOptions_1.default(); }
         this.emoteMap = emoteMap;
         this.emoteExpansionOptions = emoteExpansionOptions;
         this.effectsModifier = new EmoteEffectsModifier_1.default();
+        this.textSerializer = new EmoteTextSerializer_1.default();
         // don't need to support the -ms- prefix,  so only need hyphenate
         // see https://github.com/facebook/react/blob/76c87da026bdab63b5b109e3c073a1db74896ed6/src/vendor/core/hyphenateStyleName.js
         // and https://github.com/facebook/react/blob/76c87da026bdab63b5b109e3c073a1db74896ed6/src/vendor/core/hyphenate.js
@@ -23,7 +25,8 @@ var EmoteHtml = (function () {
             cssClassesForEmoteNode: ['berryemote'],
             cssStylesForEmoteNode: {},
             cssClassesForParentNode: [],
-            cssStylesForParentNode: {}
+            cssStylesForParentNode: {},
+            innerHtml: null,
         };
         if (emoteDataEntry.nsfw) {
             ret.cssClassesForEmoteNode.push('nsfw');
@@ -47,18 +50,22 @@ var EmoteHtml = (function () {
         }
         var htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
         this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
+        htmlOutputData.innerHtml = this.textSerializer.serialize(emoteObject, emoteData);
         return htmlOutputData;
     };
     EmoteHtml.prototype.getEmoteHtmlForObject = function (emoteObject) {
-        var emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
-        if (typeof emoteData === "undefined") {
-            return "[Unable to find emote by name <b>" + emoteObject.emoteIdentifier + "</b>]";
-        }
-        if (this.isEmoteEligible(emoteData) === false) {
-            return "[skipped expansion of emote " + emoteObject.emoteIdentifier + "]";
-        }
-        var htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
-        this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
+        // const emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
+        // if (typeof emoteData === "undefined") {
+        //     return `[Unable to find emote by name <b>${emoteObject.emoteIdentifier}</b>]`;
+        // }
+        // if (this.isEmoteEligible(emoteData) === false) {
+        //     return `[skipped expansion of emote ${emoteObject.emoteIdentifier}]`;
+        // }
+        //
+        // const htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
+        //
+        // this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
+        var htmlOutputData = this.getEmoteHtmlMetadataForObject(emoteObject);
         var htmlString = this.serializeHtmlOutputData(htmlOutputData);
         return htmlString;
     };
@@ -83,7 +90,8 @@ var EmoteHtml = (function () {
     EmoteHtml.prototype.serializeHtmlOutputData = function (htmlOutputData) {
         var styleValue = this.createMarkupForStyles(htmlOutputData.cssStylesForEmoteNode);
         var outerStyleValue = this.createMarkupForStyles(htmlOutputData.cssStylesForParentNode);
-        var html = "<span class=\"" + htmlOutputData.cssClassesForEmoteNode.join(' ') + "\" title=\"" + htmlOutputData.titleForEmoteNode + "\" style=\"" + styleValue + "\"></span>";
+        var html = htmlOutputData.innerHtml || '';
+        html = "<span class=\"" + htmlOutputData.cssClassesForEmoteNode.join(' ') + "\" title=\"" + htmlOutputData.titleForEmoteNode + "\" style=\"" + styleValue + "\">" + html + "</span>";
         if (htmlOutputData.cssClassesForParentNode.length > 0 || outerStyleValue) {
             // wrap with the specified span tag
             html = "<span class=\"" + htmlOutputData.cssClassesForParentNode.join(' ') + "\" style=\"" + outerStyleValue + "\">" + html + "</span>";
@@ -91,7 +99,7 @@ var EmoteHtml = (function () {
         return html;
     };
     return EmoteHtml;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteHtml;
 //# sourceMappingURL=EmoteHtml.js.map

@@ -2,6 +2,7 @@ import HtmlOutputData from "./HtmlOutputData";
 import EmoteMap from './EmoteMap';
 import EmoteExpansionOptions from './EmoteExpansionOptions';
 import EmoteEffectsModifier from './EmoteEffectsModifier';
+import EmoteTextSerializer from './EmoteTextSerializer';
 import EmoteFlags from './EmoteFlags';
 import EmoteObject from './EmoteObject';
 import IEmoteDataEntry from './IEmoteDataEntry';
@@ -10,6 +11,7 @@ import HtmlElementStyle from './HtmlElementStyle';
 
 export default class EmoteHtml {
     private effectsModifier = new EmoteEffectsModifier();
+    private textSerializer = new EmoteTextSerializer();
 
     constructor(private emoteMap: EmoteMap, private emoteExpansionOptions = new EmoteExpansionOptions()) {
 
@@ -30,7 +32,9 @@ export default class EmoteHtml {
             cssStylesForEmoteNode: <HtmlElementStyle> {},
 
             cssClassesForParentNode: [],
-            cssStylesForParentNode: <HtmlElementStyle> {}
+            cssStylesForParentNode: <HtmlElementStyle> {},
+
+            innerHtml: null,
         };
 
         if (emoteDataEntry.nsfw) {
@@ -61,22 +65,25 @@ export default class EmoteHtml {
 
         this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
 
+        htmlOutputData.innerHtml = this.textSerializer.serialize(emoteObject, emoteData);
+
         return htmlOutputData;
     }
 
     getEmoteHtmlForObject(emoteObject: EmoteObject): string {
-        const emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
-        if (typeof emoteData === "undefined") {
-            return `[Unable to find emote by name <b>${emoteObject.emoteIdentifier}</b>]`;
-        }
-        if (this.isEmoteEligible(emoteData) === false) {
-            return `[skipped expansion of emote ${emoteObject.emoteIdentifier}]`;
-        }
+        // const emoteData = this.emoteMap.findEmote(emoteObject.emoteIdentifier);
+        // if (typeof emoteData === "undefined") {
+        //     return `[Unable to find emote by name <b>${emoteObject.emoteIdentifier}</b>]`;
+        // }
+        // if (this.isEmoteEligible(emoteData) === false) {
+        //     return `[skipped expansion of emote ${emoteObject.emoteIdentifier}]`;
+        // }
+        //
+        // const htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
+        //
+        // this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
 
-        const htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
-
-        this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
-
+        const htmlOutputData = this.getEmoteHtmlMetadataForObject(emoteObject);
         const htmlString = this.serializeHtmlOutputData(htmlOutputData);
         return htmlString;
     }
@@ -108,7 +115,8 @@ export default class EmoteHtml {
     private serializeHtmlOutputData(htmlOutputData: HtmlOutputData): string {
         const styleValue = this.createMarkupForStyles(htmlOutputData.cssStylesForEmoteNode);
         const outerStyleValue = this.createMarkupForStyles(htmlOutputData.cssStylesForParentNode);
-        let html = `<span class="${htmlOutputData.cssClassesForEmoteNode.join(' ')}" title="${htmlOutputData.titleForEmoteNode}" style="${styleValue}"></span>`;
+        let html = htmlOutputData.innerHtml || '';
+        html = `<span class="${htmlOutputData.cssClassesForEmoteNode.join(' ')}" title="${htmlOutputData.titleForEmoteNode}" style="${styleValue}">${html}</span>`;
         if (htmlOutputData.cssClassesForParentNode.length > 0 || outerStyleValue) {
             // wrap with the specified span tag
             html = `<span class="${htmlOutputData.cssClassesForParentNode.join(' ')}" style="${outerStyleValue}">${html}</span>`;

@@ -6,8 +6,9 @@
   "typings": "js/index",
   "scripts": {
     "test": "istanbul test node_modules/mocha/bin/_mocha -- js/spec",
-	"cover": "istanbul cover ./node_modules/mocha/bin/_mocha js/spec",
-	"coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha js/spec",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+	"watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",

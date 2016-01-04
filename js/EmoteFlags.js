@@ -79,7 +79,7 @@ var EmoteFlags = (function () {
         }
     };
     return EmoteFlags;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteFlags;
 //# sourceMappingURL=EmoteFlags.js.map

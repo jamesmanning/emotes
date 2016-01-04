@@ -7,7 +7,7 @@ var HtmlOutputData = (function () {
         this.cssStylesForParentNode = {};
     }
     return HtmlOutputData;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = HtmlOutputData;
 //# sourceMappingURL=HtmlOutputData.js.map

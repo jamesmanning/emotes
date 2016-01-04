@@ -7,4 +7,5 @@ export default class HtmlOutputData {
     cssStylesForEmoteNode: HtmlElementStyle;
     cssClassesForParentNode: string[];
     cssStylesForParentNode: HtmlElementStyle;
+    innerHtml: string;
 }
