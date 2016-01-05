@@ -7,6 +7,3 @@ export { default as EmoteMap } from './EmoteMap';
 export { default as EmoteObject } from './EmoteObject';
 export { default as EmoteParser } from './EmoteParser';
 export { default as HtmlOutputData } from './HtmlOutputData';
-export { default as IEmoteDataEntry } from './IEmoteDataEntry';
-export { default as IHashMapOfEmoteDataEntries } from './IHashMapOfEmoteDataEntries';
-export { default as HtmlElementStyle } from './HtmlElementStyle';

@@ -1,39 +1,29 @@
-"use strict";
+var StringUtils_1 = require('./StringUtils');
 var EmoteTextSerializer = (function () {
     function EmoteTextSerializer() {
     }
-    EmoteTextSerializer.prototype.serialize = function (emoteObject, emoteDataEntry) {
-        var html = '';
+    EmoteTextSerializer.prototype.serializeFromObjectToHtmlOutputData = function (emoteData, emoteObject, htmlOutputData) {
         if (emoteObject.firstLineText) {
-            var emStyles = this.getStylesFromEntry('em-', emoteDataEntry);
-            html += this.createHtmlString('em', emoteObject.firstLineText, emStyles);
+            htmlOutputData.emText = emoteObject.firstLineText;
+            htmlOutputData.emStyles = this.getStylesFromEntry("em-", emoteData);
         }
         if (emoteObject.secondLineText) {
-            var strongStyles = this.getStylesFromEntry('strong-', emoteDataEntry);
-            html += this.createHtmlString('strong', emoteObject.secondLineText, strongStyles);
+            htmlOutputData.strongText = emoteObject.secondLineText;
+            htmlOutputData.strongStyles = this.getStylesFromEntry("strong-", emoteData);
         }
         if (emoteObject.altText) {
-            var textStyles = this.getStylesFromEntry('text-', emoteDataEntry);
-            html += this.createHtmlString('span', emoteObject.altText, textStyles);
+            htmlOutputData.altText = emoteObject.altText;
         }
-        return html;
-    };
-    EmoteTextSerializer.prototype.createMarkupForStyles = function (styles) {
-        var serialized = '';
-        for (var styleName in styles) {
-            if (!styles.hasOwnProperty(styleName)) {
-                continue;
-            }
-            var styleValue = styles[styleName];
-            if (styleValue != null) {
-                serialized += styleName + ": " + styleValue + ";";
+        var textStyles = this.getStylesFromEntry("text-", emoteData);
+        if (textStyles) {
+            // since these need to apply to all text, they go on the emote node itself
+            for (var property in textStyles) {
+                if (!textStyles.hasOwnProperty(property)) {
+                    continue;
+                }
+                htmlOutputData.cssStylesForEmoteNode[property] = textStyles[property];
             }
         }
-        return serialized || null;
-    };
-    EmoteTextSerializer.prototype.createHtmlString = function (tag, text, styles) {
-        var styleString = this.createMarkupForStyles(styles);
-        return "<" + tag + " style=\"" + styleString + "\">" + text + "</" + tag + ">";
     };
     EmoteTextSerializer.prototype.getStylesFromEntry = function (prefix, emoteDataEntry) {
         var ret = {};
@@ -43,13 +33,14 @@ var EmoteTextSerializer = (function () {
             }
             if (property.startsWith(prefix)) {
                 var strippedPropertyName = property.slice(prefix.length);
-                ret[strippedPropertyName] = emoteDataEntry[property];
+                var convertedProperyName = StringUtils_1.default.convertHyphenatedToCamelCase(strippedPropertyName);
+                ret[convertedProperyName] = emoteDataEntry[property];
             }
         }
         return ret;
     };
     return EmoteTextSerializer;
-}());
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteTextSerializer;
 //# sourceMappingURL=EmoteTextSerializer.js.map

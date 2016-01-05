@@ -1,20 +1,19 @@
 import IEmoteDataEntry from './IEmoteDataEntry';
-import HtmlElementStyle from './HtmlElementStyle';
+import IHashMapOfStrings from './IHashMapOfStrings';
 
 export default class HtmlOutputData {
     emoteData: IEmoteDataEntry;
     titleForEmoteNode: string;
 
     cssClassesForEmoteNode: string[] = [];
-    cssStylesForEmoteNode: HtmlElementStyle = <HtmlElementStyle> {};
+    cssStylesForEmoteNode: IHashMapOfStrings = <IHashMapOfStrings> {};
 
     cssClassesForParentNode: string[] = [];
-    cssStylesForParentNode: HtmlElementStyle = <HtmlElementStyle> {};
+    cssStylesForParentNode: IHashMapOfStrings = <IHashMapOfStrings> {};
 
-    innerHtml: string;
-    // firstLineText: string;
-    // firstLineStyle: HtmlElementStyle;
-    // secondLineText: string;
-    // secondLineStyle: HtmlElementStyle;
-    // altText: string;
+    emText: string;
+    emStyles: IHashMapOfStrings;
+    strongText: string;
+    strongStyles: IHashMapOfStrings;
+    altText: string;
 }

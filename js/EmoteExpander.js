@@ -1,4 +1,3 @@
-"use strict";
 var EmoteParser_1 = require("./EmoteParser");
 var EmoteMap_1 = require('./EmoteMap');
 var EmoteHtml_1 = require('./EmoteHtml');
@@ -20,7 +19,7 @@ var EmoteExpander = (function () {
         return emoteHtml;
     };
     return EmoteExpander;
-}());
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteExpander;
 //# sourceMappingURL=EmoteExpander.js.map

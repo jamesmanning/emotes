@@ -39,8 +39,7 @@ describe('EmoteHtml', function () {
                     backgroundImage: "url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)"
                 },
                 cssClassesForParentNode: [],
-                cssStylesForParentNode: {},
-                innerHtml: ''
+                cssStylesForParentNode: {}
             };
             var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
             var actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
@@ -87,7 +86,14 @@ describe('EmoteHtml', function () {
                     left: "99",
                     zIndex: "5",
                     animation: "vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease",
-                    transform: "rotate(270deg) scaleX(-1)"
+                    transform: "rotate(270deg) scaleX(-1)",
+                    textAlign: 'center',
+                    fontSize: '26px',
+                    fontFamily: 'Impact,sans-serif',
+                    textShadow: '2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black',
+                    color: 'white',
+                    textTransform: 'uppercase',
+                    lineHeight: '26px'
                 },
                 cssClassesForParentNode: ["rotation-wrapper"],
                 cssStylesForParentNode: {
@@ -97,33 +103,27 @@ describe('EmoteHtml', function () {
                     position: "relative",
                     animation: "slideleft 2s infinite ease",
                 },
-                innerHtml: '<em style="' +
-                    'width: 280px;' +
-                    'position: absolute;' +
-                    'font-style: normal;' +
-                    'color: white;' +
-                    'top: 5px;' +
-                    'left: 50%;' +
-                    'margin-left: -140px;' +
-                    '">first line</em>' +
-                    '<strong style="' +
-                    'bottom: 5px;' +
-                    'left: 50%;' +
-                    'position: absolute;' +
-                    'color: white;' +
-                    'margin-left: -140px;' +
-                    'width: 280px;' +
-                    'font-weight: normal;' +
-                    '">second line</strong>' +
-                    '<span style="' +
-                    'text-align: center;' +
-                    'font-size: 26px;' +
-                    'font-family: Impact,sans-serif;' +
-                    'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
-                    'color: white;' +
-                    'text-transform: uppercase;' +
-                    'line-height: 26px;' +
-                    '">some alt text</span>'
+                emText: 'first line',
+                emStyles: {
+                    'width': '280px',
+                    'position': 'absolute',
+                    'fontStyle': 'normal',
+                    'color': 'white',
+                    'top': '5px',
+                    'left': '50%',
+                    'marginLeft': '-140px'
+                },
+                strongText: 'second line',
+                strongStyles: {
+                    'bottom': '5px',
+                    'left': '50%',
+                    'position': 'absolute',
+                    'color': 'white',
+                    'marginLeft': '-140px',
+                    'width': '280px',
+                    'fontWeight': 'normal',
+                },
+                altText: 'some alt text'
             };
             var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
             var actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
@@ -196,7 +196,7 @@ describe('EmoteHtml', function () {
             var actual = emoteHtml.getEmoteHtmlForObject(input);
             should(actual).eql(expected);
         });
-        it('should correctly generate html for a 45 degree rotate', function () {
+        it('should  html for a 45 degree rotate', function () {
             var input = {
                 originalString: '[](/rdwut-45)',
                 emoteIdentifier: 'rdwut',
@@ -260,6 +260,13 @@ describe('EmoteHtml', function () {
                 'z-index: 5;' +
                 'animation: vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease;' +
                 'transform: rotate(270deg) scaleX(-1);' +
+                'text-align: center;' +
+                'font-size: 26px;' +
+                'font-family: Impact,sans-serif;' +
+                'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
+                'color: white;' +
+                'text-transform: uppercase;' +
+                'line-height: 26px;' +
                 '">' +
                 '<em style="' +
                 'width: 280px;' +
@@ -279,15 +286,7 @@ describe('EmoteHtml', function () {
                 'width: 280px;' +
                 'font-weight: normal;' +
                 '">second line</strong>' +
-                '<span style="' +
-                'text-align: center;' +
-                'font-size: 26px;' +
-                'font-family: Impact,sans-serif;' +
-                'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
-                'color: white;' +
-                'text-transform: uppercase;' +
-                'line-height: 26px;' +
-                '">some alt text</span>' +
+                'some alt text' +
                 '</span>' +
                 '</span>';
             var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);

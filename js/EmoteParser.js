@@ -1,4 +1,3 @@
-"use strict";
 var EmoteParser = (function () {
     function EmoteParser() {
         this.berryEmoteAnimationSpeedMap = {
@@ -123,7 +122,7 @@ var EmoteParser = (function () {
     };
     EmoteParser.emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
     return EmoteParser;
-}());
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteParser;
 //# sourceMappingURL=EmoteParser.js.map

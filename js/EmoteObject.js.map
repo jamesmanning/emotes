@@ -1,1 +1,1 @@
-{"version":3,"file":"EmoteObject.js","sourceRoot":"","sources":["../ts/EmoteObject.ts"],"names":[],"mappings":";AAEA,sDAAsD;AACtD,2DAA2D;AAC3D,yEAAyE;AACzE,gFAAgF;AAChF,+EAA+E;AAC/E;IAAA;IAoBA,CAAC;IAAD,kBAAC;AAAD,CAAC,AApBD,IAoBC;AApBD;6BAoBC,CAAA"}
+{"version":3,"file":"EmoteObject.js","sourceRoot":"","sources":["../ts/EmoteObject.ts"],"names":["EmoteObject","EmoteObject.constructor"],"mappings":"AAEA,sDAAsD;AACtD,2DAA2D;AAC3D,yEAAyE;AACzE,gFAAgF;AAChF,+EAA+E;AAC/E;IAAAA;IAoBAC,CAACA;IAADD,kBAACA;AAADA,CAACA,AApBD,IAoBC;AApBD;6BAoBC,CAAA"}

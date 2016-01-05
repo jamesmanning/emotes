@@ -8,8 +8,8 @@ import EmoteHtml from '../EmoteHtml';
 import EmoteObject from '../EmoteObject';
 import EmoteExpansionOptions from '../EmoteExpansionOptions';
 import HtmlOutputData from '../HtmlOutputData';
-import HtmlElementStyle from '../HtmlElementStyle';
 import IEmoteDataEntry from '../IEmoteDataEntry';
+import IHashMapOfStrings from '../IHashMapOfStrings';
 
 const emoteData: IEmoteDataEntry[] = require('./sample_data.json');
 const ivyrage: IEmoteDataEntry = emoteData.filter(x => x.names[0] == 'ivyrage')[0];
@@ -34,12 +34,12 @@ describe('EmoteHtml', () => {
               originalString: '[](/ierage)',
               emoteIdentifier: 'ierage',
           };
-          const expected: HtmlOutputData = {
+          const expected = <HtmlOutputData> {
             "emoteData" : ivyrage,
             titleForEmoteNode: "ivyrage,ierage from /r/marmemotes",
 
             cssClassesForEmoteNode: ['berryemote'],
-            cssStylesForEmoteNode: <HtmlElementStyle> {
+            cssStylesForEmoteNode: <IHashMapOfStrings> {
               height: '140px',
               width: '200px',
               display: 'inline-block',
@@ -50,9 +50,7 @@ describe('EmoteHtml', () => {
             },
 
             cssClassesForParentNode: [],
-            cssStylesForParentNode: <HtmlElementStyle> {},
-
-            innerHtml: ''
+            cssStylesForParentNode: <IHashMapOfStrings> {}
           };
 
           const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
@@ -92,7 +90,7 @@ describe('EmoteHtml', () => {
               "bem-hue-rotate",
               "bem-invert"
             ],
-            cssStylesForEmoteNode: <HtmlElementStyle> {
+            cssStylesForEmoteNode: <IHashMapOfStrings> {
               height: "300px",
               width: "300px",
               display: "inline-block",
@@ -103,11 +101,18 @@ describe('EmoteHtml', () => {
               left: "99",
               zIndex: "5",
               animation: "vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease",
-              transform: "rotate(270deg) scaleX(-1)"
+              transform: "rotate(270deg) scaleX(-1)",
+              textAlign: 'center',
+              fontSize: '26px',
+              fontFamily: 'Impact,sans-serif',
+              textShadow: '2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black',
+              color: 'white',
+              textTransform: 'uppercase',
+              lineHeight: '26px'
             },
 
             cssClassesForParentNode: ["rotation-wrapper"],
-            cssStylesForParentNode: <HtmlElementStyle> {
+            cssStylesForParentNode: <IHashMapOfStrings> {
                 height: "327px",
                 display: "inline-block",
                 marginTop: "25px",
@@ -115,34 +120,27 @@ describe('EmoteHtml', () => {
                 animation: "slideleft 2s infinite ease",
             },
 
-            innerHtml:
-              '<em style="' +
-                'width: 280px;' +
-                'position: absolute;' +
-                'font-style: normal;' +
-                'color: white;' +
-                'top: 5px;' +
-                'left: 50%;' +
-                'margin-left: -140px;' +
-              '">first line</em>' +
-              '<strong style="' +
-                'bottom: 5px;' +
-                'left: 50%;' +
-                'position: absolute;' +
-                'color: white;' +
-                'margin-left: -140px;' +
-                'width: 280px;' +
-                'font-weight: normal;' +
-              '">second line</strong>' +
-              '<span style="' +
-                'text-align: center;' +
-                'font-size: 26px;' +
-                'font-family: Impact,sans-serif;' +
-                'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
-                'color: white;' +
-                'text-transform: uppercase;' +
-                'line-height: 26px;' +
-              '">some alt text</span>'
+            emText: 'first line',
+            emStyles: <IHashMapOfStrings> {
+              'width': '280px',
+              'position': 'absolute',
+              'fontStyle': 'normal',
+              'color': 'white',
+              'top': '5px',
+              'left': '50%',
+              'marginLeft': '-140px'
+            },
+            strongText: 'second line',
+            strongStyles: <IHashMapOfStrings> {
+              'bottom': '5px',
+              'left': '50%',
+              'position': 'absolute',
+              'color': 'white',
+              'marginLeft': '-140px',
+              'width': '280px',
+              'fontWeight': 'normal',
+            },
+            altText: 'some alt text'
           };
 
           const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
@@ -228,7 +226,7 @@ describe('EmoteHtml', () => {
             should(actual).eql(expected);
         });
 
-        it('should correctly generate html for a 45 degree rotate', () => {
+        it('should  html for a 45 degree rotate', () => {
             const input = <EmoteObject> {
                 originalString: '[](/rdwut-45)',
                 emoteIdentifier: 'rdwut',
@@ -301,6 +299,13 @@ describe('EmoteHtml', () => {
                   'z-index: 5;' +
                   'animation: vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease;' +
                   'transform: rotate(270deg) scaleX(-1);' +
+                  'text-align: center;' +
+                	'font-size: 26px;' +
+                	'font-family: Impact,sans-serif;' +
+                	'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
+                	'color: white;' +
+                	'text-transform: uppercase;' +
+                	'line-height: 26px;' +
               '">' +
                 '<em style="' +
                   'width: 280px;' +
@@ -320,15 +325,7 @@ describe('EmoteHtml', () => {
                   'width: 280px;' +
                   'font-weight: normal;' +
                 '">second line</strong>' +
-  		          '<span style="' +
-                  'text-align: center;' +
-                  'font-size: 26px;' +
-                  'font-family: Impact,sans-serif;' +
-                  'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
-                  'color: white;' +
-                  'text-transform: uppercase;' +
-                  'line-height: 26px;' +
-                '">some alt text</span>' +
+  		          'some alt text' +
               '</span>' +
             '</span>';
 

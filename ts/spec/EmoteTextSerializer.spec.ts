@@ -7,7 +7,6 @@ import EmoteTextSerializer from '../EmoteTextSerializer';
 import EmoteObject from '../EmoteObject';
 import EmoteExpansionOptions from '../EmoteExpansionOptions';
 import HtmlOutputData from '../HtmlOutputData';
-import HtmlElementStyle from '../HtmlElementStyle';
 import IEmoteDataEntry from '../IEmoteDataEntry';
 import IHashMapOfStrings from '../IHashMapOfStrings';
 
@@ -36,13 +35,13 @@ describe('EmoteTextSerializer', () => {
       });
       it('should find correct entries for em- prefix', () => {
           const expected: IHashMapOfStrings = {
-              "color": "white",
-              "font-style": "normal",
-              "left": "50%",
-              "margin-left": "-140px",
-              "position": "absolute",
-              "top": "5px",
-              "width": "280px"
+              color: "white",
+              fontStyle: "normal",
+              left: "50%",
+              marginLeft: "-140px",
+              position: "absolute",
+              top: "5px",
+              width: "280px"
           };
 
           const emoteTextSerializer = new EmoteTextSerializer();
@@ -51,13 +50,13 @@ describe('EmoteTextSerializer', () => {
       });
       it('should find correct entries for strong- prefix', () => {
           const expected: IHashMapOfStrings = {
-              "bottom": "5px",
-              "color": "white",
-              "font-weight": "normal",
-              "left": "50%",
-              "margin-left": "-140px",
-              "position": "absolute",
-              "width": "280px"
+              bottom: "5px",
+              color: "white",
+              fontWeight: "normal",
+              left: "50%",
+              marginLeft: "-140px",
+              position: "absolute",
+              width: "280px"
           };
 
           const emoteTextSerializer = new EmoteTextSerializer();
@@ -66,13 +65,13 @@ describe('EmoteTextSerializer', () => {
       });
       it('should find correct entries for text- prefix', () => {
           const expected: IHashMapOfStrings = {
-              "color": "white",
-              "font-family": "Impact,sans-serif",
-              "font-size": "26px",
-              "line-height": "26px",
-              "text-align": "center",
-              "text-shadow": "2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black",
-              "text-transform": "uppercase"
+              color: "white",
+              fontFamily: "Impact,sans-serif",
+              fontSize: "26px",
+              lineHeight: "26px",
+              textAlign: "center",
+              textShadow: "2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black",
+              textTransform: "uppercase"
           };
 
           const emoteTextSerializer = new EmoteTextSerializer();
@@ -82,56 +81,63 @@ describe('EmoteTextSerializer', () => {
     });
 
     describe('#serialize', () => {
-        it('should correctly generate empty string for no text fields', () => {
+        it('should correctly generate empty metadata for no text fields', () => {
           const input = <EmoteObject> {
-                originalString: '[](/ierage)',
-                emoteIdentifier: 'ierage',
-            };
-            const expected = '';
+            originalString: '[](/ierage)',
+            emoteIdentifier: 'ierage',
+          };
+          const expected = <HtmlOutputData> {};
 
           const emoteTextSerializer = new EmoteTextSerializer();
-          const actual = emoteTextSerializer.serialize(input, null);
+          const actual = <HtmlOutputData> {};
+          emoteTextSerializer.serializeFromObjectToHtmlOutputData(ivyrage, input, actual);
           should(actual).eql(expected);
         });
 
-        it('should correctly generate html for all text fields', () => {
-            var input = <EmoteObject> {
+        it('should correctly generate metadata for all text fields', () => {
+            const input = <EmoteObject> {
                 firstLineText: "first line",
                 secondLineText: "second line",
                 altText: "some alt text"
             };
-            const expected =
-              '<em style="' +
-                'width: 280px;' +
-                'position: absolute;' +
-                'font-style: normal;' +
-                'color: white;' +
-                'top: 5px;' +
-                'left: 50%;' +
-                'margin-left: -140px;' +
-              '">first line</em>' +
-              '<strong style="' +
-                'bottom: 5px;' +
-                'left: 50%;' +
-                'position: absolute;' +
-                'color: white;' +
-                'margin-left: -140px;' +
-                'width: 280px;' +
-                'font-weight: normal;' +
-              '">second line</strong>' +
-		          '<span style="' +
-                'text-align: center;' +
-                'font-size: 26px;' +
-                'font-family: Impact,sans-serif;' +
-                'text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;' +
-                'color: white;' +
-                'text-transform: uppercase;' +
-                'line-height: 26px;' +
-              '">some alt text</span>';
+            const expected = <HtmlOutputData> {
+              cssStylesForEmoteNode: <IHashMapOfStrings> {
+                color: "white",
+                fontFamily: "Impact,sans-serif",
+                fontSize: "26px",
+                lineHeight: "26px",
+                textAlign: "center",
+                textShadow: "2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black",
+                textTransform: "uppercase"
+              },
+              emText: 'first line',
+              emStyles: <IHashMapOfStrings> {
+                width: '280px',
+                position: 'absolute',
+                fontStyle: 'normal',
+                color: 'white',
+                top: '5px',
+                left: '50%',
+                marginLeft: '-140px'
+              },
+              strongText: 'second line',
+              strongStyles: <IHashMapOfStrings> {
+                bottom: '5px',
+                left: '50%',
+                position: 'absolute',
+                color: 'white',
+                marginLeft: '-140px',
+                width: '280px',
+                fontWeight: 'normal',
+              },
+              altText: 'some alt text'
+            };
 
-            const emoteHtml = new EmoteTextSerializer();
-            const actual = emoteHtml.serialize(input, adviceajlie);
-            compareAsArrays(actual, expected);
+            const emoteTextSerializer = new EmoteTextSerializer();
+            const actual = <HtmlOutputData> {
+              cssStylesForEmoteNode: <IHashMapOfStrings> {}
+            };
+            emoteTextSerializer.serializeFromObjectToHtmlOutputData(adviceajlie, input, actual);
             should(actual).eql(expected);
         });
     });

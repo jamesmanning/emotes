@@ -1,9 +1,8 @@
 import EmoteObject from './EmoteObject';
 import IEmoteDataEntry from './IEmoteDataEntry';
 import IHashMapOfStrings from './IHashMapOfStrings';
+import HtmlOutputData from './HtmlOutputData';
 export default class EmoteTextSerializer {
-    serialize(emoteObject: EmoteObject, emoteDataEntry: IEmoteDataEntry): string;
-    private createMarkupForStyles(styles);
-    private createHtmlString(tag, text, styles);
+    serializeFromObjectToHtmlOutputData(emoteData: IEmoteDataEntry, emoteObject: EmoteObject, htmlOutputData: HtmlOutputData): void;
     getStylesFromEntry(prefix: string, emoteDataEntry: IEmoteDataEntry): IHashMapOfStrings;
 }

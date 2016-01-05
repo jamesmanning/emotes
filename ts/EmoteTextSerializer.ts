@@ -1,42 +1,33 @@
 import EmoteObject from './EmoteObject';
 import IEmoteDataEntry from './IEmoteDataEntry';
 import IHashMapOfStrings from './IHashMapOfStrings';
+import HtmlOutputData from './HtmlOutputData';
+import StringUtils from './StringUtils';
 
 export default class EmoteTextSerializer {
-    serialize(emoteObject: EmoteObject, emoteDataEntry: IEmoteDataEntry): string {
-      let html = '';
+
+    serializeFromObjectToHtmlOutputData(emoteData: IEmoteDataEntry, emoteObject: EmoteObject, htmlOutputData: HtmlOutputData): void {
       if (emoteObject.firstLineText) {
-        let emStyles = this.getStylesFromEntry('em-', emoteDataEntry);
-        html += this.createHtmlString('em', emoteObject.firstLineText, emStyles);
+        htmlOutputData.emText = emoteObject.firstLineText;
+        htmlOutputData.emStyles = this.getStylesFromEntry("em-", emoteData);
       }
       if (emoteObject.secondLineText) {
-        let strongStyles = this.getStylesFromEntry('strong-', emoteDataEntry);
-        html += this.createHtmlString('strong', emoteObject.secondLineText, strongStyles);
+        htmlOutputData.strongText = emoteObject.secondLineText;
+        htmlOutputData.strongStyles = this.getStylesFromEntry("strong-", emoteData);
       }
       if (emoteObject.altText) {
-        let textStyles = this.getStylesFromEntry('text-', emoteDataEntry);
-        html += this.createHtmlString('span', emoteObject.altText, textStyles);
+        htmlOutputData.altText = emoteObject.altText;
       }
-      return html;
-    }
-
-    private createMarkupForStyles(styles: IHashMapOfStrings): string {
-      var serialized = '';
-      for (var styleName in styles) {
-        if (!styles.hasOwnProperty(styleName)) {
-          continue;
-        }
-        var styleValue = styles[styleName];
-        if (styleValue != null) {
-          serialized += `${styleName}: ${styleValue};`
+      const textStyles = this.getStylesFromEntry("text-", emoteData);
+      if (textStyles) {
+        // since these need to apply to all text, they go on the emote node itself
+        for (var property in textStyles) {
+          if (!textStyles.hasOwnProperty(property)) {
+            continue;
+          }
+          htmlOutputData.cssStylesForEmoteNode[property] = textStyles[property];
         }
       }
-      return serialized || null;
-    }
-
-    private createHtmlString(tag: string, text: string, styles: IHashMapOfStrings) {
-      var styleString = this.createMarkupForStyles(styles);
-      return `<${tag} style="${styleString}">${text}</${tag}>`;
     }
 
     getStylesFromEntry(prefix: string, emoteDataEntry: IEmoteDataEntry): IHashMapOfStrings {
@@ -47,7 +38,8 @@ export default class EmoteTextSerializer {
         }
         if (property.startsWith(prefix)) {
           let strippedPropertyName = (<string>property).slice(prefix.length);
-          ret[strippedPropertyName] = emoteDataEntry[property];
+          let convertedProperyName = StringUtils.convertHyphenatedToCamelCase(strippedPropertyName);
+          ret[convertedProperyName] = emoteDataEntry[property];
         }
       }
       return ret;
