@@ -1,3 +1,4 @@
+"use strict";
 var EmoteExpander_1 = require('./EmoteExpander');
 exports.EmoteExpander = EmoteExpander_1.default;
 var EmoteEffectsModifier_1 = require('./EmoteEffectsModifier');
@@ -16,4 +17,6 @@ var EmoteParser_1 = require('./EmoteParser');
 exports.EmoteParser = EmoteParser_1.default;
 var HtmlOutputData_1 = require('./HtmlOutputData');
 exports.HtmlOutputData = HtmlOutputData_1.default;
+var StringUtils_1 = require('./StringUtils');
+exports.StringUtils = StringUtils_1.default;
 //# sourceMappingURL=index.js.map

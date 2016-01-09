@@ -1,3 +1,4 @@
+"use strict";
 var HtmlOutputData = (function () {
     function HtmlOutputData() {
         this.cssClassesForEmoteNode = [];
@@ -6,7 +7,7 @@ var HtmlOutputData = (function () {
         this.cssStylesForParentNode = {};
     }
     return HtmlOutputData;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = HtmlOutputData;
 //# sourceMappingURL=HtmlOutputData.js.map

@@ -86,7 +86,7 @@ var EmoteEffectsModifier = (function () {
         }
     };
     return EmoteEffectsModifier;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteEffectsModifier;
 //# sourceMappingURL=EmoteEffectsModifier.js.map

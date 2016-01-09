@@ -1,3 +1,4 @@
+"use strict";
 var StringUtils_1 = require('./StringUtils');
 var EmoteTextSerializer = (function () {
     function EmoteTextSerializer() {
@@ -40,7 +41,7 @@ var EmoteTextSerializer = (function () {
         return ret;
     };
     return EmoteTextSerializer;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteTextSerializer;
 //# sourceMappingURL=EmoteTextSerializer.js.map

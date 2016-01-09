@@ -1,3 +1,4 @@
+"use strict";
 var EmoteFlags = (function () {
     function EmoteFlags(flags, options) {
         this.berryEmoteAnimationSpeedMap = {
@@ -78,7 +79,7 @@ var EmoteFlags = (function () {
         }
     };
     return EmoteFlags;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteFlags;
 //# sourceMappingURL=EmoteFlags.js.map

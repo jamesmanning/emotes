@@ -1,5 +1,6 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/should/should.d.ts" />
+"use strict";
 var should = require('should');
 var EmoteExpansionOptions_1 = require('../EmoteExpansionOptions');
 var EmoteExpander_1 = require('../EmoteExpander');

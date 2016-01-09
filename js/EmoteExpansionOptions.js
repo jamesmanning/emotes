@@ -1,3 +1,4 @@
+"use strict";
 var EmoteExpansionOptions = (function () {
     function EmoteExpansionOptions() {
         this.berryEmoteEnabled = true;
@@ -18,7 +19,7 @@ var EmoteExpansionOptions = (function () {
         this.berryEmoteBlacklist = [];
     }
     return EmoteExpansionOptions;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteExpansionOptions;
 //# sourceMappingURL=EmoteExpansionOptions.js.map

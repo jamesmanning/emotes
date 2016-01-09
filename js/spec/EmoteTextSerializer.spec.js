@@ -1,5 +1,6 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/should/should.d.ts" />
+"use strict";
 var should = require('should');
 var EmoteTextSerializer_1 = require('../EmoteTextSerializer');
 var emoteData = require('./sample_data.json');
