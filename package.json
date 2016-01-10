@@ -8,7 +8,7 @@
     "test": "istanbul test node_modules/mocha/bin/_mocha -- js/spec",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha js/spec",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-	"watch": "npm test -- --watch"
+    "watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -29,8 +29,7 @@
     "istanbul": "^0.4.1",
     "mocha": "^2.3.4",
     "mocha-lcov-reporter": "^1.0.0",
-    "should": "^8.0.2",
-    "typescript-require": "^0.2.9"
+    "should": "^8.0.2"
   },
   "bugs": {
     "url": "https://github.com/jamesmanning/emotes/issues"
