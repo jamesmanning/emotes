@@ -3,17 +3,6 @@
 "use strict";
 var should = require('should');
 var EmoteObjectSerializer_1 = require('../EmoteObjectSerializer');
-var emoteData = require('./sample_data.json');
-var ivyrage = emoteData.filter(function (x) { return x.names[0] == 'ivyrage'; })[0];
-var adviceajlie = emoteData.filter(function (x) { return x.names[0] == 'adviceajlie'; })[0];
-function splitIntoArray(input) {
-    return input.split(/(?=<)/);
-}
-function compareAsArrays(actual, expected) {
-    var expectedAsArray = splitIntoArray(expected);
-    var actualAsArray = splitIntoArray(actual);
-    should(actualAsArray).eql(expectedAsArray);
-}
 describe('EmoteObjectSerializer', function () {
     describe('#serialize', function () {
         it('should correctly serialize emote object with all features', function () {
