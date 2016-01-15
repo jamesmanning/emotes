@@ -17,7 +17,7 @@ var EmoteParser = (function () {
             emoteIdentifier: null,
             flagsString: null,
             speed: null,
-            slide: null,
+            slide: false,
             vibrate: false,
             reverse: false,
             hueRotate: false,
@@ -73,7 +73,7 @@ var EmoteParser = (function () {
             emoteObject.reverse = true;
         }
         else if (flag == 'slide' || flag == '!slide') {
-            emoteObject.slide = flag;
+            emoteObject.slide = true;
         }
         else if (flag == 'brody') {
             emoteObject.brody = true;

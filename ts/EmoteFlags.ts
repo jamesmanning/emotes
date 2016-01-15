@@ -17,7 +17,7 @@ export default class EmoteFlags {
     }
 
     speed: string;
-    slide: string;
+    slide: boolean;
     vibrate: boolean;
     reverse: boolean;
     spin: string;
@@ -31,7 +31,7 @@ export default class EmoteFlags {
         if (flag == 'r') {
             if (options.berryEnableReverse) this.reverse = true;
         } else if (flag == 'slide' || flag == '!slide') {
-            if (options.berryEnableSlide) this.slide = flag;
+            if (options.berryEnableSlide) this.slide = true;
         } else if (flag == 'brody') {
             if (options.berryEnableBrody) this.brody = true;
         } else if (flag == 'vibrate' || flag == 'chargin' || flag == 'v') {

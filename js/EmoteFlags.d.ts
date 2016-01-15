@@ -6,7 +6,7 @@ export default class EmoteFlags {
     berryEmoteSpinAnimations: string[];
     constructor(flags: string, options: EmoteExpansionOptions);
     speed: string;
-    slide: string;
+    slide: boolean;
     vibrate: boolean;
     reverse: boolean;
     spin: string;

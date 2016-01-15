@@ -16,7 +16,7 @@ describe('EmoteParser', () => {
                 flagsString: null,
 
                 speed: null,
-                slide: null,
+                slide: false,
                 vibrate: false,
                 reverse: false,
                 hueRotate: false,
@@ -45,7 +45,7 @@ describe('EmoteParser', () => {
                 flagsString: '-v',
 
                 speed: null,
-                slide: null,
+                slide: false,
                 vibrate: true,
                 reverse: false,
                 hueRotate: false,
@@ -75,7 +75,7 @@ describe('EmoteParser', () => {
 
                // since 'fastest' is just an alias for '2s', it parses as 2s
                speed: "2s",
-               slide: "slide",
+               slide: true,
                vibrate: true,
                reverse: true,
                hueRotate: true,

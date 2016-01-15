@@ -9,7 +9,7 @@ export default class EmoteObject {
     flagsString: string;
 
     speed: string;
-    slide: string;
+    slide: boolean;
     vibrate: boolean;
     reverse: boolean;
     hueRotate: boolean;

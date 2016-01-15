@@ -16,7 +16,7 @@ describe('EmoteObjectSerializer', () => {
 
            // since 'fastest' is just an alias for '2s', it parses as 2s
            speed: "2s",
-           slide: "slide",
+           slide: true,
            vibrate: true,
            reverse: true,
            hueRotate: true,

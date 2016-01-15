@@ -20,7 +20,7 @@ export default class EmoteParser {
             flagsString: null,
 
             speed: null,
-            slide: null,
+            slide: false,
             vibrate: false,
             reverse: false,
             hueRotate: false,
@@ -85,7 +85,7 @@ export default class EmoteParser {
         if (flag == 'r') {
             emoteObject.reverse = true;
         } else if (flag == 'slide' || flag == '!slide') {
-            emoteObject.slide = flag;
+            emoteObject.slide = true;
         } else if (flag == 'brody') {
             emoteObject.brody = true;
         } else if (flag == 'vibrate' || flag == 'chargin' || flag == 'v') {

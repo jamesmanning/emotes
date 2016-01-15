@@ -3,7 +3,7 @@ export default class EmoteObject {
     emoteIdentifier: string;
     flagsString: string;
     speed: string;
-    slide: string;
+    slide: boolean;
     vibrate: boolean;
     reverse: boolean;
     hueRotate: boolean;

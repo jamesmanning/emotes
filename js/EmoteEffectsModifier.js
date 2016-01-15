@@ -22,7 +22,7 @@ var EmoteEffectsModifier = (function () {
             var slideSpeed = emoteObject.speed || '8s';
             slideAnimations.push("slideleft " + slideSpeed + " infinite ease");
             if (!emoteObject.brody && !emoteObject.spin) {
-                if (emoteObject.slide == 'slide' && emoteObject.reverse) {
+                if (emoteObject.reverse) {
                     slideAnimations.push("!slideflip " + slideSpeed + " infinite ease");
                 }
                 else {

@@ -21,7 +21,7 @@ var EmoteFlags = (function () {
         }
         else if (flag == 'slide' || flag == '!slide') {
             if (options.berryEnableSlide)
-                this.slide = flag;
+                this.slide = true;
         }
         else if (flag == 'brody') {
             if (options.berryEnableBrody)
