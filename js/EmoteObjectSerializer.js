@@ -34,17 +34,14 @@ var EmoteObjectSerializer = (function () {
             ret += '-i';
         if (emoteObject.invertColors)
             ret += '-invert';
-        if (emoteObject.rotateDegrees)
+        if (emoteObject.rotateDegrees > 0)
             ret += '-' + emoteObject.rotateDegrees;
-        if (emoteObject.xAxisTranspose > 0) {
+        if (emoteObject.xAxisTranspose > 0)
             ret += '-x' + emoteObject.xAxisTranspose;
-        }
-        if (emoteObject.xAxisTranspose < 0) {
+        if (emoteObject.xAxisTranspose < 0)
             ret += '-x!' + emoteObject.xAxisTranspose;
-        }
-        if (emoteObject.zAxisTranspose > 0) {
+        if (emoteObject.zAxisTranspose > 0)
             ret += '-z' + emoteObject.zAxisTranspose;
-        }
         return ret;
     };
     return EmoteObjectSerializer;

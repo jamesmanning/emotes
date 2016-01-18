@@ -5,7 +5,7 @@ export default class EmoteObjectSerializer {
       return `[${this.serializeTextParts(emoteObject)}](/${emoteObject.emoteIdentifier}${this.serializeFlags(emoteObject)})`;
     }
 
-    private serializeTextParts(emoteObject: EmoteObject): string {
+    serializeTextParts(emoteObject: EmoteObject): string {
         var parts = <string[]> [];
 
         if (emoteObject.firstLineText)  parts.push(`*${emoteObject.firstLineText}*`);
@@ -16,7 +16,7 @@ export default class EmoteObjectSerializer {
         return ret;
     }
 
-    private serializeFlags(emoteObject: EmoteObject): string {
+    serializeFlags(emoteObject: EmoteObject): string {
         var ret = '';
 
         if (emoteObject.vibrate)       ret += '-v';
@@ -28,16 +28,11 @@ export default class EmoteObjectSerializer {
         if (emoteObject.hueRotate)     ret += '-i';
         if (emoteObject.invertColors)  ret += '-invert';
 
-        if (emoteObject.rotateDegrees) ret += '-' + emoteObject.rotateDegrees;
-        if (emoteObject.xAxisTranspose > 0) {
-            ret += '-x' + emoteObject.xAxisTranspose;
-        }
-        if (emoteObject.xAxisTranspose < 0) {
-            ret += '-x!' + emoteObject.xAxisTranspose;
-        }
-        if (emoteObject.zAxisTranspose > 0) {
-            ret += '-z' + emoteObject.zAxisTranspose;
-        }
+        if (emoteObject.rotateDegrees > 0)        ret += '-' + emoteObject.rotateDegrees;
+        if (emoteObject.xAxisTranspose > 0)       ret += '-x' + emoteObject.xAxisTranspose;
+        if (emoteObject.xAxisTranspose < 0)       ret += '-x!' + emoteObject.xAxisTranspose;
+        if (emoteObject.zAxisTranspose > 0)       ret += '-z' + emoteObject.zAxisTranspose;
+
         return ret;
     }
 }
