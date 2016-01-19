@@ -1,19 +1,9 @@
-import EmoteExpansionOptions from "./EmoteExpansionOptions";
+import IHashMapOfStrings from "./IHashMapOfStrings";
 export default class EmoteFlags {
-    berryEmoteAnimationSpeedMap: {
-        [speed: string]: string;
-    };
-    berryEmoteSpinAnimations: string[];
-    constructor(flags: string, options: EmoteExpansionOptions);
-    speed: string;
-    slide: boolean;
-    vibrate: boolean;
-    reverse: boolean;
-    spin: string;
-    rotateDegrees: number;
-    brody: boolean;
-    xAxisTranspose: number;
-    zAxisTranspose: number;
-    parseFlag(flag: string, options: EmoteExpansionOptions): void;
-    parseFlags(flags: string[], options: EmoteExpansionOptions): void;
+    static berryEmoteSpinAnimations: string[];
+    static berryEmoteAnimationDescriptionToSpeedMap: IHashMapOfStrings;
+    static berryEmoteAnimationSpeedToDescriptionMap: IHashMapOfStrings;
+    private static invertHashMapOfStrings(obj);
+    static getSpeedForDescription(description: string): string;
+    static getDescriptionForSpeed(speed: string): string;
 }

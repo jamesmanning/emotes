@@ -63,8 +63,7 @@ describe('EmoteHtml', () => {
             emoteIdentifier: 'adviceajlie',
             flagsString: '-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5',
 
-            // since 'fastest' is just an alias for '2s', it parses as 2s
-            speed: "2s",
+            speed: "fastest",
             slide: true,
             vibrate: true,
             reverse: true,
@@ -262,7 +261,7 @@ describe('EmoteHtml', () => {
                flagsString: '-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5',
 
                // since 'fastest' is just an alias for '2s', it parses as 2s
-               speed: "2s",
+               speed: "fastest",
                slide: true,
                vibrate: true,
                reverse: true,

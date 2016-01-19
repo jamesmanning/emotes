@@ -1,4 +1,5 @@
 "use strict";
+var EmoteFlags_1 = require("./EmoteFlags");
 var EmoteEffectsModifier = (function () {
     function EmoteEffectsModifier() {
     }
@@ -19,7 +20,7 @@ var EmoteEffectsModifier = (function () {
         }
         if (emoteObject.slide) {
             var slideAnimations = [];
-            var slideSpeed = emoteObject.speed || '8s';
+            var slideSpeed = EmoteFlags_1.default.getSpeedForDescription(emoteObject.speed) || '8s';
             slideAnimations.push("slideleft " + slideSpeed + " infinite ease");
             if (!emoteObject.brody && !emoteObject.spin) {
                 if (emoteObject.reverse) {

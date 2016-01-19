@@ -2,6 +2,7 @@
 
 import HtmlOutputData from "./HtmlOutputData";
 import EmoteObject from "./EmoteObject";
+import EmoteFlags from "./EmoteFlags";
 import IEmoteDataEntry from './IEmoteDataEntry';
 
 export default class EmoteEffectsModifier {
@@ -24,7 +25,7 @@ export default class EmoteEffectsModifier {
         }
         if (emoteObject.slide) {
             const slideAnimations : string[] = [];
-            const slideSpeed = emoteObject.speed || '8s';
+            const slideSpeed = EmoteFlags.getSpeedForDescription(emoteObject.speed) || '8s';
 
             slideAnimations.push(`slideleft ${slideSpeed} infinite ease`);
             if (!emoteObject.brody && !emoteObject.spin) {

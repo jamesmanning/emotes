@@ -1,16 +1,7 @@
 import EmoteObject from './EmoteObject';
+import EmoteFlags from './EmoteFlags';
 
 export default class EmoteParser {
-    berryEmoteAnimationSpeedMap: { [speed: string]: string; } = {
-        'slowest': '14s',
-        'slower': '12s',
-        'slow': '10s',
-        'fast': '6s',
-        'faster': '4s',
-        'fastest': '2s'
-    };
-    berryEmoteSpinAnimations = ['spin', 'zspin', 'xspin', 'yspin', '!spin', '!zspin', '!xspin', '!yspin'];
-
     static emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
 
     parse(input: string): EmoteObject {
@@ -96,10 +87,10 @@ export default class EmoteParser {
               emoteObject.invertColors = true;
 
             // now the mapping structures to check for those strings
-        } else if (this.berryEmoteAnimationSpeedMap[flag]) {
-            emoteObject.speed = this.berryEmoteAnimationSpeedMap[flag];
-        } else if (this.berryEmoteSpinAnimations.indexOf(flag) != -1) {
-            emoteObject.spin = flag;
+          } else if (EmoteFlags.berryEmoteAnimationDescriptionToSpeedMap[flag]) {
+              emoteObject.speed = flag; // convert to the time value in EmoteHtml instead
+          } else if (EmoteFlags.berryEmoteSpinAnimations.indexOf(flag) != -1) {
+              emoteObject.spin = flag;
 
             // finally the regex matches
         } else if (flag.match(/^\d+$/)) {

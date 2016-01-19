@@ -32,6 +32,7 @@
         "./IHashMapOfStrings.ts",
         "./index.ts",
         "./spec/EmoteExpander.spec.ts",
+        "./spec/EmoteFlags.spec.ts",
         "./spec/EmoteHtml.spec.ts",
         "./spec/EmoteObjectSerializer.spec.ts",
         "./spec/EmoteParser.spec.ts",

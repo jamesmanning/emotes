@@ -1,15 +1,7 @@
 "use strict";
+var EmoteFlags_1 = require('./EmoteFlags');
 var EmoteParser = (function () {
     function EmoteParser() {
-        this.berryEmoteAnimationSpeedMap = {
-            'slowest': '14s',
-            'slower': '12s',
-            'slow': '10s',
-            'fast': '6s',
-            'faster': '4s',
-            'fastest': '2s'
-        };
-        this.berryEmoteSpinAnimations = ['spin', 'zspin', 'xspin', 'yspin', '!spin', '!zspin', '!xspin', '!yspin'];
     }
     EmoteParser.prototype.parse = function (input) {
         var emoteObject = {
@@ -87,10 +79,10 @@ var EmoteParser = (function () {
         else if (flag == 'invert') {
             emoteObject.invertColors = true;
         }
-        else if (this.berryEmoteAnimationSpeedMap[flag]) {
-            emoteObject.speed = this.berryEmoteAnimationSpeedMap[flag];
+        else if (EmoteFlags_1.default.berryEmoteAnimationDescriptionToSpeedMap[flag]) {
+            emoteObject.speed = flag; // convert to the time value in EmoteHtml instead
         }
-        else if (this.berryEmoteSpinAnimations.indexOf(flag) != -1) {
+        else if (EmoteFlags_1.default.berryEmoteSpinAnimations.indexOf(flag) != -1) {
             emoteObject.spin = flag;
         }
         else if (flag.match(/^\d+$/)) {
