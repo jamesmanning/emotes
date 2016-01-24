@@ -95,8 +95,8 @@ export default class EmoteParser {
             // finally the regex matches
         } else if (flag.match(/^\d+$/)) {
             emoteObject.rotateDegrees = parseInt(flag);
-        } else if (flag.match(/^s\d/)) {
-            emoteObject.speed = flag;
+        } else if (flag.match(/^s\d+/)) {
+            emoteObject.speed = flag.substring(1) + 's';
         } else if (flag.match(/^x\d+$/)) {
             const shiftPosx = +flag.replace('x', '');
             if (shiftPosx <= 150) {

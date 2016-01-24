@@ -13,7 +13,7 @@ var EmoteEffectsModifier = (function () {
         }
         if (emoteObject.spin) {
             animations.push(emoteObject.spin + " 2s linear infinite");
-            if (emoteObject.spin == 'zspin' || emoteObject.spin == 'spin') {
+            if (emoteObject.spin == 'zspin' || emoteObject.spin == 'spin' || emoteObject.spin == '!zspin' || emoteObject.spin == '!spin') {
                 var diag = Math.sqrt(emoteData.width * emoteData.width + emoteData.height * emoteData.height);
                 wrappedEmoteHeight = Math.max(diag, wrappedEmoteHeight);
             }

@@ -6,14 +6,6 @@ var EmoteTextSerializer_1 = require('../EmoteTextSerializer');
 var emoteData = require('./sample_data.json');
 var ivyrage = emoteData.filter(function (x) { return x.names[0] == 'ivyrage'; })[0];
 var adviceajlie = emoteData.filter(function (x) { return x.names[0] == 'adviceajlie'; })[0];
-function splitIntoArray(input) {
-    return input.split(/(?=<)/);
-}
-function compareAsArrays(actual, expected) {
-    var expectedAsArray = splitIntoArray(expected);
-    var actualAsArray = splitIntoArray(actual);
-    should(actualAsArray).eql(expectedAsArray);
-}
 describe('EmoteTextSerializer', function () {
     describe('#getStylesFromEntry', function () {
         it('should correctly find nothing for a regular emote', function () {

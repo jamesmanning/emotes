@@ -26,7 +26,7 @@ describe('EmoteHtml', function () {
                 emoteIdentifier: 'ierage',
             };
             var expected = {
-                "emoteData": ivyrage,
+                emoteData: ivyrage,
                 titleForEmoteNode: "ivyrage,ierage from /r/marmemotes",
                 cssClassesForEmoteNode: ['berryemote'],
                 cssStylesForEmoteNode: {
@@ -47,9 +47,9 @@ describe('EmoteHtml', function () {
         });
         it('should correctly generate metadata for an emote with all features', function () {
             var input = {
-                originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5)',
+                originalString: '[*first line* **second line** some alt text](/adviceajlie-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5-bogusextraflag)',
                 emoteIdentifier: 'adviceajlie',
-                flagsString: '-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5',
+                flagsString: '-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5-bogusextraflag',
                 speed: "fastest",
                 slide: true,
                 vibrate: true,
@@ -66,8 +66,8 @@ describe('EmoteHtml', function () {
                 altText: "some alt text"
             };
             var expected = {
-                "emoteData": adviceajlie,
-                titleForEmoteNode: "adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5",
+                emoteData: adviceajlie,
+                titleForEmoteNode: "adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5-bogusextraflag",
                 cssClassesForEmoteNode: [
                     "berryemote",
                     "nsfw",
@@ -123,6 +123,93 @@ describe('EmoteHtml', function () {
                     'fontWeight': 'normal',
                 },
                 altText: 'some alt text'
+            };
+            var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
+            var actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
+            should(actual).eql(expected);
+        });
+        it('should correctly generate metadata for forward slide with no brody and no spin', function () {
+            var input = {
+                originalString: '[](/ivyrage-slide-s13)',
+                emoteIdentifier: 'ivyrage',
+                flagsString: '-slide-s13',
+                speed: "13s",
+                slide: true,
+                vibrate: false,
+                reverse: false,
+                hueRotate: false,
+                invertColors: false,
+                spin: "",
+                rotateDegrees: 0,
+                brody: false,
+                xAxisTranspose: 0,
+                zAxisTranspose: 0,
+                firstLineText: "",
+                secondLineText: "",
+                altText: ""
+            };
+            var expected = {
+                emoteData: ivyrage,
+                titleForEmoteNode: "ivyrage,ierage from /r/marmemotes effects: -slide-s13",
+                cssClassesForEmoteNode: [
+                    "berryemote",
+                ],
+                cssStylesForEmoteNode: {
+                    height: "140px",
+                    width: "200px",
+                    display: "inline-block",
+                    position: "relative",
+                    overflow: "hidden",
+                    animation: "slideleft 13s infinite ease,slideflip 13s infinite ease",
+                    backgroundImage: "url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)",
+                    backgroundPosition: "0px 0px"
+                },
+                cssClassesForParentNode: [],
+                cssStylesForParentNode: {}
+            };
+            var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
+            var actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
+            should(actual).eql(expected);
+        });
+        it('should correctly generate metadata for reverse slide with no brody and no spin', function () {
+            var input = {
+                originalString: '[](/ivyrage-r-slide)',
+                emoteIdentifier: 'ivyrage',
+                flagsString: '-r-slide',
+                speed: "",
+                slide: true,
+                vibrate: false,
+                reverse: true,
+                hueRotate: false,
+                invertColors: false,
+                spin: "",
+                rotateDegrees: 0,
+                brody: false,
+                xAxisTranspose: 0,
+                zAxisTranspose: 0,
+                firstLineText: "",
+                secondLineText: "",
+                altText: ""
+            };
+            var expected = {
+                emoteData: ivyrage,
+                titleForEmoteNode: "ivyrage,ierage from /r/marmemotes effects: -r-slide",
+                cssClassesForEmoteNode: [
+                    "berryemote",
+                ],
+                cssStylesForEmoteNode: {
+                    height: "140px",
+                    width: "200px",
+                    display: "inline-block",
+                    position: "relative",
+                    overflow: "hidden",
+                    transform: 'scaleX(-1)',
+                    animation: "slideleft 8s infinite ease,-slideflip 8s infinite ease",
+                    backgroundImage: "url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)",
+                    backgroundPosition: "0px 0px"
+                },
+                cssClassesForParentNode: [],
+                cssStylesForParentNode: {}
             };
             var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
             var actual = emoteHtml.getEmoteHtmlMetadataForObject(input);

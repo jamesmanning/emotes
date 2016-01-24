@@ -14,16 +14,6 @@ const emoteData: IEmoteDataEntry[] = require('./sample_data.json');
 const ivyrage: IEmoteDataEntry = emoteData.filter(x => x.names[0] == 'ivyrage')[0];
 const adviceajlie: IEmoteDataEntry = emoteData.filter(x => x.names[0] == 'adviceajlie')[0];
 
-function splitIntoArray(input: string): string[] {
-  return input.split(/(?=<)/);
-}
-
-function compareAsArrays(actual: string, expected: string): void {
-  const expectedAsArray = splitIntoArray(expected);
-  const actualAsArray = splitIntoArray(actual);
-  should(actualAsArray).eql(expectedAsArray);
-}
-
 describe('EmoteTextSerializer', () => {
   describe('#getStylesFromEntry', () => {
       it('should correctly find nothing for a regular emote', () => {
