@@ -55,9 +55,9 @@ export default class EmoteHtml {
         if (typeof emoteData === "undefined") {
             return null;
         }
-        if (this.isEmoteEligible(emoteData) === false) {
-            return null;
-        }
+        // if (this.isEmoteEligible(emoteData) === false) {
+        //     return null;
+        // }
 
         const htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
 

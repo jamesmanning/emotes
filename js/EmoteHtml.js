@@ -42,9 +42,9 @@ var EmoteHtml = (function () {
         if (typeof emoteData === "undefined") {
             return null;
         }
-        if (this.isEmoteEligible(emoteData) === false) {
-            return null;
-        }
+        // if (this.isEmoteEligible(emoteData) === false) {
+        //     return null;
+        // }
         var htmlOutputData = this.getBaseHtmlDataForEmote(emoteData);
         this.effectsModifier.applyFlagsFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);
         this.textSerializer.serializeFromObjectToHtmlOutputData(emoteData, emoteObject, htmlOutputData);

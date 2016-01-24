@@ -20,6 +20,29 @@ function compareAsArrays(actual, expected) {
 }
 describe('EmoteHtml', function () {
     describe('#getEmoteHtmlMetadataForObject', function () {
+        it('should correctly return null for invalid emote', function () {
+            var input = {
+                originalString: '[](/nosuchemote)',
+                emoteIdentifier: 'nosuchemote',
+            };
+            var expected = null;
+            var emoteHtml = new EmoteHtml_1.default(emoteMap, emoteExpansionOptions);
+            var actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
+            should(actual).eql(expected);
+        });
+        // it('should correctly return null for nsfw emote with nsfw disabled', () => {
+        //   const input = <EmoteObject> {
+        //         originalString: '[](/adviceajlie)',
+        //         emoteIdentifier: 'adviceajlie',
+        //     };
+        //     const expected = <HtmlOutputData> null;
+        //
+        //     const disabledNsfwOptions = new EmoteExpansionOptions();
+        //     disabledNsfwOptions.showNsfwEmotes = false;
+        //     const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
+        //     const actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
+        //     should(actual).eql(expected);
+        // });
         it('should correctly generate metadata for a simple emote', function () {
             var input = {
                 originalString: '[](/ierage)',

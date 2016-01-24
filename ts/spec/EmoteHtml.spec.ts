@@ -29,6 +29,30 @@ function compareAsArrays(actual: string, expected: string): void {
 
 describe('EmoteHtml', () => {
   describe('#getEmoteHtmlMetadataForObject', () => {
+    it('should correctly return null for invalid emote', () => {
+      const input = <EmoteObject> {
+            originalString: '[](/nosuchemote)',
+            emoteIdentifier: 'nosuchemote',
+        };
+        const expected = <HtmlOutputData> null;
+
+        const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
+        const actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
+        should(actual).eql(expected);
+    });
+    // it('should correctly return null for nsfw emote with nsfw disabled', () => {
+    //   const input = <EmoteObject> {
+    //         originalString: '[](/adviceajlie)',
+    //         emoteIdentifier: 'adviceajlie',
+    //     };
+    //     const expected = <HtmlOutputData> null;
+    //
+    //     const disabledNsfwOptions = new EmoteExpansionOptions();
+    //     disabledNsfwOptions.showNsfwEmotes = false;
+    //     const emoteHtml = new EmoteHtml(emoteMap, emoteExpansionOptions);
+    //     const actual = emoteHtml.getEmoteHtmlMetadataForObject(input);
+    //     should(actual).eql(expected);
+    // });
       it('should correctly generate metadata for a simple emote', () => {
         const input = <EmoteObject> {
               originalString: '[](/ierage)',
