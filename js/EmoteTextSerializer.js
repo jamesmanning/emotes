@@ -19,9 +19,9 @@ var EmoteTextSerializer = (function () {
         if (textStyles) {
             // since these need to apply to all text, they go on the emote node itself
             for (var property in textStyles) {
-                if (!textStyles.hasOwnProperty(property)) {
-                    continue;
-                }
+                // if (!textStyles.hasOwnProperty(property)) {
+                //   continue;
+                // }
                 htmlOutputData.cssStylesForEmoteNode[property] = textStyles[property];
             }
         }
@@ -29,9 +29,9 @@ var EmoteTextSerializer = (function () {
     EmoteTextSerializer.prototype.getStylesFromEntry = function (prefix, emoteDataEntry) {
         var ret = {};
         for (var property in emoteDataEntry) {
-            if (!emoteDataEntry.hasOwnProperty(property)) {
-                continue;
-            }
+            // if (!emoteDataEntry.hasOwnProperty(property)) {
+            //   continue;
+            // }
             if (property.startsWith(prefix)) {
                 var strippedPropertyName = property.slice(prefix.length);
                 var convertedProperyName = StringUtils_1.default.convertHyphenatedToCamelCase(strippedPropertyName);

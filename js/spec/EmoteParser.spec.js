@@ -30,12 +30,12 @@ describe('EmoteParser', function () {
             var actual = emoteParser.parse(input);
             should(actual).eql(expected);
         });
-        it('should correctly parse a specific speed', function () {
-            var input = '[](/ierage-s13)';
+        it('should correctly parse a specific speed, negative x offset, and ignore bogus flag', function () {
+            var input = '[](/ierage-s13-bogus-!x100)';
             var expected = {
-                originalString: '[](/ierage-s13)',
+                originalString: '[](/ierage-s13-bogus-!x100)',
                 emoteIdentifier: 'ierage',
-                flagsString: '-s13',
+                flagsString: '-s13-bogus-!x100',
                 speed: '13s',
                 slide: false,
                 vibrate: false,
@@ -45,7 +45,7 @@ describe('EmoteParser', function () {
                 spin: null,
                 rotateDegrees: 0,
                 brody: false,
-                xAxisTranspose: 0,
+                xAxisTranspose: -100,
                 zAxisTranspose: 0,
                 firstLineText: null,
                 secondLineText: null,
