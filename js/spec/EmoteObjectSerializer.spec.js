@@ -31,6 +31,32 @@ describe('EmoteObjectSerializer', function () {
             var actual = emoteObjectSerializer.serialize(input);
             should(actual).eql(expected);
         });
+        it('should correctly serialize negative x offset', function () {
+            var input = {
+                originalString: '[](/adviceajlie-!x99)',
+                emoteIdentifier: 'adviceajlie',
+                flagsString: '-!x99',
+                // since 'fastest' is just an alias for '2s', it parses as 2s
+                speed: "",
+                slide: false,
+                vibrate: false,
+                reverse: false,
+                hueRotate: false,
+                invertColors: false,
+                spin: "",
+                rotateDegrees: 0,
+                brody: false,
+                xAxisTranspose: -99,
+                zAxisTranspose: 0,
+                firstLineText: "",
+                secondLineText: "",
+                altText: ""
+            };
+            var expected = '[](/adviceajlie-!x99)';
+            var emoteObjectSerializer = new EmoteObjectSerializer_1.default();
+            var actual = emoteObjectSerializer.serialize(input);
+            should(actual).eql(expected);
+        });
     });
 });
 //# sourceMappingURL=EmoteObjectSerializer.spec.js.map

@@ -15,9 +15,9 @@ var StringUtils = (function () {
     StringUtils.createMarkupForStyles = function (styles) {
         var serialized = '';
         for (var styleName in styles) {
-            if (!styles.hasOwnProperty(styleName)) {
-                continue;
-            }
+            // if (!styles.hasOwnProperty(styleName)) {
+            //   continue;
+            // }
             var styleValue = styles[styleName];
             if (styleValue != null) {
                 var hyphenatedStyleName = StringUtils.convertCamelCaseToHyphenated(styleName);

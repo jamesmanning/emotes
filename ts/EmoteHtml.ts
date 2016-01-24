@@ -17,10 +17,10 @@ export default class EmoteHtml {
 
     }
 
-    private isEmoteEligible(emote: IEmoteDataEntry): boolean {
-        // TODO: replace with config check (nsfw, etc)
-        return true;
-    }
+    // private isEmoteEligible(emote: IEmoteDataEntry): boolean {
+    //     // TODO: replace with config check (nsfw, etc)
+    //     return true;
+    // }
 
     private getBaseHtmlDataForEmote(emoteDataEntry: IEmoteDataEntry): HtmlOutputData {
 

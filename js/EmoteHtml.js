@@ -11,10 +11,10 @@ var EmoteHtml = (function () {
         this.effectsModifier = new EmoteEffectsModifier_1.default();
         this.textSerializer = new EmoteTextSerializer_1.default();
     }
-    EmoteHtml.prototype.isEmoteEligible = function (emote) {
-        // TODO: replace with config check (nsfw, etc)
-        return true;
-    };
+    // private isEmoteEligible(emote: IEmoteDataEntry): boolean {
+    //     // TODO: replace with config check (nsfw, etc)
+    //     return true;
+    // }
     EmoteHtml.prototype.getBaseHtmlDataForEmote = function (emoteDataEntry) {
         var ret = {
             emoteData: emoteDataEntry,

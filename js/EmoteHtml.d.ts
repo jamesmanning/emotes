@@ -8,7 +8,6 @@ export default class EmoteHtml {
     private effectsModifier;
     private textSerializer;
     constructor(emoteMap: EmoteMap, emoteExpansionOptions?: EmoteExpansionOptions);
-    private isEmoteEligible(emote);
     private getBaseHtmlDataForEmote(emoteDataEntry);
     getEmoteHtmlMetadataForObject(emoteObject: EmoteObject): HtmlOutputData;
     getEmoteHtmlForObject(emoteObject: EmoteObject): string;

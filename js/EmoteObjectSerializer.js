@@ -39,7 +39,7 @@ var EmoteObjectSerializer = (function () {
         if (emoteObject.xAxisTranspose > 0)
             ret += '-x' + emoteObject.xAxisTranspose;
         if (emoteObject.xAxisTranspose < 0)
-            ret += '-x!' + emoteObject.xAxisTranspose;
+            ret += '-!x' + Math.abs(emoteObject.xAxisTranspose);
         if (emoteObject.zAxisTranspose > 0)
             ret += '-z' + emoteObject.zAxisTranspose;
         return ret;

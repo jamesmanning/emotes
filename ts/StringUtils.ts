@@ -25,9 +25,9 @@ export default class StringUtils {
     static createMarkupForStyles(styles: IHashMapOfStrings): string {
       var serialized = '';
       for (var styleName in styles) {
-        if (!styles.hasOwnProperty(styleName)) {
-          continue;
-        }
+        // if (!styles.hasOwnProperty(styleName)) {
+        //   continue;
+        // }
         var styleValue = styles[styleName];
         if (styleValue != null) {
           let hyphenatedStyleName = StringUtils.convertCamelCaseToHyphenated(styleName);
