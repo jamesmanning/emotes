@@ -1,5 +1,6 @@
 "use strict";
-var EmoteExpansionOptions = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var EmoteExpansionOptions = /** @class */ (function () {
     function EmoteExpansionOptions() {
         this.berryEmoteEnabled = true;
         this.berryEmotesEffects = true;
@@ -20,6 +21,5 @@ var EmoteExpansionOptions = (function () {
     }
     return EmoteExpansionOptions;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteExpansionOptions;
 //# sourceMappingURL=EmoteExpansionOptions.js.map

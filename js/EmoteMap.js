@@ -1,5 +1,6 @@
 "use strict";
-var EmoteMap = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var EmoteMap = /** @class */ (function () {
     function EmoteMap(emoteData) {
         this.emoteMap = this.buildEmoteMap(emoteData);
     }
@@ -17,6 +18,5 @@ var EmoteMap = (function () {
     };
     return EmoteMap;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteMap;
 //# sourceMappingURL=EmoteMap.js.map

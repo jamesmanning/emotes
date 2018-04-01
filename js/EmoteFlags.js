@@ -1,5 +1,6 @@
 "use strict";
-var EmoteFlags = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var EmoteFlags = /** @class */ (function () {
     function EmoteFlags() {
     }
     EmoteFlags.invertHashMapOfStrings = function (obj) {
@@ -29,6 +30,5 @@ var EmoteFlags = (function () {
     EmoteFlags.berryEmoteAnimationSpeedToDescriptionMap = EmoteFlags.invertHashMapOfStrings(EmoteFlags.berryEmoteAnimationDescriptionToSpeedMap);
     return EmoteFlags;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteFlags;
 //# sourceMappingURL=EmoteFlags.js.map

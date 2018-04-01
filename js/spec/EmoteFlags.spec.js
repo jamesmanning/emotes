@@ -1,8 +1,9 @@
+"use strict";
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/should/should.d.ts" />
-"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var should = require('should');
-var EmoteFlags_1 = require('../EmoteFlags');
+var EmoteFlags_1 = require("../EmoteFlags");
 describe('EmoteFlags', function () {
     describe('#getSpeedForDescription', function () {
         it('should work for a valid description', function () {

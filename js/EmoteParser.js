@@ -1,6 +1,7 @@
 "use strict";
-var EmoteFlags_1 = require('./EmoteFlags');
-var EmoteParser = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var EmoteFlags_1 = require("./EmoteFlags");
+var EmoteParser = /** @class */ (function () {
     function EmoteParser() {
     }
     EmoteParser.prototype.parse = function (input) {
@@ -78,12 +79,14 @@ var EmoteParser = (function () {
         }
         else if (flag == 'invert') {
             emoteObject.invertColors = true;
+            // now the mapping structures to check for those strings
         }
         else if (EmoteFlags_1.default.berryEmoteAnimationDescriptionToSpeedMap[flag]) {
             emoteObject.speed = flag; // convert to the time value in EmoteHtml instead
         }
         else if (EmoteFlags_1.default.berryEmoteSpinAnimations.indexOf(flag) != -1) {
             emoteObject.spin = flag;
+            // finally the regex matches
         }
         else if (flag.match(/^\d+$/)) {
             emoteObject.rotateDegrees = parseInt(flag);
@@ -116,6 +119,5 @@ var EmoteParser = (function () {
     EmoteParser.emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
     return EmoteParser;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteParser;
 //# sourceMappingURL=EmoteParser.js.map

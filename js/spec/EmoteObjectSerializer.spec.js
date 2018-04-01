@@ -1,8 +1,9 @@
+"use strict";
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/should/should.d.ts" />
-"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var should = require('should');
-var EmoteObjectSerializer_1 = require('../EmoteObjectSerializer');
+var EmoteObjectSerializer_1 = require("../EmoteObjectSerializer");
 describe('EmoteObjectSerializer', function () {
     describe('#serialize', function () {
         it('should correctly serialize emote object with all features', function () {

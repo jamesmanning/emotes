@@ -1,9 +1,10 @@
 "use strict";
-var EmoteExpansionOptions_1 = require('./EmoteExpansionOptions');
-var EmoteEffectsModifier_1 = require('./EmoteEffectsModifier');
-var EmoteTextSerializer_1 = require('./EmoteTextSerializer');
-var StringUtils_1 = require('./StringUtils');
-var EmoteHtml = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var EmoteExpansionOptions_1 = require("./EmoteExpansionOptions");
+var EmoteEffectsModifier_1 = require("./EmoteEffectsModifier");
+var EmoteTextSerializer_1 = require("./EmoteTextSerializer");
+var StringUtils_1 = require("./StringUtils");
+var EmoteHtml = /** @class */ (function () {
     function EmoteHtml(emoteMap, emoteExpansionOptions) {
         if (emoteExpansionOptions === void 0) { emoteExpansionOptions = new EmoteExpansionOptions_1.default(); }
         this.emoteMap = emoteMap;
@@ -68,6 +69,5 @@ var EmoteHtml = (function () {
     };
     return EmoteHtml;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteHtml;
 //# sourceMappingURL=EmoteHtml.js.map

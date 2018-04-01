@@ -1,6 +1,7 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var EmoteFlags_1 = require("./EmoteFlags");
-var EmoteEffectsModifier = (function () {
+var EmoteEffectsModifier = /** @class */ (function () {
     function EmoteEffectsModifier() {
     }
     EmoteEffectsModifier.prototype.applyFlagsFromObjectToHtmlOutputData = function (emoteData, emoteObject, emoteHtml) {
@@ -88,6 +89,5 @@ var EmoteEffectsModifier = (function () {
     };
     return EmoteEffectsModifier;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteEffectsModifier;
 //# sourceMappingURL=EmoteEffectsModifier.js.map

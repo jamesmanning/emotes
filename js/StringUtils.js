@@ -1,5 +1,6 @@
 "use strict";
-var StringUtils = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var StringUtils = /** @class */ (function () {
     function StringUtils() {
     }
     StringUtils.convertCamelCaseToHyphenated = function (styleName) {
@@ -49,6 +50,5 @@ var StringUtils = (function () {
     StringUtils.hyphenPattern = /-(.)/g;
     return StringUtils;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = StringUtils;
 //# sourceMappingURL=StringUtils.js.map

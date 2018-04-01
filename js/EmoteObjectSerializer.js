@@ -1,5 +1,6 @@
 "use strict";
-var EmoteObjectSerializer = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var EmoteObjectSerializer = /** @class */ (function () {
     function EmoteObjectSerializer() {
     }
     EmoteObjectSerializer.prototype.serialize = function (emoteObject) {
@@ -46,6 +47,5 @@ var EmoteObjectSerializer = (function () {
     };
     return EmoteObjectSerializer;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteObjectSerializer;
 //# sourceMappingURL=EmoteObjectSerializer.js.map

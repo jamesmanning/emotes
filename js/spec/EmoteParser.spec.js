@@ -1,8 +1,9 @@
+"use strict";
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/should/should.d.ts" />
-"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var should = require('should');
-var EmoteParser_1 = require('../EmoteParser');
+var EmoteParser_1 = require("../EmoteParser");
 describe('EmoteParser', function () {
     describe('#parse', function () {
         it('should correctly parse a simple emote', function () {

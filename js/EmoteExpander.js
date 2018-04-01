@@ -1,8 +1,9 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var EmoteParser_1 = require("./EmoteParser");
-var EmoteMap_1 = require('./EmoteMap');
-var EmoteHtml_1 = require('./EmoteHtml');
-var EmoteExpander = (function () {
+var EmoteMap_1 = require("./EmoteMap");
+var EmoteHtml_1 = require("./EmoteHtml");
+var EmoteExpander = /** @class */ (function () {
     function EmoteExpander(emoteData, options) {
         this.debug = true;
         var emoteMap = new EmoteMap_1.default(emoteData);
@@ -21,6 +22,5 @@ var EmoteExpander = (function () {
     };
     return EmoteExpander;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EmoteExpander;
 //# sourceMappingURL=EmoteExpander.js.map

@@ -1,10 +1,11 @@
+"use strict";
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/should/should.d.ts" />
-"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var should = require('should');
-var EmoteMap_1 = require('../EmoteMap');
-var EmoteHtml_1 = require('../EmoteHtml');
-var EmoteExpansionOptions_1 = require('../EmoteExpansionOptions');
+var EmoteMap_1 = require("../EmoteMap");
+var EmoteHtml_1 = require("../EmoteHtml");
+var EmoteExpansionOptions_1 = require("../EmoteExpansionOptions");
 var emoteData = require('./sample_data.json');
 var ivyrage = emoteData.filter(function (x) { return x.names[0] == 'ivyrage'; })[0];
 var adviceajlie = emoteData.filter(function (x) { return x.names[0] == 'adviceajlie'; })[0];
