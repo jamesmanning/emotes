@@ -22,9 +22,6 @@ export default class EmoteTextSerializer {
       if (textStyles) {
         // since these need to apply to all text, they go on the emote node itself
         for (var property in textStyles) {
-          // if (!textStyles.hasOwnProperty(property)) {
-          //   continue;
-          // }
           htmlOutputData.cssStylesForEmoteNode[property] = textStyles[property];
         }
       }
@@ -33,10 +30,7 @@ export default class EmoteTextSerializer {
     getStylesFromEntry(prefix: string, emoteDataEntry: IEmoteDataEntry): IHashMapOfStrings {
       const ret = <IHashMapOfStrings> {};
       for (var property in emoteDataEntry) {
-        // if (!emoteDataEntry.hasOwnProperty(property)) {
-        //   continue;
-        // }
-        if (property.startsWith(prefix)) {
+        if (property.substr(0, prefix.length) == prefix) {
           let strippedPropertyName = (<string>property).slice(prefix.length);
           let convertedProperyName = StringUtils.convertHyphenatedToCamelCase(strippedPropertyName);
           ret[convertedProperyName] = emoteDataEntry[property];
