@@ -1,6 +1,12 @@
 interface IEmoteDataEntry {
+    "background-image": string;
+    "height": number;
+    "names": string[];
+    "sr": string;
+    "tags": string[];
+    "width": number;
+
     "apng_url"?: string;
-    "background-image"?: string;
     "background-position"?: string[];
     "com"?: string;
     "em-color"?: string;
@@ -21,14 +27,11 @@ interface IEmoteDataEntry {
     "em-top"?: string;
     "em-visibility"?: string;
     "em-width"?: string;
-    "height"?: number;
     "hover-background-image"?: string;
     "hover-background-position"?: string;
     "hover-height"?: string;
     "hover-width"?: string;
-    "names"?: string[];
     "nsfw"?: boolean;
-    "sr"?: string;
     "strong-bottom"?: string;
     "strong-color"?: string;
     "strong-font-family"?: string;
@@ -41,7 +44,6 @@ interface IEmoteDataEntry {
     "strong-position"?: string;
     "strong-visibility"?: string;
     "strong-width"?: string;
-    "tags"?: string[];
     "text-color"?: string;
     "text-font-family"?: string;
     "text-font-size"?: string;
@@ -50,7 +52,6 @@ interface IEmoteDataEntry {
     "text-text-decoration"?: string;
     "text-text-shadow"?: string;
     "text-text-transform"?: string;
-    "width"?: number;
 }
 
 export default IEmoteDataEntry;
