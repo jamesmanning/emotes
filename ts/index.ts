@@ -6,6 +6,7 @@ export {default as EmoteHtml                  } from './EmoteHtml';
 export {default as EmoteMap                   } from './EmoteMap';
 export {default as EmoteObject                } from './EmoteObject';
 export {default as EmoteParser                } from './EmoteParser';
+export {default as EmoteObjectBuilder         } from './EmoteObjectBuilder';
 export {default as EmoteObjectSerializer      } from './EmoteObjectSerializer';
 export {default as HtmlOutputData             } from './HtmlOutputData';
 export {default as StringUtils                } from './StringUtils';
