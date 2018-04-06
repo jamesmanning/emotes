@@ -26,7 +26,7 @@ export default class EmoteObjectBuilder {
         };
     }
 
-    static create(source: EmoteObject): EmoteObject {
+    static create(source: Partial<EmoteObject>): EmoteObject {
         // TODO: params checking for source and source.emoteIdentifier ?
         return {
             emoteIdentifier: source.emoteIdentifier,
