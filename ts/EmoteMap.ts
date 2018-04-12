@@ -3,6 +3,10 @@ import IHashMapOfEmoteDataEntries from './IHashMapOfEmoteDataEntries';
 
 export default class EmoteMap {
     constructor(emoteData: IEmoteDataEntry[]) {
+        this.loadData(emoteData);
+    }
+
+    loadData(emoteData: IEmoteDataEntry[]) {
         this.emoteMap = this.buildEmoteMap(emoteData);
     }
 
