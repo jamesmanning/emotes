@@ -7,6 +7,7 @@ export default class EmoteMap {
     }
 
     loadData(emoteData: IEmoteDataEntry[]) {
+        this.emoteCount = emoteData.length;
         this.emoteMap = this.buildEmoteMap(emoteData);
     }
 
@@ -15,6 +16,11 @@ export default class EmoteMap {
     }
 
     private emoteMap: IHashMapOfEmoteDataEntries;
+    private emoteCount: number;
+
+    get loadedEmoteCount() {
+        return this.emoteCount;
+    }
 
     private buildEmoteMap(emoteData: IEmoteDataEntry[]): IHashMapOfEmoteDataEntries {
         const map: IHashMapOfEmoteDataEntries = {};

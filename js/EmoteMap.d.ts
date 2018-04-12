@@ -4,5 +4,7 @@ export default class EmoteMap {
     loadData(emoteData: IEmoteDataEntry[]): void;
     findEmote(emoteName: string): IEmoteDataEntry;
     private emoteMap;
+    private emoteCount;
+    readonly loadedEmoteCount: number;
     private buildEmoteMap(emoteData);
 }
