@@ -9,18 +9,23 @@ export default class EmoteMap {
     loadData(emoteData: IEmoteDataEntry[]) {
         this.emoteCount = emoteData.length;
         this.emoteMap = this.buildEmoteMap(emoteData);
+        this.allEmoteNames = Object.keys(this.emoteMap);
+        this.emoteImages = this.allEmoteNames.map(name => {
+            return {
+                name: name, 
+                imageUrl: this.emoteMap[name]["background-image"],
+            }
+        });
     }
 
     findEmote(emoteName: string): IEmoteDataEntry {
         return this.emoteMap[emoteName];
     }
 
-    private emoteMap: IHashMapOfEmoteDataEntries;
-    private emoteCount: number;
-
-    get loadedEmoteCount() {
-        return this.emoteCount;
-    }
+    public emoteMap: IHashMapOfEmoteDataEntries;
+    public allEmoteNames: string[];
+    public emoteCount: number;
+    public emoteImages: {name: string, imageUrl: string}[];
 
     private buildEmoteMap(emoteData: IEmoteDataEntry[]): IHashMapOfEmoteDataEntries {
         const map: IHashMapOfEmoteDataEntries = {};

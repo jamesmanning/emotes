@@ -5,19 +5,20 @@ var EmoteMap = /** @class */ (function () {
         this.loadData(emoteData);
     }
     EmoteMap.prototype.loadData = function (emoteData) {
+        var _this = this;
         this.emoteCount = emoteData.length;
         this.emoteMap = this.buildEmoteMap(emoteData);
+        this.allEmoteNames = Object.keys(this.emoteMap);
+        this.emoteImages = this.allEmoteNames.map(function (name) {
+            return {
+                name: name,
+                imageUrl: _this.emoteMap[name]["background-image"],
+            };
+        });
     };
     EmoteMap.prototype.findEmote = function (emoteName) {
         return this.emoteMap[emoteName];
     };
-    Object.defineProperty(EmoteMap.prototype, "loadedEmoteCount", {
-        get: function () {
-            return this.emoteCount;
-        },
-        enumerable: true,
-        configurable: true
-    });
     EmoteMap.prototype.buildEmoteMap = function (emoteData) {
         var map = {};
         emoteData.forEach(function (emote) {
