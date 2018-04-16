@@ -5,6 +5,8 @@
   "main": "js/index.js",
   "typings": "js/index",
   "scripts": {
+    "build": "tsc -p ./ts",
+    "publish-patch": "npm version patch && npm publish",
     "test": "istanbul test node_modules/mocha/bin/_mocha -- js/spec",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha js/spec",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",

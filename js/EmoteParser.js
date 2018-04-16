@@ -35,6 +35,16 @@ var EmoteParser = /** @class */ (function () {
         }
         return emoteObject;
     };
+    EmoteParser.prototype.parseMultipleEmotes = function (input) {
+        var _this = this;
+        var individualEmoteStrings = input.match(EmoteParser.multipleMatchRegexp);
+        if (!individualEmoteStrings)
+            return [];
+        var emoteInfos = individualEmoteStrings
+            .map(function (emoteString) { return _this.parse(emoteString); })
+            .filter(function (emoteObject) { return emoteObject != null; });
+        return emoteInfos;
+    };
     EmoteParser.prototype.setTextOnObject = function (textString, emoteObject) {
         var doubleStarSplit = textString.split('**');
         if (doubleStarSplit.length == 3) {
@@ -117,6 +127,7 @@ var EmoteParser = /** @class */ (function () {
         }
     };
     EmoteParser.emoteParseRegexp = /\[([^\]]*)\]\(\/([\w:!#\/]+)([-\w!]*)([^)]*)\)/;
+    EmoteParser.multipleMatchRegexp = new RegExp(EmoteParser.emoteParseRegexp.source, 'g');
     return EmoteParser;
 }());
 exports.default = EmoteParser;
