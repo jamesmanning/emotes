@@ -7,5 +7,5 @@ export default class EmoteExpander {
     private emoteParser;
     constructor(emoteData: IEmoteDataEntry[], options: EmoteExpansionOptions);
     expand(input: string): string;
-    private emoteReplacer(match);
+    private emoteReplacer;
 }

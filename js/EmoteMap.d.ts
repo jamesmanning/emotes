@@ -11,5 +11,5 @@ export default class EmoteMap {
         name: string;
         imageUrl: string;
     }[];
-    private buildEmoteMap(emoteData);
+    private buildEmoteMap;
 }

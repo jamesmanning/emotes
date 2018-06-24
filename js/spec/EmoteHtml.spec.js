@@ -86,30 +86,30 @@ describe('EmoteHtml', function () {
                 xAxisTranspose: 99,
                 zAxisTranspose: 5,
                 firstLineText: "first line",
-                secondLineText: "second line",
-                altText: "some alt text"
+                secondLineText: 'second line',
+                altText: 'some alt text'
             };
             var expected = {
                 emoteData: adviceajlie,
-                titleForEmoteNode: "adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5-bogusextraflag",
+                titleForEmoteNode: 'adviceajlie from /r/adviceponies effects: -v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5-bogusextraflag',
                 cssClassesForEmoteNode: [
-                    "berryemote",
-                    "nsfw",
-                    "bem-hue-rotate",
-                    "bem-invert"
+                    'berryemote',
+                    'nsfw',
+                    'bem-hue-rotate',
+                    'bem-invert'
                 ],
                 cssStylesForEmoteNode: {
-                    height: "300px",
-                    width: "300px",
-                    display: "inline-block",
-                    position: "relative",
-                    overflow: "hidden",
-                    backgroundPosition: "-2px -2px",
-                    backgroundImage: "url(//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png)",
-                    left: "99",
-                    zIndex: "5",
-                    animation: "vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease",
-                    transform: "rotate(270deg) scaleX(-1)",
+                    height: '300px',
+                    width: '300px',
+                    display: 'inline-block',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    backgroundPosition: '-2px -2px',
+                    backgroundImage: 'url(//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png)',
+                    left: '99px',
+                    zIndex: '5',
+                    animation: 'vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease',
+                    transform: 'rotate(270deg) scaleX(-1)',
                     textAlign: 'center',
                     fontSize: '26px',
                     fontFamily: 'Impact,sans-serif',
@@ -118,13 +118,13 @@ describe('EmoteHtml', function () {
                     textTransform: 'uppercase',
                     lineHeight: '26px'
                 },
-                cssClassesForParentNode: ["rotation-wrapper"],
+                cssClassesForParentNode: ['rotation-wrapper'],
                 cssStylesForParentNode: {
-                    height: "327px",
-                    display: "inline-block",
-                    marginTop: "25px",
-                    position: "relative",
-                    animation: "slideleft 2s infinite ease",
+                    height: '327px',
+                    display: 'inline-block',
+                    marginTop: '25px',
+                    position: 'relative',
+                    animation: 'slideleft 2s infinite ease',
                 },
                 emText: 'first line',
                 emStyles: {
@@ -157,36 +157,36 @@ describe('EmoteHtml', function () {
                 originalString: '[](/ivyrage-slide-s13)',
                 emoteIdentifier: 'ivyrage',
                 flagsString: '-slide-s13',
-                speed: "13s",
+                speed: '13s',
                 slide: true,
                 vibrate: false,
                 reverse: false,
                 hueRotate: false,
                 invertColors: false,
-                spin: "",
+                spin: '',
                 rotateDegrees: 0,
                 brody: false,
                 xAxisTranspose: 0,
                 zAxisTranspose: 0,
-                firstLineText: "",
-                secondLineText: "",
-                altText: ""
+                firstLineText: '',
+                secondLineText: '',
+                altText: ''
             };
             var expected = {
                 emoteData: ivyrage,
-                titleForEmoteNode: "ivyrage,ierage from /r/marmemotes effects: -slide-s13",
+                titleForEmoteNode: 'ivyrage,ierage from /r/marmemotes effects: -slide-s13',
                 cssClassesForEmoteNode: [
-                    "berryemote",
+                    'berryemote',
                 ],
                 cssStylesForEmoteNode: {
-                    height: "140px",
-                    width: "200px",
-                    display: "inline-block",
-                    position: "relative",
-                    overflow: "hidden",
-                    animation: "slideleft 13s infinite ease,slideflip 13s infinite ease",
-                    backgroundImage: "url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)",
-                    backgroundPosition: "0px 0px"
+                    height: '140px',
+                    width: '200px',
+                    display: 'inline-block',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    animation: 'slideleft 13s infinite ease,slideflip 13s infinite ease',
+                    backgroundImage: 'url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)',
+                    backgroundPosition: '0px 0px'
                 },
                 cssClassesForParentNode: [],
                 cssStylesForParentNode: {}
@@ -200,37 +200,37 @@ describe('EmoteHtml', function () {
                 originalString: '[](/ivyrage-r-slide)',
                 emoteIdentifier: 'ivyrage',
                 flagsString: '-r-slide',
-                speed: "",
+                speed: '',
                 slide: true,
                 vibrate: false,
                 reverse: true,
                 hueRotate: false,
                 invertColors: false,
-                spin: "",
+                spin: '',
                 rotateDegrees: 0,
                 brody: false,
                 xAxisTranspose: 0,
                 zAxisTranspose: 0,
-                firstLineText: "",
-                secondLineText: "",
-                altText: ""
+                firstLineText: '',
+                secondLineText: '',
+                altText: ''
             };
             var expected = {
                 emoteData: ivyrage,
-                titleForEmoteNode: "ivyrage,ierage from /r/marmemotes effects: -r-slide",
+                titleForEmoteNode: 'ivyrage,ierage from /r/marmemotes effects: -r-slide',
                 cssClassesForEmoteNode: [
-                    "berryemote",
+                    'berryemote',
                 ],
                 cssStylesForEmoteNode: {
-                    height: "140px",
-                    width: "200px",
-                    display: "inline-block",
-                    position: "relative",
-                    overflow: "hidden",
+                    height: '140px',
+                    width: '200px',
+                    display: 'inline-block',
+                    position: 'relative',
+                    overflow: 'hidden',
                     transform: 'scaleX(-1)',
-                    animation: "slideleft 8s infinite ease,-slideflip 8s infinite ease",
-                    backgroundImage: "url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)",
-                    backgroundPosition: "0px 0px"
+                    animation: 'slideleft 8s infinite ease,-slideflip 8s infinite ease',
+                    backgroundImage: 'url(http://a.thumbs.redditmedia.com/84ozl2WMmiYp6Euf.png)',
+                    backgroundPosition: '0px 0px'
                 },
                 cssClassesForParentNode: [],
                 cssStylesForParentNode: {}
@@ -336,20 +336,20 @@ describe('EmoteHtml', function () {
                 emoteIdentifier: 'adviceajlie',
                 flagsString: '-v-r-brody-slide-fastest-!zspin-i-invert-270-x99-z5',
                 // since 'fastest' is just an alias for '2s', it parses as 2s
-                speed: "fastest",
+                speed: 'fastest',
                 slide: true,
                 vibrate: true,
                 reverse: true,
                 hueRotate: true,
                 invertColors: true,
-                spin: "!zspin",
+                spin: '!zspin',
                 rotateDegrees: 270,
                 brody: true,
                 xAxisTranspose: 99,
                 zAxisTranspose: 5,
-                firstLineText: "first line",
-                secondLineText: "second line",
-                altText: "some alt text"
+                firstLineText: 'first line',
+                secondLineText: 'second line',
+                altText: 'some alt text'
             };
             var expected = '<span class="rotation-wrapper" style="' +
                 'height: 327px;' +
@@ -366,7 +366,7 @@ describe('EmoteHtml', function () {
                 'overflow: hidden;' +
                 'background-position: -2px -2px;' +
                 'background-image: url(//b.thumbs.redditmedia.com/5g6WH3RD7F5aMC-O.png);' +
-                'left: 99;' +
+                'left: 99px;' +
                 'z-index: 5;' +
                 'animation: vibrate 0.05s linear infinite,-zspin 2s linear infinite,brody  1.27659s infinite ease;' +
                 'transform: rotate(270deg) scaleX(-1);' +
