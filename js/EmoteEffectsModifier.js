@@ -47,7 +47,7 @@ var EmoteEffectsModifier = /** @class */ (function () {
             wrappedEmoteHeight = rotateHeight;
         }
         if (emoteObject.xAxisTranspose) {
-            emoteHtml.cssStylesForEmoteNode.left = emoteObject.xAxisTranspose.toString() + 'px';
+            emoteHtml.cssStylesForEmoteNode.left = emoteObject.xAxisTranspose + "px";
         }
         if (emoteObject.zAxisTranspose) {
             emoteHtml.cssStylesForEmoteNode.zIndex = emoteObject.zAxisTranspose.toString();
